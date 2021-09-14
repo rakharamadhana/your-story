@@ -3,68 +3,69 @@
 @section('title', __('Login'))
 
 @section('content')
-    <div class="container py-4">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <x-frontend.card>
-                    <x-slot name="header">
-                        @lang('Login')
-                    </x-slot>
+    <div class="container h-100 w-100">
+        <div class="d-flex justify-content-center h-100">
+			<div class="user_card w3-animate-top">
+				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+						<img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png" class="brand_logo" alt="Logo">
+					</div>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+                    <x-forms.post :action="route('frontend.auth.login')">
+                        
+                        <!-- Email Address -->
+                        <div class="input-group mb-3">  
+                            <div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
 
-                    <x-slot name="body">
-                        <x-forms.post :action="route('frontend.auth.login')">
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">@lang('E-mail Address')</label>
-
-                                <div class="col-md-6">
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ old('email') }}" maxlength="255" required autofocus autocomplete="email" />
-                                </div>
-                            </div><!--form-group-->
-
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">@lang('Password')</label>
-
-                                <div class="col-md-6">
-                                    <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password') }}" maxlength="100" required autocomplete="current-password" />
-                                </div>
-                            </div><!--form-group-->
-
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input name="remember" id="remember" class="form-check-input" type="checkbox" {{ old('remember') ? 'checked' : '' }} />
-
-                                        <label class="form-check-label" for="remember">
-                                            @lang('Remember Me')
-                                        </label>
-                                    </div><!--form-check-->
-                                </div>
-                            </div><!--form-group-->
-
-                            @if(config('boilerplate.access.captcha.login'))
-                                <div class="row">
-                                    <div class="col">
-                                        @captcha
-                                        <input type="hidden" name="captcha_status" value="true" />
-                                    </div><!--col-->
-                                </div><!--row-->
-                            @endif
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button class="btn btn-primary" type="submit">@lang('Login')</button>
-
-                                    <x-utils.link :href="route('frontend.auth.password.request')" class="btn btn-link" :text="__('Forgot Your Password?')" />
-                                </div>
-                            </div><!--form-group-->
-
-                            <div class="text-center">
-                                @include('frontend.auth.includes.social')
+                            <input type="email" name="email" id="email" class="form-control input_user" placeholder="{{ __('E-mail Address') }}" value="{{ old('email') }}" maxlength="255" required autofocus autocomplete="email" />
+                        </div>
+                        
+                        <!-- Password -->
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                        </x-forms.post>
-                    </x-slot>
-                </x-frontend.card>
-            </div><!--col-md-8-->
-        </div><!--row-->
+
+                            <input type="password" name="password" id="password" class="form-control input_pass" placeholder="{{ __('Password') }}" maxlength="100" required autocomplete="current-password" />                                
+                        </div>
+                        
+                        <!-- Remember Me -->
+						<div class="form-group row ml-2">
+                            <div class="custom-control custom-checkbox">
+                                <input name="remember" id="remember" class="custom-control-input" type="checkbox" {{ old('remember') ? 'checked' : '' }} />
+
+                                <label class="custom-control-label" for="remember">
+                                    @lang('Remember Me')
+                                </label>
+                            </div><!--form-check-->
+						</div>
+
+                        @if(config('boilerplate.access.captcha.login'))
+                            <div class="row">
+                                <div class="col">
+                                    @captcha
+                                    <input type="hidden" name="captcha_status" value="true" />
+                                </div><!--col-->
+                            </div><!--row-->
+                        @endif
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md">
+                                <button class="btn login_btn" type="submit">@lang('Login')</button>
+
+                                <a href="route('frontend.auth.password.request')" class="link_small">Forgot your Password</a>
+                            </div>
+                        </div><!--form-group-->
+
+                        <div class="text-center">
+                            @include('frontend.auth.includes.social')
+                        </div>
+                    </x-forms.post>
+				</div>
+			</div>
+		</div>
     </div><!--container-->
 @endsection

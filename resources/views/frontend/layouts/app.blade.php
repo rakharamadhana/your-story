@@ -11,6 +11,7 @@
 
     @stack('before-styles')
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ mix('css/frontend.css') }}" rel="stylesheet">
     <livewire:styles />
@@ -22,12 +23,19 @@
     @include('includes.partials.announcements')
 
     <div id="app">
-        @include('frontend.includes.nav')
-        @include('includes.partials.messages')
+        @guest
+            @include('includes.partials.messages')
 
-        <main>
-            @yield('content')
-        </main>
+            <main>
+                @yield('content')
+            </main>
+        @else
+            @include('frontend.includes.nav')
+
+        @endguest
+        
+        
+        
     </div><!--app-->
 
     @stack('before-scripts')
