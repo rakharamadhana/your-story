@@ -16,6 +16,21 @@
                     </x-slot>
                 </x-frontend.card>
             </div><!--col-md-10-->
+
+            <div class="col-md-12 mt-3">
+                <x-frontend.card>
+                    <x-slot name="header">
+                        @lang('Menu')
+                    </x-slot>
+
+                    <x-slot name="body">
+                        <ul>
+                            <li><a href="{{ route('frontend.user.cases') }}">@lang('Cases')</a></li>
+                            <li><a href="{{ route('frontend.user.dashboard') }}">@lang('Design A Story')</a></li>                            
+                        </ul>
+                    </x-slot>
+                </x-frontend.card>
+            </div><!--col-md-10-->
         </div><!--row-->
     </div><!--container-->
 @endsection

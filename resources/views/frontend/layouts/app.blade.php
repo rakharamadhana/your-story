@@ -24,17 +24,14 @@
 
     <div id="app">
         @guest
-            @include('includes.partials.messages')
-
-            <main>
-                @yield('content')
-            </main>
+            @include('includes.partials.messages')            
         @else
             @include('frontend.includes.nav')
-
         @endguest
-        
-        
+
+        <main>
+            @yield('content')
+        </main>
         
     </div><!--app-->
 

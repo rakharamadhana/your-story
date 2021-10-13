@@ -76,7 +76,7 @@
                 @include('includes.partials.messages')
 
                 <div class="title">
-                    Your Story
+                    Social Emotion Learning
                 </div><!--title-->
 
                 <div class="links">

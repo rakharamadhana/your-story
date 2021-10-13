@@ -8,7 +8,7 @@
 			<div class="user_card w3-animate-top">
 				<div class="d-flex justify-content-center">
 					<div class="brand_logo_container">
-						<img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png" class="brand_logo" alt="Logo">
+						<img src="https://cdn.freebiesupply.com/images/large/2x/medium-logo-on-dark-blue.png" class="brand_logo" alt="Logo">
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
