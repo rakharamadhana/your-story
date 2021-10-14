@@ -19,16 +19,14 @@
         </div><!--row-->
     </div><!--container-->
 
-    <div class="container py-4">
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="form-group row mt-3">
-                <div class="col-md-12 text-right">
-                    <a class="btn btn-block btn-success float-right" href="{{ route('frontend.user.case.task1', $case->id) }}">@lang('Task 1')</a>                
-                </div>
-                <div class="col-md-12 text-right mt-1">
-                    <a class="btn btn-block btn-primary float-right" href="{{ route('frontend.user.case.task2', $case->id) }}">@lang('Task 2')</a>                
-                </div>
-            </div><!--form-group-->
+            <div class="col-md-12 text-right">
+                <a class="btn btn-block btn-success float-right" href="{{ route('frontend.user.case.task1', $case->id) }}">@lang('Task 1')</a>
+            </div>
+            <div class="col-md-12 text-right mt-3">
+                <a class="btn btn-block btn-primary float-right" href="{{ route('frontend.user.case.task2', $case->id) }}">@lang('Task 2')</a>
+            </div>
         </div>
     </div>
 @endsection

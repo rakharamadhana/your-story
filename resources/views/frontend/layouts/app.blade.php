@@ -24,7 +24,7 @@
 
     <div id="app">
         @guest
-            @include('includes.partials.messages')            
+            @include('includes.partials.messages')
         @else
             @include('frontend.includes.nav')
         @endguest
@@ -32,8 +32,10 @@
         <main>
             @yield('content')
         </main>
-        
+
     </div><!--app-->
+
+    @yield('footer-scripts')
 
     @stack('before-scripts')
     <script src="{{ mix('js/manifest.js') }}"></script>

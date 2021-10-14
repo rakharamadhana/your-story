@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\User;
 
+use App\Models\Cases;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -12,10 +13,13 @@ use Illuminate\Contracts\View\View;
 class Task1Controller
 {
     /**
+     * @param $id
      * @return Application|Factory|View
      */
-    public function index()
+    public function index($id)
     {
-        return view('frontend.user.case.task1');
+        $case = Cases::find($id);
+
+        return view('frontend.user.case.task1')->with('case',$case);
     }
 }

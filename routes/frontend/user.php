@@ -46,16 +46,16 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
         Route::get('task1', [Task1Controller::class, 'index'])
             ->middleware('is_user')
             ->name('task1')
-            ->breadcrumbs(function (Trail $trail) {
-                $trail->parent('frontend.user.case')
+            ->breadcrumbs(function (Trail $trail, $id) {
+                $trail->parent('frontend.user.case', $id)
                     ->push(__('Task 1'));
             });
 
         Route::get('task2', [Task2Controller::class, 'index'])
             ->middleware('is_user')
             ->name('task2')
-            ->breadcrumbs(function (Trail $trail) {
-                $trail->parent('frontend.user.case')
+            ->breadcrumbs(function (Trail $trail, $id) {
+                $trail->parent('frontend.user.case', $id)
                     ->push(__('Task 2'));
             });
     });
