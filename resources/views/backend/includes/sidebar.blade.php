@@ -1,11 +1,6 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
     <div class="c-sidebar-brand d-lg-down-none">
-        <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-            <use xlink:href="{{ asset('img/brand/coreui.svg#full') }}"></use>
-        </svg>
-        <svg class="c-sidebar-brand-minimized" width="46" height="46" alt="CoreUI Logo">
-            <use xlink:href="{{ asset('img/brand/coreui.svg#signet') }}"></use>
-        </svg>
+        Social Emotion Learning
     </div><!--c-sidebar-brand-->
 
     <ul class="c-sidebar-nav">
@@ -16,6 +11,17 @@
                 :active="activeClass(Route::is('admin.dashboard'), 'c-active')"
                 icon="c-sidebar-nav-icon cil-speedometer"
                 :text="__('Dashboard')" />
+        </li>
+
+        <li class="c-sidebar-nav-title">@lang('Learning')</li>
+
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                class="c-sidebar-nav-link"
+                :href="route('admin.cases')"
+                :active="activeClass(Route::is('admin.cases'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-notes"
+                :text="__('Cases')" />
         </li>
 
         @if (

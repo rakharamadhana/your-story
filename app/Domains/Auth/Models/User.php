@@ -157,4 +157,11 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
     {
         return UserFactory::new();
     }
+
+    /**
+     * @return bool
+     */
+    public function isAdministrator() {
+        return $this->roles()->where('type', self::TYPE_ADMIN)->exists();
+    }
 }

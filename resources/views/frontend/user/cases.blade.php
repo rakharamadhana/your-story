@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', __('Dashboard'))
+@section('title', __('Cases'))
 
 @section('content')
     <div class="container py-4">
@@ -15,7 +15,7 @@
                         <ul>
                             @foreach($cases as $case)
                             <li><a href="{{ route('frontend.user.case', $case->id) }}">{{$case->name}}</a></li>
-                            @endforeach                            
+                            @endforeach
 
                         </ul>
                     </x-slot>

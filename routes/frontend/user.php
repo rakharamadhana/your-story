@@ -4,8 +4,7 @@ use App\Http\Controllers\Frontend\User\AccountController;
 use App\Http\Controllers\Frontend\User\DashboardController;
 use App\Http\Controllers\Frontend\User\CasesController;
 use App\Http\Controllers\Frontend\User\CaseController;
-use App\Http\Controllers\Frontend\User\Task1Controller;
-use App\Http\Controllers\Frontend\User\Task2Controller;
+use App\Http\Controllers\Frontend\User\TaskController;
 use App\Http\Controllers\Frontend\User\ProfileController;
 use App\Models\Cases;
 use Illuminate\Support\Facades\Route;
@@ -42,21 +41,13 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             $trail->parent('frontend.user.cases')->push(__('Case'));
         });
 
-    Route::group(['prefix' => 'case/{id}','as' => 'case.'], function () {
-        Route::get('task1', [Task1Controller::class, 'index'])
+    Route::group(['prefix' => 'case/{caseId}','as' => 'case.'], function () {
+        Route::get('task/{id}', [TaskController::class, 'index'])
             ->middleware('is_user')
-            ->name('task1')
-            ->breadcrumbs(function (Trail $trail, $id) {
-                $trail->parent('frontend.user.case', $id)
-                    ->push(__('Task 1'));
-            });
-
-        Route::get('task2', [Task2Controller::class, 'index'])
-            ->middleware('is_user')
-            ->name('task2')
-            ->breadcrumbs(function (Trail $trail, $id) {
-                $trail->parent('frontend.user.case', $id)
-                    ->push(__('Task 2'));
+            ->name('task' )
+            ->breadcrumbs(function (Trail $trail, $caseId) {
+                $trail->parent('frontend.user.case', $caseId)
+                    ->push(__('Task'));
             });
     });
 

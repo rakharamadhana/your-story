@@ -85,6 +85,10 @@
                             <a href="{{ route('frontend.user.dashboard') }}">@lang('Dashboard')</a>
                         @endif
 
+                        @if ($logged_in_user->isAdmin())
+                            <a href="{{ route('admin.dashboard') }}">@lang('Dashboard')</a>
+                        @endif
+
                         <a href="{{ route('frontend.user.account') }}">@lang('Account')</a>
                     @else
                         <a href="{{ route('frontend.auth.login') }}">@lang('Login')</a>

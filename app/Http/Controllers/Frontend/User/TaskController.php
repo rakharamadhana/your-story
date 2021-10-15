@@ -3,23 +3,28 @@
 namespace App\Http\Controllers\Frontend\User;
 
 use App\Models\Cases;
+use App\Models\Task;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
 /**
- * Class Task2Controller.
+ * Class TaskController.
  */
-class Task2Controller
+class TaskController
 {
     /**
      * @param $id
      * @return Application|Factory|View
      */
-    public function index($id)
+    public function index($caseId, $id)
     {
-        $case = Cases::find($id);
+        $case = Cases::find($caseId);
 
-        return view('frontend.user.case.task2')->with('case',$case);
+        $task = Task::find($id);
+
+        return view('frontend.user.case.task')
+            ->with('case',$case)
+            ->with('task',$task);
     }
 }
