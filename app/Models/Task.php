@@ -9,8 +9,9 @@ class Task extends Model
 {
     use HasFactory;
 
-    public const TYPE_MULTIPLE_CHOICE = 'MC';
-    public const TYPE_ESSAY = 'ES';
+    public const TYPE_MULTIPLE_CHOICE = '1';
+    public const TYPE_ESSAY = '2';
+    public const TYPE_MIXED = '3';
 
     /**
      * The table associated with the model.

@@ -21,7 +21,7 @@ class TaskSeeder extends Seeder
         Task::create([
             'name' => 'Task 1',
             'cases_id' => 1,
-            'type' => $faker->randomElement([Task::TYPE_MULTIPLE_CHOICE,Task::TYPE_ESSAY]),
+            'type' => $faker->randomElement([Task::TYPE_MULTIPLE_CHOICE,Task::TYPE_ESSAY,Task::TYPE_MIXED]),
             'created_at' => Carbon::now('Asia/Taipei')->subHours(1),
             'updated_at' => Carbon::now('Asia/Taipei')->subHours(1)
         ]);
@@ -29,7 +29,15 @@ class TaskSeeder extends Seeder
         Task::create([
             'name' => 'Task 2',
             'cases_id' => 1,
-            'type' => $faker->randomElement([Task::TYPE_MULTIPLE_CHOICE,Task::TYPE_ESSAY]),
+            'type' => $faker->randomElement([Task::TYPE_MULTIPLE_CHOICE,Task::TYPE_ESSAY,Task::TYPE_MIXED]),
+            'created_at' => Carbon::now('Asia/Taipei')->subHours(1),
+            'updated_at' => Carbon::now('Asia/Taipei')->subHours(1)
+        ]);
+
+        Task::create([
+            'name' => 'Task 3',
+            'cases_id' => 1,
+            'type' => $faker->randomElement([Task::TYPE_MULTIPLE_CHOICE,Task::TYPE_ESSAY,Task::TYPE_MIXED]),
             'created_at' => Carbon::now('Asia/Taipei')->subHours(1),
             'updated_at' => Carbon::now('Asia/Taipei')->subHours(1)
         ]);
@@ -37,7 +45,7 @@ class TaskSeeder extends Seeder
         Task::create([
             'name' => 'Task 1',
             'cases_id' => 2,
-            'type' => $faker->randomElement([Task::TYPE_MULTIPLE_CHOICE,Task::TYPE_ESSAY]),
+            'type' => $faker->randomElement([Task::TYPE_MULTIPLE_CHOICE,Task::TYPE_ESSAY,Task::TYPE_MIXED]),
             'created_at' => Carbon::now('Asia/Taipei'),
             'updated_at' => Carbon::now('Asia/Taipei')
         ]);
@@ -45,7 +53,7 @@ class TaskSeeder extends Seeder
         Task::create([
             'name' => 'Task 2',
             'cases_id' => 2,
-            'type' => $faker->randomElement([Task::TYPE_MULTIPLE_CHOICE,Task::TYPE_ESSAY]),
+            'type' => $faker->randomElement([Task::TYPE_MULTIPLE_CHOICE,Task::TYPE_ESSAY,Task::TYPE_MIXED]),
             'created_at' => Carbon::now('Asia/Taipei'),
             'updated_at' => Carbon::now('Asia/Taipei')
         ]);
@@ -53,7 +61,7 @@ class TaskSeeder extends Seeder
         Task::create([
             'name' => 'Task 3',
             'cases_id' => 2,
-            'type' => $faker->randomElement([Task::TYPE_MULTIPLE_CHOICE,Task::TYPE_ESSAY]),
+            'type' => $faker->randomElement([Task::TYPE_MULTIPLE_CHOICE,Task::TYPE_ESSAY,Task::TYPE_MIXED]),
             'created_at' => Carbon::now('Asia/Taipei'),
             'updated_at' => Carbon::now('Asia/Taipei')
         ]);
