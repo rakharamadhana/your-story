@@ -4,6 +4,9 @@
 
 @section('content')
     <section class="vh-100 bg-main">
+        @if(config('boilerplate.locale.status') && count(config('boilerplate.locale.languages')) > 1)
+            @include('frontend.auth.includes.language')
+        @endif
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col col-xl-10">
@@ -18,14 +21,14 @@
                             </div>
                             <div class="col-lg-5 d-flex align-items-center">
                                 <div class="card-body p-4 p-lg-5 text-black">
-                                    <x-forms.post :action="route('frontend.auth.login')">
-
+                                    <form method="post" action="{{ route('frontend.auth.login') }}">
+                                        @csrf
                                         <div class="d-flex align-items-center mb-3 pb-1">
                                             <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                            <span class="h1 fw-bold mb-0">Welcome!</span>
+                                            <span class="h1 fw-bold mb-0">@lang('Welcome!')</span>
                                         </div>
 
-                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">@lang('Sign into your account')</h5>
 
                                         <div class="form-outline mb-4">
                                             <input type="email" name="email" id="email" class="form-control input_user" placeholder="{{ __('E-mail Address') }}" value="{{ old('email') }}" maxlength="255" required autofocus autocomplete="email" />
@@ -65,11 +68,11 @@
                                             <button class="btn btn-primary btn-lg btn-block" type="submit">@lang('Login')</button>
                                         </div>
 
-                                        <p><a href="{{ route('frontend.auth.password.request') }}" class="small text-muted">Forgot your Password</a></p>
+                                        <p><a href="{{ route('frontend.auth.password.request') }}" class="small text-muted">@lang('Forgot Your Password?')</a></p>
 
-                                        <a href="#" class="small text-muted">Terms of use.</a>
-                                        <a href="#" class="small text-muted">Privacy policy</a>
-                                    </x-forms.post>
+                                        <a href="#" class="small text-muted">@lang('Terms of use.')</a>
+                                        <a href="#" class="small text-muted">@lang('Privacy policy.')</a>
+                                    </form>
                                 </div>
                             </div>
                         </div>

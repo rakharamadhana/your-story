@@ -36,12 +36,6 @@
                 position: relative;
             }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
             .content {
                 text-align: center;
             }
@@ -59,10 +53,6 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
         </style>
         @stack('after-styles')
     </head>
@@ -70,13 +60,17 @@
         @include('includes.partials.read-only')
         @include('includes.partials.logged-in-as')
         @include('includes.partials.announcements')
+        @if(config('boilerplate.locale.status') && count(config('boilerplate.locale.languages')) > 1)
+            @include('frontend.auth.includes.language')
+        @endif
 
         <div id="app" class="flex-center position-ref full-height">
+
             <div class="content fade-in-anim">
                 @include('includes.partials.messages')
 
                 <div class="title">
-                    Social Emotion Learning
+                    @lang('Social Emotion Learning')
                 </div><!--title-->
 
                 <div class="links">

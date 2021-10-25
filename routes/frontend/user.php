@@ -40,6 +40,22 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                 $trail->parent('frontend.user.case', $caseId)
                     ->push(__('Task'));
             });
+
+        Route::get('task/{id}/ending', [TaskController::class, 'ending'])
+            ->middleware('is_user')
+            ->name('task.ending' )
+            ->breadcrumbs(function (Trail $trail, $caseId) {
+                $trail->parent('frontend.user.case', $caseId)
+                    ->push(__('Task'));
+            });
+
+        Route::post('task/{id}/store', [TaskController::class, 'store'])
+            ->middleware('is_user')
+            ->name('task.store' );
+
+        Route::post('task/{id}/storeEnding', [TaskController::class, 'storeEnding'])
+            ->middleware('is_user')
+            ->name('task.storeEnding' );
     });
 
     /** Account */

@@ -16,6 +16,10 @@ html {
     background: url("/img/bg-main.jpg") !important;
 }
 
+.bg-case-1 {
+    background: url("/img/bg-case-1.jpg") !important;
+}
+
 .card {
     border: none;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
@@ -70,8 +74,9 @@ a:focus
 }
 
 .container .sel-header {
-    position: fixed;
-    left: 300px;
+    position: absolute;
+    z-index:10;
+    left: 350px;
     top: 100px;
     transform: rotate(-20deg);
     display:inline-block;
@@ -96,13 +101,41 @@ a:focus
 
     // Medium devices (tablets, 768px and up)
     @media (min-width: 768px) {
-        left: 50px;
-        top: 75px;
+        left: 80px;
+        top: 60px;
     }
 
     // Large devices (desktops, 992px and up)
     @media (min-width: 992px) {
-        left: 300px;
+        left: 350px;
         top: 100px;
     }
+}
+
+.container .sel-sub-header {
+    position: absolute;
+    left: 1175px;
+    top: 110px;
+    z-index:10;
+    display:inline-block;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    text-align: center;
+    color: #fff;
+    border-radius: 100px;
+    background-color: #f06f5d;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+}
+
+.sel-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin-bottom: 1.5rem;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: 50px;
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }

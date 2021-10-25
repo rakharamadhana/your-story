@@ -1,4 +1,5 @@
-<form action="{{ route('frontend.user.case', $case->id) }}">
+<form action="{{ route('frontend.user.case.task.store',  ['caseId' => $case->id, 'id' => $task->id]) }}" method="post">
+    @csrf
     <div class="mb-3 task" style="display: block">
         @lang("Describe how the protagonist")...
         <button class="btn btn-block btn-primary" type="button">@lang('Observe the situation')</button>
@@ -10,35 +11,28 @@
     <div class="mb-3 task">
         <div class="mt-3 mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">@lang('Please share what you think the protagonist has observed from the highlighted sentence')</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="nvc_1" rows="4">@isset($student_answer){{ $student_answer->nvc_1 }}@endisset</textarea>
         </div>
     </div>
 
     <div class="mb-3 task">
         <div class="mt-3 mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">@lang('Please share what you think the protagonist has observed from the highlighted sentence')</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="nvc_2" rows="4">@isset($student_answer){{ $student_answer->nvc_2 }}@endisset</textarea>
         </div>
     </div>
 
     <div class="mb-3 task">
         <div class="mt-3 mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">@lang('Please share what you think the protagonist has observed from the highlighted sentence')</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="nvc_3" rows="4">@isset($student_answer){{ $student_answer->nvc_3 }}@endisset</textarea>
         </div>
     </div>
 
     <div class="mb-3 task">
         <div class="mt-3 mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">@lang('Please share what you think the protagonist has observed from the highlighted sentence')</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-    </div>
-
-    <div class="mb-3 task">
-        <div class="mt-3 mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">@lang('Predict how the scenario should evolve to reach a happy ending')</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="nvc_4" rows="4">@isset($student_answer){{ $student_answer->nvc_4 }}@endisset</textarea>
         </div>
     </div>
 
