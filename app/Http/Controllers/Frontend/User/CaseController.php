@@ -21,7 +21,7 @@ class CaseController
     {
         $case = Cases::find($id);
 
-        $tasks = Task::where('cases_id', $id)->get();
+        $tasks = Task::all();
 
         return view('frontend.user.case.index')
             ->with('case',$case)

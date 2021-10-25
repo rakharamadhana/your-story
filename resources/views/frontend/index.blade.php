@@ -66,7 +66,7 @@
         </style>
         @stack('after-styles')
     </head>
-    <body>
+    <body class="bg-main">
         @include('includes.partials.read-only')
         @include('includes.partials.logged-in-as')
         @include('includes.partials.announcements')

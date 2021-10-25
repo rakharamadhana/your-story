@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Frontend\User\AccountController;
 use App\Http\Controllers\Frontend\User\DashboardController;
-use App\Http\Controllers\Frontend\User\CasesController;
 use App\Http\Controllers\Frontend\User\CaseController;
 use App\Http\Controllers\Frontend\User\TaskController;
 use App\Http\Controllers\Frontend\User\ProfileController;
@@ -26,14 +25,6 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
         });
 
     /** Cases */
-    Route::get('cases', [CasesController::class, 'index'])
-        ->middleware('is_user')
-        ->name('cases')
-        ->breadcrumbs(function (Trail $trail) {
-            $trail->parent('frontend.index')
-                ->push(__('Cases'), route('frontend.user.cases'));
-        });
-
     Route::get('case/{id}', [CaseController::class, 'index'])
         ->middleware('is_user')
         ->name('case')
@@ -50,8 +41,6 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                     ->push(__('Task'));
             });
     });
-
-
 
     /** Account */
     Route::get('account', [AccountController::class, 'index'])

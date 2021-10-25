@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend\User;
 
+use App\Models\Cases;
+
 /**
  * Class DashboardController.
  */
@@ -12,6 +14,9 @@ class DashboardController
      */
     public function index()
     {
-        return view('frontend.user.dashboard');
+        $cases = Cases::all();
+
+        return view('frontend.user.dashboard')
+            ->with('cases', $cases);
     }
 }

@@ -9,9 +9,8 @@ class Task extends Model
 {
     use HasFactory;
 
-    public const TYPE_MULTIPLE_CHOICE = '1';
-    public const TYPE_ESSAY = '2';
-    public const TYPE_MIXED = '3';
+    public const TYPE_TASK_1 = 'EMO';
+    public const TYPE_TASK_2 = 'NVC';
 
     /**
      * The table associated with the model.
@@ -27,6 +26,6 @@ class Task extends Model
      */
     protected $fillable = [
         'name',
-        'description'
+        'type'
     ];
 }

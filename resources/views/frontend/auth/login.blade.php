@@ -3,69 +3,79 @@
 @section('title', __('Login'))
 
 @section('content')
-    <div class="container h-100 w-100">
-        <div class="d-flex justify-content-center h-100">
-			<div class="user_card w3-animate-top">
-				<div class="d-flex justify-content-center">
-					<div class="brand_logo_container">
-						<img src="https://cdn.freebiesupply.com/images/large/2x/medium-logo-on-dark-blue.png" class="brand_logo" alt="Logo">
-					</div>
-				</div>
-				<div class="d-flex justify-content-center form_container">
-                    <x-forms.post :action="route('frontend.auth.login')">
-                        
-                        <!-- Email Address -->
-                        <div class="input-group mb-3">  
-                            <div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
-							</div>
-
-                            <input type="email" name="email" id="email" class="form-control input_user" placeholder="{{ __('E-mail Address') }}" value="{{ old('email') }}" maxlength="255" required autofocus autocomplete="email" />
-                        </div>
-                        
-                        <!-- Password -->
-                        <div class="input-group mb-2">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+    <section class="vh-100 bg-main">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
+                    <div class="card shadow w3-animate-zoom" style="border-radius: 1rem; border: none;">
+                        <div class="row g-0">
+                            <div class="col-lg-7 d-none d-md-block">
+                                <img
+                                    src="{{URL::asset('/img/login-form-bg.jpg')}}"
+                                    alt="login form"
+                                    class="img-fluid" style="border-radius: 1rem 0 0 1rem;"
+                                />
                             </div>
+                            <div class="col-lg-5 d-flex align-items-center">
+                                <div class="card-body p-4 p-lg-5 text-black">
+                                    <x-forms.post :action="route('frontend.auth.login')">
 
-                            <input type="password" name="password" id="password" class="form-control input_pass" placeholder="{{ __('Password') }}" maxlength="100" required autocomplete="current-password" />                                
-                        </div>
-                        
-                        <!-- Remember Me -->
-						<div class="form-group row ml-2">
-                            <div class="custom-control custom-checkbox">
-                                <input name="remember" id="remember" class="custom-control-input" type="checkbox" {{ old('remember') ? 'checked' : '' }} />
+                                        <div class="d-flex align-items-center mb-3 pb-1">
+                                            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                            <span class="h1 fw-bold mb-0">Welcome!</span>
+                                        </div>
 
-                                <label class="custom-control-label" for="remember">
-                                    @lang('Remember Me')
-                                </label>
-                            </div><!--form-check-->
-						</div>
+                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
-                        @if(config('boilerplate.access.captcha.login'))
-                            <div class="row">
-                                <div class="col">
-                                    @captcha
-                                    <input type="hidden" name="captcha_status" value="true" />
-                                </div><!--col-->
-                            </div><!--row-->
-                        @endif
+                                        <div class="form-outline mb-4">
+                                            <input type="email" name="email" id="email" class="form-control input_user" placeholder="{{ __('E-mail Address') }}" value="{{ old('email') }}" maxlength="255" required autofocus autocomplete="email" />
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md">
-                                <button class="btn login_btn" type="submit">@lang('Login')</button>
+                                        </div>
 
-                                <a href="route('frontend.auth.password.request')" class="link_small">Forgot your Password</a>
+                                        <div class="form-outline mb-4">
+                                            <input type="password" name="password" id="password" class="form-control input_pass" placeholder="{{ __('Password') }}" maxlength="100" required autocomplete="current-password" />
+
+                                        </div>
+
+                                        <!-- Remember Me -->
+                                        <div class="form-group row ml-2">
+                                            <div class="custom-control custom-checkbox">
+                                                <input name="remember" id="remember" class="custom-control-input" type="checkbox" {{ old('remember') ? 'checked' : '' }} />
+
+                                                <label class="custom-control-label" for="remember">
+                                                    @lang('Remember Me')
+                                                </label>
+                                            </div><!--form-check-->
+                                        </div>
+
+                                        @if(config('boilerplate.access.captcha.login'))
+                                            <div class="row">
+                                                <div class="col">
+                                                    @captcha
+                                                    <input type="hidden" name="captcha_status" value="true" />
+                                                </div><!--col-->
+                                            </div><!--row-->
+                                        @endif
+
+                                        <div class="text-center">
+                                            @include('frontend.auth.includes.social')
+                                        </div>
+
+                                        <div class="pt-1 mb-4">
+                                            <button class="btn btn-primary btn-lg btn-block" type="submit">@lang('Login')</button>
+                                        </div>
+
+                                        <p><a href="{{ route('frontend.auth.password.request') }}" class="small text-muted">Forgot your Password</a></p>
+
+                                        <a href="#" class="small text-muted">Terms of use.</a>
+                                        <a href="#" class="small text-muted">Privacy policy</a>
+                                    </x-forms.post>
+                                </div>
                             </div>
-                        </div><!--form-group-->
-
-                        <div class="text-center">
-                            @include('frontend.auth.includes.social')
                         </div>
-                    </x-forms.post>
-				</div>
-			</div>
-		</div>
-    </div><!--container-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

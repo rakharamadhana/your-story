@@ -22,7 +22,7 @@
     @include('includes.partials.logged-in-as')
     @include('includes.partials.announcements')
 
-    <div id="app">
+    <div id="app" class="vh-100 @yield('background')">
         @guest
             @include('includes.partials.messages')
         @else

@@ -15,8 +15,10 @@ class CreateCasesTable extends Migration
     {
         Schema::create('cases', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description');
+            $table->string('name_en');
+            $table->string('name_zh-TW');
+            $table->text('description_en');
+            $table->text('description_zh-TW');
             $table->timestamps();
         });
     }

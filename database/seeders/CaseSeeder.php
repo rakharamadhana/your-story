@@ -19,15 +19,19 @@ class CaseSeeder extends Seeder
         $faker = Faker::create();
 
         Cases::create([
-            'name' => 'Case 1',
-            'description' => $faker->realText(2000),
+            'name_en' => 'Case 1',
+            'name_zh-TW' => '案例一',
+            'description_en' => $faker->realText(2000),
+            'description_zh-TW' => $faker->realText(2000),
             'created_at' => Carbon::now('Asia/Taipei')->subHours(1),
             'updated_at' => Carbon::now('Asia/Taipei')->subHours(1)
         ]);
 
         Cases::create([
-            'name' => 'Case 2',
-            'description' => $faker->realText(2000),
+            'name_en' => 'Case 2',
+            'name_zh-TW' => '案例二',
+            'description_en' => $faker->realText(2000),
+            'description_zh-TW' => $faker->realText(2000),
             'created_at' => Carbon::now('Asia/Taipei'),
             'updated_at' => Carbon::now('Asia/Taipei')
         ]);

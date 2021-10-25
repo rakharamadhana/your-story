@@ -2,6 +2,8 @@
 
 @section('title', __('My Account'))
 
+@section('background', 'bg-main')
+
 @section('content')
     <div class="container py-4">
         <div class="row justify-content-center">

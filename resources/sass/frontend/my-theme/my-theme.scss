@@ -1,85 +1,53 @@
 // Put your custom CSS styling here
 
-#breadcrumbs {
-    background-color: #e9ecef;
+.breadcrumb  .breadcrumb-item{
+    background-color: transparent !important;
 }
 
-/* Coded with love by Mutiullah Samim */
 body,
 html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background: #60a3bc !important;
+    background-color: #fff8ee !important;
 }
 
-.user_card {
-    height: 400px;
-    width: 350px;
-    margin-top: 250px;
-    margin-bottom: 250px;
-    background: #f39c12;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.bg-main {
+    background: url("/img/bg-main.jpg") !important;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+a:hover,
+a:visited,
+a:focus
+{
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.zoom {
+    padding: 50px;
+    transition: transform .2s; /* Animation */
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.zoom:hover {
+    transform: scale(1.25); /* (150% zoom)*/
+}
+
+.modal-content {
     border-radius: 25px;
-
+    border: none;
 }
 
-.brand_logo_container {
-    position: absolute;
-    height: 170px;
-    width: 170px;
-    top: -75px;
-    border-radius: 50%;
-    background: #60a3bc;
-    padding: 10px;
-    text-align: center;
-}
-.brand_logo {
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    border: 2px solid white;
-}
-.form_container {
-    margin-top: 100px;
-}
-.login_btn {
-    width: 100%;
-    background: #c0392b !important;
-    color: white !important;
-}
-.link_small {
-    font-size: 12pt;
-    text-align: center;
-
-}
-.login_btn:focus {
-    box-shadow: none !important;
-    outline: 0 !important;
-}
-.login_container {
-    padding: 0 2rem;
-}
-.input-group-text {
-    background: #c0392b !important;
-    color: white !important;
-    border: 0 !important;
-    border-radius: 0.25rem 0 0 0.25rem !important;
-}
-.input_user,
-.input_pass:focus {
-    box-shadow: none !important;
-    outline: 0 !important;
-}
-.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #c0392b !important;
+.modal-backdrop{
+    background-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .scrollable{
@@ -90,4 +58,51 @@ html {
 .scrollable-column{
     overflow-y: auto;
     max-height: 100px;
+}
+
+.task {
+    display: none;
+}
+
+.login-form {
+    background: #ffdcae;
+    padding: 258px 0;
+}
+
+.container .sel-header {
+    position: fixed;
+    left: 300px;
+    top: 100px;
+    transform: rotate(-20deg);
+    display:inline-block;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    text-align: center;
+    color: #fff;
+    border-radius: 100px;
+    background-color: #f06f5d;
+    margin-bottom: 50px;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+
+    // Small devices (landscape phones, 576px and up)
+    @media (max-width: 576px) {
+        position: static;
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @media (max-width: 768px) {
+        left: 100px;
+        top: 75px;
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) {
+        left: 50px;
+        top: 75px;
+    }
+
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) {
+        left: 300px;
+        top: 100px;
+    }
 }
