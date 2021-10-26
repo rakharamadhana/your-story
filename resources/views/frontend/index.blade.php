@@ -56,7 +56,7 @@
         </style>
         @stack('after-styles')
     </head>
-    <body class="bg-main">
+    <body class="vh-100 bg-main">
         @include('includes.partials.read-only')
         @include('includes.partials.logged-in-as')
         @include('includes.partials.announcements')
@@ -91,8 +91,6 @@
                             <a href="{{ route('frontend.auth.register') }}">@lang('Register')</a>
                         @endif
                     @endauth
-                    <!-- <a href="http://laravel-boilerplate.com" target="_blank"><i class="fa fa-book"></i> @lang('Docs')</a> -->
-                    <!-- <a href="https://github.com/rappasoft/laravel-boilerplate" target="_blank"><i class="fab fa-github"></i> GitHub</a> -->
                 </div><!--links-->
             </div><!--content-->
         </div><!--app-->

@@ -94,12 +94,6 @@ a:focus
     }
 
     // Medium devices (tablets, 768px and up)
-    @media (max-width: 768px) {
-        left: 100px;
-        top: 75px;
-    }
-
-    // Medium devices (tablets, 768px and up)
     @media (min-width: 768px) {
         left: 80px;
         top: 60px;
@@ -107,6 +101,12 @@ a:focus
 
     // Large devices (desktops, 992px and up)
     @media (min-width: 992px) {
+        left: 50px;
+        top: 100px;
+    }
+
+    // Extra Large devices (desktops, 992px and up)
+    @media (min-width: 1200px) {
         left: 350px;
         top: 100px;
     }
@@ -124,6 +124,18 @@ a:focus
     border-radius: 100px;
     background-color: #f06f5d;
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) {
+        left: 860px;
+        top: 110px;
+    }
+
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 1440px) {
+        left: 1175px;
+        top: 110px;
+    }
 }
 
 .sel-card {
