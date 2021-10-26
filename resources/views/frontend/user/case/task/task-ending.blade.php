@@ -12,13 +12,13 @@
                 <div class="sel-card mb-3">
                     <div class="card-body my-4">
                         <a href="{{ route('frontend.user.case.task', ['caseId' => $case->id, 'id' => $task->id]) }}" class="btn btn-info float-right"><i class="fas fa-edit"></i>@lang('Edit')</a>
-                        <h3>@lang('Observe the situation')</h3>
+                        <h5>@lang('Observe the situation')</h5>
                         <p class="card-text scrollable">{{ $student_answer->nvc_1 }}</p>
-                        <h3>@lang('Perceives the message')</h3>
+                        <h5>@lang('Perceives the message')</h5>
                         <p class="card-text scrollable">{{ $student_answer->nvc_2 }}</p>
-                        <h3>@lang('Communicate his needs')</h3>
+                        <h5>@lang('Communicate his needs')</h5>
                         <p class="card-text scrollable">{{ $student_answer->nvc_3 }}</p>
-                        <h3>@lang('Makes request')</h3>
+                        <h5>@lang('Makes request')</h5>
                         <p class="card-text scrollable">{{ $student_answer->nvc_4 }}</p>
                     </div>
                 </div>

@@ -124,8 +124,8 @@ a:focus
 
     // Large devices (desktops, 992px and up)
     @media (min-width: 992px) {
-        left: 80px;
-        top: 100px;
+        left: 30px;
+        top: 90px;
         position: absolute;
         transform: rotate(-20deg);
         width: auto;
@@ -165,7 +165,7 @@ a:focus
 
     // Large devices (desktops, 992px and up)
     @media (min-width: 992px) {
-        left: 900px;
+        left: 865px;
         top: 110px;
         position: absolute;
     }
@@ -211,4 +211,8 @@ a:focus
     100% {
         transform: scaleY(1)
     }
+}
+
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.9);
 }

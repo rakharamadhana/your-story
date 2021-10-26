@@ -22,8 +22,8 @@
                 margin: 0;
             }
 
-            .vh-90 {
-                height: 90vh;
+            .vh-80 {
+                height: 80vh;
             }
 
             .flex-center {
@@ -64,7 +64,7 @@
             @include('frontend.auth.includes.language')
         @endif
 
-        <div id="app" class="flex-center position-ref vh-90">
+        <div id="app" class="flex-center position-ref vh-80">
 
             <div class="content fade-in-anim">
                 @include('includes.partials.messages')
