@@ -2,11 +2,11 @@
 
 @section('title', $case->{'name_'.app()->getLocale()}." - ".$task->{'name_'.app()->getLocale()})
 
-@section('background', 'bg-case-1')
+@section('background', 'bg-case-2')
 
 @section('content')
     <div class="container py-4 mt-lg-5">
-        <span class="sel-header h3" style="background-color: #88df6c;">{{ $case->{'name_'.app()->getLocale()} }}</span>
+        <span class="sel-header h3" style="background-color: #2e5bbf;">{{ $case->{'name_'.app()->getLocale()} }}</span>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="sel-card mb-3">
@@ -24,7 +24,7 @@
                 </div>
             </div><!--col-md-10-->
 
-            <span class="sel-sub-header h5" style="background-color: #88df6c;">{{ $task->name_en }}</span>
+            <span class="sel-sub-header h5" style="background-color: #2e5bbf;">{{ $task->name_en }}</span>
             <div class="col-md-4">
                 <div class="sel-card mb-3 w3-animate-right">
                     <div class="card-body my-4">

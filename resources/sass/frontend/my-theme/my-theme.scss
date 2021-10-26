@@ -36,6 +36,18 @@ html {
     }
 }
 
+.bg-case-2 {
+    background-image: url("/img/bg-case-2.jpg") !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 350px) {
+        background-repeat: repeat;
+    }
+}
+
 .card {
     border: none;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
