@@ -13,11 +13,27 @@ html {
 }
 
 .bg-main {
-    background: url("/img/bg-main.jpg") !important;
+    background-image: url("/img/bg-main.jpg") !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 350px) {
+        background-repeat: repeat;
+    }
 }
 
 .bg-case-1 {
-    background: url("/img/bg-case-1.jpg") !important;
+    background-image: url("/img/bg-case-1.jpg") !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 350px) {
+        background-repeat: repeat;
+    }
 }
 
 .card {
@@ -75,9 +91,7 @@ a:focus
 
 .container .sel-header {
     position: absolute;
-    z-index:10;
-    left: 350px;
-    top: 100px;
+    z-index:500;
     transform: rotate(-20deg);
     display:inline-block;
     padding: 0.5em 1.5em 0.5em 1.5em;
@@ -89,24 +103,39 @@ a:focus
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
 
     // Small devices (landscape phones, 576px and up)
-    @media (max-width: 576px) {
+    @media (min-width: 350px) {
+        transform: rotate(0deg);
         position: static;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) {
+        left: 40px;
+        top: 60px;
     }
 
     // Medium devices (tablets, 768px and up)
     @media (min-width: 768px) {
-        left: 80px;
-        top: 60px;
+        position: static;
+        transform: rotate(0deg);
     }
 
     // Large devices (desktops, 992px and up)
     @media (min-width: 992px) {
-        left: 50px;
+        left: 80px;
         top: 100px;
+        position: absolute;
+        transform: rotate(-20deg);
+        width: auto;
     }
 
     // Extra Large devices (desktops, 992px and up)
-    @media (min-width: 1200px) {
+    @media (min-width: 1440px) {
+        position: absolute;
+        transform: rotate(-20deg);
+        width: auto;
         left: 350px;
         top: 100px;
     }
@@ -114,9 +143,7 @@ a:focus
 
 .container .sel-sub-header {
     position: absolute;
-    left: 1175px;
-    top: 110px;
-    z-index:10;
+    z-index:500;
     display:inline-block;
     padding: 0.5em 1.5em 0.5em 1.5em;
     text-align: center;
@@ -125,16 +152,30 @@ a:focus
     background-color: #f06f5d;
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
 
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 350px) {
+        position: static;
+        margin-bottom: 10px;
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) {
+        position: static;
+    }
+
     // Large devices (desktops, 992px and up)
     @media (min-width: 992px) {
-        left: 860px;
+        left: 900px;
         top: 110px;
+        position: absolute;
     }
 
     // Large devices (desktops, 992px and up)
     @media (min-width: 1440px) {
-        left: 1175px;
+        left: 1180px;
         top: 110px;
+        position: absolute;
+
     }
 }
 
@@ -150,4 +191,24 @@ a:focus
     background-color: #fff;
     border: none;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    border: none;
+    animation: growDown 300ms ease-in-out forwards;
+    transform-origin: top center
+}
+
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+    80% {
+        transform: scaleY(1.1)
+    }
+    100% {
+        transform: scaleY(1)
+    }
 }

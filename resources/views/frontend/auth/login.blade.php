@@ -7,12 +7,12 @@
         @if(config('boilerplate.locale.status') && count(config('boilerplate.locale.languages')) > 1)
             @include('frontend.auth.includes.language')
         @endif
-        <div class="container py-5 h-100">
+        <div class="container py-5">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col col-xl-10">
                     <div class="card shadow w3-animate-zoom" style="border-radius: 1rem; border: none;">
                         <div class="row g-0">
-                            <div class="col-lg-7 d-none d-sm-none d-md-none d-lg-none d-xl-block">
+                            <div class="col-lg-7 d-none d-sm-none d-md-none d-lg-block d-xl-block">
                                 <img
                                     src="{{URL::asset('/img/login-form-bg.jpg')}}"
                                     alt="login form"
