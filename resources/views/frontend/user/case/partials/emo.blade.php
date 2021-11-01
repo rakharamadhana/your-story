@@ -39,6 +39,6 @@
 
     <div class="d-grid gap-2 d-md-block float-md-right">
         <a href="{{ route('frontend.user.case', $case->id) }}" class="btn btn-secondary" type="button">@lang('Back')</a>
-        <button class="btn btn-success" type="submit">@lang('Submit')</button>
+        <button class="btn btn-success" type="submit">@lang('Finish')</button>
     </div>
 </form>

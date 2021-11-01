@@ -147,7 +147,7 @@ return [
          * Commenting out languages will make them unavailable to the user
          */
         'languages' => [
-            'zh-TW' => ['name' => '中文(繁体)', 'rtl' => false],
+            'zh-TW' => ['name' => '中文（繁體）', 'rtl' => false],
             'en' => ['name' => 'English', 'rtl' => false],
         ],
     ],

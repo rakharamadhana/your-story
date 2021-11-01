@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="sel-card mb-3 w3-animate-right">
                     <div class="card-body my-4">
-                        <p class="card-text scrollable">{{ $case->{'description_'.app()->getLocale()} }}</p>
+                        <p class="card-text scrollable mt-4">{{ $case->{'description_'.app()->getLocale()} }}</p>
                     </div>
                 </div>
             </div><!--col-md-10-->

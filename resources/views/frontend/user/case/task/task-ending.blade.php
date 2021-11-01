@@ -12,7 +12,7 @@
                 <div class="sel-card mb-3">
                     <div class="card-body my-4">
                         <a href="{{ route('frontend.user.case.task', ['caseId' => $case->id, 'id' => $task->id]) }}" class="btn btn-info float-right"><i class="fas fa-edit"></i>@lang('Edit')</a>
-                        <h5>@lang('Observe the situation')</h5>
+                        <h5 class="mt-4">@lang('Observe the situation')</h5>
                         <p class="card-text scrollable">{{ $student_answer->nvc_1 }}</p>
                         <h5>@lang('Perceives the message')</h5>
                         <p class="card-text scrollable">{{ $student_answer->nvc_2 }}</p>
@@ -24,7 +24,7 @@
                 </div>
             </div><!--col-md-10-->
 
-            <span class="sel-sub-header h5" style="background-color: #2e5bbf;">{{ $task->name_en }}</span>
+            <span class="sel-sub-header h5" style="background-color: #2e5bbf;">{{ $task->{'name_'.app()->getLocale()} }}</span>
             <div class="col-md-4">
                 <div class="sel-card mb-3 w3-animate-right">
                     <div class="card-body my-4">
@@ -37,7 +37,7 @@
                                 </div>
 
                                 <div class="d-grid gap-2 d-md-block float-md-right">
-                                    <button class="btn btn-success submit" type="submit" >@lang('Submit')</button>
+                                    <button class="btn btn-success submit" type="submit" >@lang('Finish')</button>
                                 </div>
                             </form>
                         </div>

@@ -10,28 +10,28 @@
 
     <div class="mb-3 task">
         <div class="mt-3 mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">@lang('Please share what you think the protagonist has observed from the highlighted sentence')</label>
+            <label for="exampleFormControlTextarea1" class="form-label">@lang('Please share what you think the protagonist has observed from the highlighted sentence (Observation)')</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" name="nvc_1" rows="4">@isset($student_answer){{ $student_answer->nvc_1 }}@endisset</textarea>
         </div>
     </div>
 
     <div class="mb-3 task">
         <div class="mt-3 mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">@lang('Please share what you think the protagonist has observed from the highlighted sentence')</label>
+            <label for="exampleFormControlTextarea1" class="form-label">@lang('Please share what you think the protagonist has observed from the highlighted sentence (Perceives)')</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" name="nvc_2" rows="4">@isset($student_answer){{ $student_answer->nvc_2 }}@endisset</textarea>
         </div>
     </div>
 
     <div class="mb-3 task">
         <div class="mt-3 mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">@lang('Please share what you think the protagonist has observed from the highlighted sentence')</label>
+            <label for="exampleFormControlTextarea1" class="form-label">@lang('Please share what you think the protagonist has observed from the highlighted sentence (Needs)')</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" name="nvc_3" rows="4">@isset($student_answer){{ $student_answer->nvc_3 }}@endisset</textarea>
         </div>
     </div>
 
     <div class="mb-3 task">
         <div class="mt-3 mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">@lang('Please share what you think the protagonist has observed from the highlighted sentence')</label>
+            <label for="exampleFormControlTextarea1" class="form-label">@lang('Please share what you think the protagonist has observed from the highlighted sentence (Request)')</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" name="nvc_4" rows="4">@isset($student_answer){{ $student_answer->nvc_4 }}@endisset</textarea>
         </div>
     </div>
@@ -39,6 +39,6 @@
     <div class="d-grid gap-2 d-md-block float-md-right">
         <a class="btn btn-secondary prev-btn" onclick="showPrev()" style="display:none">@lang('Back')</a>
         <a class="btn btn-info next-btn" onclick="showNext()">@lang('Next')</a>
-        <button class="btn btn-success submit" type="submit" style="display:none">@lang('Submit')</button>
+        <button class="btn btn-success submit" type="submit" style="display:none">@lang('Finish')</button>
     </div>
 </form>
