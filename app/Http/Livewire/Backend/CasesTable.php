@@ -14,7 +14,10 @@ class CasesTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make('Case','name')
+            Column::make('Case (English)','name_en')
+                ->sortable()
+                ->searchable(),
+            Column::make('Case (Chinese)','name_zh-TW')
                 ->sortable()
                 ->searchable(),
             Column::make('Created At', 'created_at')

@@ -84,8 +84,12 @@ a:focus
 
 .scrollable{
     overflow-y: auto;
-    max-height: 600px;
-    font-size: 25px;
+    max-height: 300px;
+    font-size: 20px;
+}
+
+.highlight {
+    background-color: yellow;
 }
 
 .scrollable-column{
@@ -94,6 +98,10 @@ a:focus
 }
 
 .task {
+    display: none;
+}
+
+.task-description {
     display: none;
 }
 

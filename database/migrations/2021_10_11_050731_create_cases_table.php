@@ -19,6 +19,14 @@ class CreateCasesTable extends Migration
             $table->string('name_zh-TW');
             $table->text('description_en');
             $table->text('description_zh-TW');
+            $table->text('observes_en');
+            $table->text('observes_zh-TW');
+            $table->text('perceives_en');
+            $table->text('perceives_zh-TW');
+            $table->text('needs_en');
+            $table->text('needs_zh-TW');
+            $table->text('request_en');
+            $table->text('request_zh-TW');
             $table->timestamps();
         });
     }

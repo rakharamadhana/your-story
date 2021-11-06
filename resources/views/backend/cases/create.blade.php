@@ -17,18 +17,83 @@
 
             <x-slot name="body">
                 <div class="form-group row">
-                    <label for="name" class="col-md-2 col-form-label">@lang('Name')</label>
+                    <div class="col-6">
+                        <label for="name" class="col-form-label">@lang('Name') - @lang('English')</label>
 
-                    <div class="col-md-10">
-                        <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') }}" maxlength="100" required />
+                        <input type="text" name="name_en" class="form-control" placeholder="{{ __('Name') }}" maxlength="100" required />
+                    </div>
+
+                    <div class="col-6">
+                        <label for="name" class="col-form-label">@lang('Name') - @lang('Chinese')</label>
+
+                        <input type="text" name="name_zh-TW" class="form-control" placeholder="{{ __('Name') }}" maxlength="100" required />
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label for="email" class="col-md-2 col-form-label">@lang('Description')</label>
+                    <div class="col-6">
+                        <label for="email" class="col-form-label">@lang('Description') - @lang('English')</label>
 
-                    <div class="col-md-10">
-                        <textarea type="text" name="description" class="form-control">{{ old('description') }}</textarea>
+                        <textarea type="text" name="description_en" class="form-control" rows="10">{{ old('description_en') }}</textarea>
+                    </div>
+                    <div class="col-6">
+                        <label for="email" class="col-form-label">@lang('Description') - @lang('Chinese')</label>
+
+                        <textarea type="text" name="description_zh-TW" class="form-control" rows="10">{{ old('description_zh-TW') }}</textarea>
+                    </div>
+                </div><!--form-group-->
+
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label for="email" class="col-form-label">@lang('Observation') - @lang('English')</label>
+
+                        <textarea type="text" name="observes_en" class="form-control" rows="3" >{{ old('observes_en') }}</textarea>
+                    </div>
+
+                    <div class="col-6">
+                        <label for="email" class="col-form-label">@lang('Observation') - @lang('Chinese')</label>
+
+                        <textarea type="text" name="observes_zh-TW" class="form-control" rows="3" >{{ old('observes_zh-TW') }}</textarea>
+                    </div>
+                </div><!--form-group-->
+
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label for="email" class="col-form-label">@lang('Perceives') - @lang('English')</label>
+
+                        <textarea type="text" name="perceives_en" class="form-control" rows="3" >{{ old('perceives_en') }}</textarea>
+                    </div>
+                    <div class="col-6">
+                        <label for="email" class="col-form-label">@lang('Perceives') - @lang('Chinese')</label>
+
+                        <textarea type="text" name="perceives_zh-TW" class="form-control" rows="3" >{{ old('perceives_zh-TW') }}</textarea>
+                    </div>
+                </div><!--form-group-->
+
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label for="email" class="col-form-label">@lang('Needs') - @lang('English')</label>
+
+                        <textarea type="text" name="needs_en" class="form-control" rows="3" >{{ old('needs_en') }}</textarea>
+                    </div>
+
+                    <div class="col-6">
+                        <label for="email" class="col-form-label">@lang('Needs') - @lang('Chinese')</label>
+
+                        <textarea type="text" name="needs_zh-TW" class="form-control" rows="3" >{{ old('needs_zh-TW') }}</textarea>
+                    </div>
+                </div><!--form-group-->
+
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label for="email" class="col-form-label">@lang('Request') - @lang('English')</label>
+
+                        <textarea type="text" name="request_en" class="form-control" rows="3" >{{ old('request_en') }}</textarea>
+                    </div>
+                    <div class="col-6">
+                        <label for="email" class="col-form-label">@lang('Request') - @lang('Chinese')</label>
+
+                        <textarea type="text" name="request_zh-TW" class="form-control" rows="3" >{{ old('request_zh-TW') }}</textarea>
                     </div>
                 </div><!--form-group-->
             </x-slot>

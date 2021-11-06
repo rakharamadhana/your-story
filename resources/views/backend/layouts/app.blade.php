@@ -41,7 +41,10 @@
     <script src="{{ mix('js/manifest.js') }}"></script>
     <script src="{{ mix('js/vendor.js') }}"></script>
     <script src="{{ mix('js/backend.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
     <livewire:scripts />
     @stack('after-scripts')
+
+    @yield('footer-scripts')
 </body>
 </html>

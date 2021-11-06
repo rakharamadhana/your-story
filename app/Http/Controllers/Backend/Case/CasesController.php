@@ -35,8 +35,18 @@ class CasesController
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'required',
+            'name_en' => 'required|max:255',
+            'name_zh-TW' => 'required|max:255',
+            'description_en' => 'required',
+            'description_zh-TW' => 'required',
+            'observes_en' => 'required',
+            'observes_zh-TW' => 'required',
+            'perceives_en' => 'required',
+            'perceives_zh-TW' => 'required',
+            'needs_en' => 'required',
+            'needs_zh-TW' => 'required',
+            'request_en' => 'required',
+            'request_zh-TW' => 'required',
         ]);
 
         $input = $request->all();
@@ -75,8 +85,18 @@ class CasesController
     public function update(Request $request, Cases $case)
     {
         $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'required',
+            'name_en' => 'required|max:255',
+            'name_zh-TW' => 'required|max:255',
+            'description_en' => 'required',
+            'description_zh-TW' => 'required',
+            'observes_en' => 'required',
+            'observes_zh-TW' => 'required',
+            'perceives_en' => 'required',
+            'perceives_zh-TW' => 'required',
+            'needs_en' => 'required',
+            'needs_zh-TW' => 'required',
+            'request_en' => 'required',
+            'request_zh-TW' => 'required',
         ]);
 
         $input = $request->all();

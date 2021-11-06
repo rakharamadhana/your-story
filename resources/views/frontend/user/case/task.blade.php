@@ -11,7 +11,17 @@
             <div class="col-md-8">
                 <div class="sel-card mb-3">
                     <div class="card-body my-4">
-                        <p class="card-text scrollable mt-4">{{ $case->{'description_'.app()->getLocale()} }}</p>
+                        @if($task->type == 'EMO')
+                            <p class="card-text scrollable mt-4" id="inputText">{{ $case->{'description_'.app()->getLocale()} }}</p>
+                        @elseif($task->type == 'NVC')
+                            <p class="card-text scrollable mt-4 task-description" id="inputText"  style="display: block">{{ $case->{'description_'.app()->getLocale()} }}</p>
+                        @else
+                            Question Not Found!
+                        @endif
+                        <p class="card-text mt-4 task-description" id="inputText">{{ $case->{'observes_'.app()->getLocale()} }}</p>
+                        <p class="card-text mt-4 task-description" id="inputText">{{ $case->{'perceives_'.app()->getLocale()} }}</p>
+                        <p class="card-text mt-4 task-description" id="inputText">{{ $case->{'needs_'.app()->getLocale()} }}</p>
+                        <p class="card-text mt-4 task-description" id="inputText">{{ $case->{'request_'.app()->getLocale()} }}</p>
                     </div>
                 </div>
             </div><!--col-md-10-->
@@ -36,8 +46,21 @@
 
 @section('footer-scripts')
     <script>
+        function customMark(text) {
+            let inputText = document.getElementById("inputText");
+            let innerHTML = inputText.innerHTML;
+            let index = innerHTML.indexOf(text);
+            if (index >= 0) {
+                innerHTML = innerHTML.substring(0,index) + "<span class='highlight'>" + innerHTML.substring(index,index+text.length) + "</span>" + innerHTML.substring(index + text.length);
+                inputText.innerHTML = innerHTML;
+            }
+        }
+
         let visibleDiv = 0;
         function showDiv() {
+            $(".task-description").fadeOut('fast').promise().done(function(){
+                $(".task-description:eq("+ visibleDiv + ")").fadeIn('fast');
+            })
             $(".task").fadeOut('fast').promise().done(function(){
                 $(".task:eq("+ visibleDiv + ")").fadeIn('fast');
             })
