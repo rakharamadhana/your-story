@@ -1,6 +1,6 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
     <div class="c-sidebar-brand d-lg-down-none">
-        Social Emotion Learning
+        @lang('Social Emotion Learning')
     </div><!--c-sidebar-brand-->
 
     <ul class="c-sidebar-nav">
@@ -22,6 +22,13 @@
                 :active="activeClass(Route::is('admin.cases'), 'c-active')"
                 icon="c-sidebar-nav-icon cil-notes"
                 :text="__('Cases')" />
+
+            <x-utils.link
+                class="c-sidebar-nav-link"
+                :href="route('admin.student')"
+                :active="activeClass(Route::is('admin.student'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-people"
+                :text="__('Student')" />
         </li>
 
         @if (

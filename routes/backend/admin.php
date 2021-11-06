@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\Case\CasesController;
+use App\Http\Controllers\Backend\Student\StudentController;
 use App\Models\Cases;
 use Tabuna\Breadcrumbs\Trail;
 
@@ -19,6 +20,14 @@ Route::get('cases', [CasesController::class, 'index'])
 
         $trail->parent('admin.dashboard')
             ->push(__('Cases'), route('admin.cases'));
+    });
+
+Route::get('student', [StudentController::class, 'index'])
+    ->name('student')
+    ->breadcrumbs(function (Trail $trail) {
+
+        $trail->parent('admin.dashboard')
+            ->push(__('Student'), route('admin.student'));
     });
 
 Route::group(['prefix' => 'case','as' => 'case.'], function () {
