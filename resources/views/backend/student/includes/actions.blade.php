@@ -1,4 +1,4 @@
 @if (Auth::user()->isAdministrator())
-    <x-utils.edit-button :href="route('admin.case.edit', $model)" />
-    <x-utils.delete-button :href="route('admin.case.destroy', $model)" />
+    <x-utils.edit-button :href="route('admin.student.edit', $model)" />
+    <x-utils.delete-button :href="route('admin.student.destroy', $model)" />
 @endif

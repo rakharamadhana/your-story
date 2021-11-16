@@ -41,6 +41,16 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'active' => true,
             ]);
+
+            User::create([
+                'type' => User::TYPE_USER,
+                'name_en' => 'Student B',
+                'name_zh-TW' => '學生B',
+                'email' => 'userb@user.com',
+                'password' => 'secret',
+                'email_verified_at' => now(),
+                'active' => true,
+            ]);
         }
 
         $this->enableForeignKeys();

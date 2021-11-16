@@ -101,6 +101,30 @@ a:focus
     display: none;
 }
 
+.logo-alternate {
+    position: absolute;
+    left: 40%;
+    max-height: 100px;
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 350px) {
+        left: 25%;
+        max-height: 60px;
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) {
+        left: 30%;
+        max-height: 80px;
+    }
+
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) {
+        left: 40%;
+        max-height: 100px;
+    }
+}
+
 .task-description {
     display: none;
 }

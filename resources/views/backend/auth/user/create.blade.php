@@ -29,10 +29,16 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        <label for="name" class="col-md-2 col-form-label">@lang('Name')</label>
+                        <label for="name" class="col-md-2 col-form-label">@lang('Name') - @lang('English')</label>
 
-                        <div class="col-md-10">
-                            <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') }}" maxlength="100" required />
+                        <div class="col-4">
+                            <input type="text" name="name_en" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name_en') }}" maxlength="100" required />
+                        </div>
+
+                        <label for="name" class="col-md-2 col-form-label">@lang('Name') - @lang('Chinese')</label>
+
+                        <div class="col-4">
+                            <input type="text" name="name_zh-TW" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name_zh-TW') }}" maxlength="100" required />
                         </div>
                     </div><!--form-group-->
 

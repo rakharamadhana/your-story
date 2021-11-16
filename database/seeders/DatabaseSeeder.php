@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AnnouncementSeeder::class);
         $this->call(CaseSeeder::class);
         $this->call(TaskSeeder::class);
+        $this->call(StudentSeeder::class);
 
         Model::reguard();
     }

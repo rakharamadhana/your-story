@@ -8,6 +8,7 @@ use App\Domains\Auth\Models\Traits\Relationship\UserRelationship;
 use App\Domains\Auth\Models\Traits\Scope\UserScope;
 use App\Domains\Auth\Notifications\Frontend\ResetPasswordNotification;
 use App\Domains\Auth\Notifications\Frontend\VerifyEmail;
+use App\Models\Student;
 use DarkGhostHunter\Laraguard\Contracts\TwoFactorAuthenticatable;
 use DarkGhostHunter\Laraguard\TwoFactorAuthentication;
 use Database\Factories\UserFactory;
@@ -47,7 +48,8 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
      */
     protected $fillable = [
         'type',
-        'name',
+        'name_en',
+        'name_zh-TW',
         'email',
         'email_verified_at',
         'password',
@@ -105,6 +107,7 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
     protected $with = [
         'permissions',
         'roles',
+        'student'
     ];
 
     /**
@@ -163,5 +166,10 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
      */
     public function isAdministrator() {
         return $this->roles()->where('type', self::TYPE_ADMIN)->exists();
+    }
+
+    public function student()
+    {
+        return $this->hasOne(Student::class);
     }
 }

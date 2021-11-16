@@ -23,6 +23,7 @@
     @include('includes.partials.announcements')
 
     <div id="app" class="vh-100 @yield('background')">
+        <img src="{{ URL::asset('img/logo-alternate.png') }}" class="img-responsive logo-alternate" />
         @guest
             @include('includes.partials.messages')
         @else

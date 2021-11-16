@@ -1,6 +1,6 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
-    <div class="c-sidebar-brand d-lg-down-none">
-        @lang('Social Emotion Learning')
+    <div class="c-sidebar-brand d-lg-down-none" style="background-color: #fff">
+        <img src="{{ URL::asset('img/logo-alternate.png') }}" class="img-responsive" style="max-height: 50px;" />
     </div><!--c-sidebar-brand-->
 
     <ul class="c-sidebar-nav">
@@ -18,18 +18,53 @@
         <li class="c-sidebar-nav-item">
             <x-utils.link
                 class="c-sidebar-nav-link"
-                :href="route('admin.cases')"
-                :active="activeClass(Route::is('admin.cases'), 'c-active')"
-                icon="c-sidebar-nav-icon cil-notes"
-                :text="__('Cases')" />
-
-            <x-utils.link
-                class="c-sidebar-nav-link"
                 :href="route('admin.student')"
                 :active="activeClass(Route::is('admin.student'), 'c-active')"
                 icon="c-sidebar-nav-icon cil-people"
                 :text="__('Student')" />
         </li>
+
+        <li class="c-sidebar-nav-dropdown">
+            <x-utils.link
+                class="c-sidebar-nav-dropdown-toggle"
+                href="#"
+                :active="activeClass(Route::is('admin.cases'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-notes"
+                :text="__('Cases')" />
+
+            <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item">
+                    <x-utils.link
+                        :href="route('admin.cases')"
+                        class="c-sidebar-nav-link"
+                        :text="__('Cases Management')" />
+                </li>
+                <li class="c-sidebar-nav-item">
+                    <x-utils.link
+                        :href="route('admin.case.learn')"
+                        class="c-sidebar-nav-link"
+                        :text="__('Case Learning Progress')" />
+                </li>
+            </ul>
+        </li>
+
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                class="c-sidebar-nav-link"
+                :href="route('admin.cases')"
+                :active="activeClass(Route::is('admin.cases'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-book"
+                :text="__('Stories')" />
+
+            <x-utils.link
+                class="c-sidebar-nav-link"
+                :href="route('admin.cases')"
+                :active="activeClass(Route::is('admin.cases'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-speech"
+                :text="__('Reviews')" />
+        </li>
+
+
 
         @if (
             $logged_in_user->hasAllAccess() ||
