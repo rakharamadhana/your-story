@@ -71,7 +71,7 @@ class CasesController
      * @param Cases $case
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(EditCaseRequest $request, Cases $case)
+    public function edit(Request $request, Cases $case)
     {
         return view('backend.cases.edit')
             ->with('case',$case);

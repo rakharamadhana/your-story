@@ -1,101 +1,130 @@
-@inject('model', '\App\Models\Cases')
+@inject('model', '\App\Models\StudentAnswer')
 
 @extends('backend.layouts.app')
 
-@section('title', __('Update Case'))
+@section('title', __('Update Case Learning'))
 
 @section('content')
-    <x-forms.patch :action="route('admin.case.learn.update', $case)">
+    <x-forms.patch :action="route('admin.case.learn.update', $studentAnswer)">
         <x-backend.card>
             <x-slot name="header">
-                @lang('Update Case')
+                @lang('Update Case Learning')
             </x-slot>
 
             <x-slot name="headerActions">
-                <x-utils.link class="card-header-action" :href="route('admin.cases')" :text="__('Cancel')" />
+                <x-utils.link class="card-header-action" :href="route('admin.case.learn')" :text="__('Cancel')" />
             </x-slot>
 
             <x-slot name="body">
                 <div class="form-group row">
-                    <div class="col-6">
-                        <label for="name" class="col-form-label">@lang('Name') - @lang('English')</label>
+                    <div class="col-12">
+                        <label for="name" class="col-form-label">Academic Year</label>
 
-                        <input type="text" name="name_en" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name_en') ?? $case->name_en }}" maxlength="100" required />
-                    </div>
-
-                    <div class="col-6">
-                        <label for="name" class="col-form-label">@lang('Name') - @lang('Chinese')</label>
-
-                        <input type="text" name="name_zh-TW" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name_zh-TW') ?? $case->{'name_zh-TW'} }}" maxlength="100" required />
+                        <input type="text" name="name_en" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name_en') ?? $studentAnswer->user->student->academic_year }}" maxlength="100" disabled />
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
                     <div class="col-6">
-                        <label for="email" class="col-form-label">@lang('Description') - @lang('English')</label>
+                        <label for="name" class="col-form-label">Grade</label>
 
-                        <textarea type="text" name="description_en" class="form-control" rows="10">{{ old('description_en') ?? $case->description_en }}</textarea>
+                        <input type="text" name="name_en" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name_en') ?? $studentAnswer->user->student->grade }}" maxlength="100" disabled />
                     </div>
-                    <div class="col-6">
-                        <label for="email" class="col-form-label">@lang('Description') - @lang('Chinese')</label>
 
-                        <textarea type="text" name="description_zh-TW" class="form-control" rows="10">{{ old('description_zh-TW') ?? $case->{'description_zh-TW'} }}</textarea>
+                    <div class="col-6">
+                        <label for="name" class="col-form-label">Class</label>
+
+                        <input type="text" name="name_zh-TW" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name_zh-TW') ?? $studentAnswer->user->student->class }}" maxlength="100" disabled />
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
                     <div class="col-6">
-                        <label for="email" class="col-form-label">@lang('Observation') - @lang('English')</label>
+                        <label for="name" class="col-form-label">Name</label>
 
-                        <textarea type="text" name="observes_en" class="form-control" rows="3" >{{ old('observes_en') ?? $case->{'observes_en'} }}</textarea>
+                        <input type="text" name="name_en" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name_en') ?? $studentAnswer->user->name_en }}" maxlength="100" disabled />
                     </div>
 
                     <div class="col-6">
-                        <label for="email" class="col-form-label">@lang('Observation') - @lang('Chinese')</label>
+                        <label for="name" class="col-form-label">Student Number</label>
 
-                        <textarea type="text" name="observes_zh-TW" class="form-control" rows="3" >{{ old('observes_zh-TW') ?? $case->{'observes_zh-TW'} }}</textarea>
+                        <input type="text" name="name_zh-TW" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name_zh-TW') ?? $studentAnswer->user->student->student_number }}" maxlength="100" disabled />
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
                     <div class="col-6">
-                        <label for="email" class="col-form-label">@lang('Perceives') - @lang('English')</label>
+                        <label for="name" class="col-form-label">Case</label>
 
-                        <textarea type="text" name="perceives_en" class="form-control" rows="3" >{{ old('perceives_en') ?? $case->{'perceives_en'} }}</textarea>
+                        <input type="text" name="name_en" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name_en') ?? $studentAnswer->cases->name_en }}" maxlength="100" disabled />
                     </div>
-                    <div class="col-6">
-                        <label for="email" class="col-form-label">@lang('Perceives') - @lang('Chinese')</label>
 
-                        <textarea type="text" name="perceives_zh-TW" class="form-control" rows="3" >{{ old('perceives_zh-TW') ?? $case->{'perceives_zh-TW'} }}</textarea>
+                    <div class="col-6">
+                        <label for="name" class="col-form-label">Task</label>
+
+                        <input type="text" name="name_zh-TW" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name_zh-TW') ?? $studentAnswer->task->name_en }}" maxlength="100" disabled />
+                    </div>
+                </div><!--form-group-->
+
+                @if($studentAnswer->emo_1 || $studentAnswer->emo_2)
+                <div class="form-group row">
+                    <div class="col-12">
+                        <label for="email" class="col-form-label">Task 1 - 1</label>
+
+                        <input type="text" name="name_zh-TW" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name_zh-TW') ?? $studentAnswer->emo_1 }}" maxlength="100" required />
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <div class="col-6">
-                        <label for="email" class="col-form-label">@lang('Needs') - @lang('English')</label>
+                    <div class="col-12">
+                        <label for="email" class="col-form-label">Task 1 - 1</label>
 
-                        <textarea type="text" name="needs_en" class="form-control" rows="3" >{{ old('needs_en') ?? $case->{'needs_en'} }}</textarea>
-                    </div>
-
-                    <div class="col-6">
-                        <label for="email" class="col-form-label">@lang('Needs') - @lang('Chinese')</label>
-
-                        <textarea type="text" name="needs_zh-TW" class="form-control" rows="3" >{{ old('needs_zh-TW') ?? $case->{'needs_zh-TW'} }}</textarea>
+                        <textarea type="text" name="description_zh-TW" class="form-control" rows="3">{{ old('description_zh-TW') ?? $studentAnswer->emo_2 }}</textarea>
                     </div>
                 </div><!--form-group-->
+                @endif
 
-                <div class="form-group row">
-                    <div class="col-6">
-                        <label for="email" class="col-form-label">@lang('Request') - @lang('English')</label>
+                @if($studentAnswer->nvc_1 || $studentAnswer->nvc_2 || $studentAnswer->nvc_3 || $studentAnswer->nvc_4 || $studentAnswer->nvc_end)
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <label for="name" class="col-form-label">Task 2 - 1</label>
 
-                        <textarea type="text" name="request_en" class="form-control" rows="3" >{{ old('request_en') ?? $case->{'request_en'} }}</textarea>
-                    </div>
-                    <div class="col-6">
-                        <label for="email" class="col-form-label">@lang('Request') - @lang('Chinese')</label>
+                            <textarea type="text" name="description_zh-TW" class="form-control" rows="3">{{ old('description_zh-TW') ?? $studentAnswer->nvc_1 }}</textarea>
+                        </div>
+                    </div><!--form-group-->
 
-                        <textarea type="text" name="request_zh-TW" class="form-control" rows="3" >{{ old('request_zh-TW') ?? $case->{'request_zh-TW'} }}</textarea>
-                    </div>
-                </div><!--form-group-->
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <label for="name" class="col-form-label">Task 2 - 2</label>
+
+                            <textarea type="text" name="description_zh-TW" class="form-control" rows="3">{{ old('description_zh-TW') ?? $studentAnswer->nvc_2 }}</textarea>
+                        </div>
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <label for="name" class="col-form-label">Task 2 - 3</label>
+
+                            <textarea type="text" name="description_zh-TW" class="form-control" rows="3">{{ old('description_zh-TW') ?? $studentAnswer->nvc_3 }}</textarea>
+                        </div>
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <label for="name" class="col-form-label">Task 2 - 4</label>
+
+                            <textarea type="text" name="description_zh-TW" class="form-control" rows="3">{{ old('description_zh-TW') ?? $studentAnswer->nvc_4 }}</textarea>
+                        </div>
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <label for="name" class="col-form-label">Task 2 - 5</label>
+
+                            <textarea type="text" name="description_zh-TW" class="form-control" rows="3">{{ old('description_zh-TW') ?? $studentAnswer->nvc_end }}</textarea>
+                        </div>
+                    </div><!--form-group-->
+                @endif
             </x-slot>
 
             <x-slot name="footer">

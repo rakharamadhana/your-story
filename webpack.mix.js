@@ -11,9 +11,11 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.setPublicPath('public')
+mix.js('resources/js/app.js', 'public/js')
+    .react()
+    .sass('resources/sass/app.scss', 'public/css')
+    .setPublicPath('public')
     .setResourceRoot('../') // Turns assets paths in css relative to css file
-    .vue()
     .sass('resources/sass/frontend/app.scss', 'css/frontend.css')
     .sass('resources/sass/backend/app.scss', 'css/backend.css')
     .js('resources/js/frontend/app.js', 'js/frontend.js')

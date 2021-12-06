@@ -3,6 +3,7 @@
 use App\Http\Controllers\Frontend\User\AccountController;
 use App\Http\Controllers\Frontend\User\DashboardController;
 use App\Http\Controllers\Frontend\User\CaseController;
+use App\Http\Controllers\Frontend\User\Story\StoryController;
 use App\Http\Controllers\Frontend\User\TaskController;
 use App\Http\Controllers\Frontend\User\ProfileController;
 use App\Models\Cases;
@@ -57,6 +58,14 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             ->middleware('is_user')
             ->name('task.storeEnding' );
     });
+
+    /** Story */
+    Route::get('story', [StoryController::class, 'index'])
+        ->middleware('is_user')
+        ->name('story')
+        ->breadcrumbs(function (Trail $trail) {
+            $trail->parent('frontend.user.story')->push(__('Story'));
+        });
 
     /** Account */
     Route::get('account', [AccountController::class, 'index'])

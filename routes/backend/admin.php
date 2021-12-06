@@ -48,22 +48,6 @@ Route::group(['prefix' => 'case','as' => 'case.'], function () {
                 ->push(__('Case Learning'), route('admin.case.learn'));
         });
 
-    Route::group(['prefix' => '{studentAnswer}'], function () {
-        Route::get('edit', [CaseLearningController::class, 'edit'])
-            ->name('edit')
-            ->breadcrumbs(function (Trail $trail, StudentAnswer $studentAnswer) {
-                $trail->parent('admin.case.learn', $studentAnswer)
-                    ->push(__('Edit'), route('admin.case.learn.edit', $studentAnswer));
-            });
-
-        Route::patch('/', [CaseLearningController::class, 'update'])->name('update');
-        Route::delete('/', [CaseLearningController::class, 'destroy'])->name('destroy');
-    });
-
-    Route::get('learn-export', [CaseLearningController::class, 'export'])->name('learn.export');
-
-    Route::post('/', [CasesController::class, 'store'])->name('store');
-
     Route::group(['prefix' => '{case}'], function () {
         Route::get('edit', [CasesController::class, 'edit'])
             ->name('edit')
@@ -75,6 +59,18 @@ Route::group(['prefix' => 'case','as' => 'case.'], function () {
         Route::patch('/', [CasesController::class, 'update'])->name('update');
         Route::delete('/', [CasesController::class, 'destroy'])->name('destroy');
     });
+
+    Route::post('/', [CasesController::class, 'store'])->name('store');
+
+    Route::group(['prefix' => 'learn/{studentAnswer}'], function () {
+        Route::get('edit', [CaseLearningController::class, 'edit'])
+            ->name('learn.edit');
+
+        Route::patch('/', [CaseLearningController::class, 'update'])->name('learn.update');
+        Route::delete('/', [CaseLearningController::class, 'destroy'])->name('learn.destroy');
+    });
+
+    Route::get('learn-export', [CaseLearningController::class, 'export'])->name('learn.export');
 });
 
 Route::group(['prefix' => 'student','as' => 'student.'], function () {

@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers\Backend\Case;
 
-use App\Domains\Auth\Http\Requests\Backend\User\EditUserRequest;
-use App\Http\Requests\Backend\Case\EditCaseRequest;
-use App\Models\Cases;
-use App\Models\Student;
 use App\Models\StudentAnswer;
 use Illuminate\Http\Request;
 use League\Csv\Writer;
@@ -28,7 +24,7 @@ class CaseLearningController
      */
     public function create()
     {
-        return view('backend.cases.create');
+        return view('backend.cases.learn.create');
     }
 
     /**
@@ -54,19 +50,19 @@ class CaseLearningController
 
         $input = $request->all();
 
-        Cases::create($input);
+        StudentAnswer::create($input);
 
         return redirect()->route('admin.cases')->withFlashSuccess(__('The case was successfully created.'));
     }
 
     /**
-     * @param Cases $case
-     * @return mixed
+     * @param StudentAnswer $studentAnswer
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show(Cases $case)
+    public function show(StudentAnswer $studentAnswer)
     {
-        return view('backend.cases.show')
-            ->with('case',$case);
+        return view('backend.cases.learn.show')
+            ->with('student_answer',$studentAnswer);
     }
 
     /**
@@ -76,16 +72,16 @@ class CaseLearningController
      */
     public function edit(Request $request, StudentAnswer $studentAnswer)
     {
-        return view('backend.case.learn.edit')
+        return view('backend.cases.learn-edit')
             ->with('studentAnswer',$studentAnswer);
     }
 
     /**
      * @param Request $request
-     * @param Cases $case
+     * @param StudentAnswer $studentAnswer
      * @return mixed
      */
-    public function update(Request $request, Cases $case)
+    public function update(Request $request, StudentAnswer $studentAnswer)
     {
         $request->validate([
             'name_en' => 'required|max:255',
@@ -104,21 +100,21 @@ class CaseLearningController
 
         $input = $request->all();
 
-        $case->fill($input)->save();
+        $studentAnswer->fill($input)->save();
 
-        return redirect()->route('admin.cases', $case)->withFlashSuccess(__('The case was successfully updated.'));
+        return redirect()->route('admin.case.learn', $studentAnswer)->withFlashSuccess(__('The case was successfully updated.'));
     }
 
     /**
      * @param Request $request
-     * @param Cases $case
+     * @param StudentAnswer $studentAnswer
      * @return mixed
      */
-    public function destroy(Request $request, Cases $case)
+    public function destroy(Request $request, StudentAnswer $studentAnswer)
     {
-        $case->delete();
+        $studentAnswer->delete();
 
-        return redirect()->route('admin.cases')->withFlashSuccess(__('The case was successfully deleted.'));
+        return redirect()->route('admin.case.learn')->withFlashSuccess(__('The case was successfully deleted.'));
     }
 
     public function export()
