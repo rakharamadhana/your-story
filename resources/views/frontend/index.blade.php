@@ -71,7 +71,7 @@
                 @include('includes.partials.messages')
 
                 <div class="title">
-                    @lang('Social Emotion Learning')
+                    @lang('Social Emotion Learning') rakha
                 </div><!--title-->
 
                 <div class="links">
