@@ -3,7 +3,10 @@
 use App\Http\Controllers\Frontend\User\AccountController;
 use App\Http\Controllers\Frontend\User\DashboardController;
 use App\Http\Controllers\Frontend\User\CaseController;
+use App\Http\Controllers\Frontend\User\Story\StoryBasicController;
 use App\Http\Controllers\Frontend\User\Story\StoryController;
+use App\Http\Controllers\Frontend\User\Story\StoryDrawingController;
+use App\Http\Controllers\Frontend\User\Story\StoryOutlineController;
 use App\Http\Controllers\Frontend\User\TaskController;
 use App\Http\Controllers\Frontend\User\ProfileController;
 use App\Models\Cases;
@@ -60,12 +63,64 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
     });
 
     /** Story */
-    Route::get('story', [StoryController::class, 'index'])
+    Route::get('stories', [StoryController::class, 'index'])
+        ->middleware('is_user')
+        ->name('stories')
+        ->breadcrumbs(function (Trail $trail) {
+            $trail->parent('frontend.user.stories')->push(__('Stories'));
+        });
+
+    Route::get('story/{storyId}', [StoryController::class, 'index'])
         ->middleware('is_user')
         ->name('story')
         ->breadcrumbs(function (Trail $trail) {
             $trail->parent('frontend.user.story')->push(__('Story'));
         });
+
+    Route::post('story/store', [StoryController::class, 'store'])
+        ->middleware('is_user')
+        ->name('story.store' );
+
+    Route::group(['prefix' => 'story/{storyId}','as' => 'story.'], function () {
+        Route::get('basic', [StoryBasicController::class, 'index'])
+            ->middleware('is_user')
+            ->name('basic' )
+            ->breadcrumbs(function (Trail $trail, $storyId) {
+                $trail->parent('frontend.user.story', $storyId)
+                    ->push(__('Story'));
+            });
+
+        Route::get('basic/description', [StoryBasicController::class, 'description'])
+            ->middleware('is_user')
+            ->name('basic.description' );
+
+        Route::post('basic/store', [StoryBasicController::class, 'store'])
+            ->middleware('is_user')
+            ->name('basic.store' );
+
+        Route::post('basic/storeDescription', [StoryBasicController::class, 'storeDescription'])
+            ->middleware('is_user')
+            ->name('basic.storeDescription' );
+
+
+
+        Route::get('outline', [StoryOutlineController::class, 'index'])
+            ->middleware('is_user')
+            ->name('outline' )
+            ->breadcrumbs(function (Trail $trail, $storyId) {
+                $trail->parent('frontend.user.story', $storyId)
+                    ->push(__('Story'));
+            });
+
+        Route::get('drawing', [StoryDrawingController::class, 'index'])
+            ->middleware('is_user')
+            ->name('drawing' )
+            ->breadcrumbs(function (Trail $trail, $storyId) {
+                $trail->parent('frontend.user.story', $storyId)
+                    ->push(__('Story'));
+            });
+    });
+
 
     /** Account */
     Route::get('account', [AccountController::class, 'index'])

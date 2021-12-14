@@ -15,7 +15,7 @@
                 </a>
             </div><!--col-md-10-->
             <div class="col-md-4 mt-lg-5 mt-md-5 mt-sm-5 zoom">
-                <a href="{{ route('frontend.user.story') }}">
+                <a href="{{ route('frontend.user.stories') }}">
                     <img src="{{ URL::asset('img/menu-design.png') }}" class="w3-animate-zoom rounded mx-auto d-block img-fluid" alt="">
                     <p class="h3 text-center" style="color: #001d8d;">@lang('Design A Story')</p>
                 </a>
