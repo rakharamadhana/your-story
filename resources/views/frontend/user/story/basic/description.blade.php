@@ -2,7 +2,7 @@
 
 @section('title', 'Design A Story')
 
-@section('background', 'bg-case-2')
+@section('background', 'bg-story-1')
 
 @section('content')
     <div class="container py-4 mt-lg-5">
@@ -28,7 +28,7 @@
                 </div>
             </div><!--col-md-10-->
 
-            <span class="sel-sub-header h5" style="background-color: #2e5bbf;">{{ $story->{'name_'.app()->getLocale()} }}</span>
+            <span class="sel-sub-header h5" style="background-color: #2e5bbf;">@lang('Basic Information')</span>
             <div class="col-md-4">
                 <div class="sel-card mb-3 w3-animate-right">
                     <div class="card-body my-4">

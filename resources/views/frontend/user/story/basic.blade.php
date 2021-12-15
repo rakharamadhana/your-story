@@ -2,7 +2,7 @@
 
 @section('title', 'Design A Story')
 
-@section('background', 'bg-case-2')
+@section('background', 'bg-story-1')
 
 @section('content')
     <div class="container py-4 mt-lg-5">
