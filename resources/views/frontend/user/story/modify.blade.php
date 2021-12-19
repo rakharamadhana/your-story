@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Design A Story')
+@section('title',"Modify ".$story->{'name_'.app()->getLocale()} )
 
 @section('background', 'bg-case-2')
 

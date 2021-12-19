@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Frontend\User\Story;
 
-use App\Models\Cases;
-use App\Models\Task;
+use App\Models\Story;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class StoryController.
@@ -19,9 +20,36 @@ class StoryOutlineController
      */
     public function index($storyId = null)
     {
-        $case = Cases::query()->where('id',$storyId)->first();
+        $story = Story::query()->where('id',$storyId)->first();
 
-        return view('frontend.user.story.outline')
-            ->with('case',$case);
+        return view('frontend.user.story.outline.create')
+            ->with('story',$story);
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return mixed
+     */
+    public function store(Request $request, $id): mixed
+    {
+        //dd($request->input());
+        $userId = Auth::user()->id;
+
+        Story::updateOrCreate(
+        // Check if available
+            [
+                'id' => $id,
+                'user_id' => $userId
+            ],
+
+            // Create or Update Value
+            [
+                'user_id' => $userId,
+                'nvc_outline' => $request->input('nvc_outline')
+            ]
+        );
+
+        return redirect()->route('frontend.user.story', ['storyId' => $id])->withFlashSuccess(__('The story was successfully created.'));
     }
 }

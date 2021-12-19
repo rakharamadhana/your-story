@@ -6,10 +6,10 @@
 
 @section('content')
     <div class="container py-4 mt-lg-5">
-        <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">Design A Story</span>
+        <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">@lang('Design A Story')</span>
         <div class="col-md-12 mt-5 text-right">
             <a type="button" class="btn btn-primary w3-animate-top" data-toggle="modal" data-target="#createStoryModal">
-                New Story
+                @lang('New Story')
             </a>
         </div>
         <div class="horizontal-slide mt-5">
@@ -17,7 +17,7 @@
                 <a href="{{ route('frontend.user.story', ['storyId' => $story->id]) }}" class="col-md-3">
                     <div class="sel-card-story mb-3">
                         <div class="card-body my-4">
-                            <p class="card-text scrollable mt-4">{{ $story->name_en }}</p>
+                            <p class="card-text scrollable mt-4">{{ $story->{'name_'.app()->getLocale()} }}</p>
                         </div>
                     </div>
                 </a>

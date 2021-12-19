@@ -102,8 +102,6 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             ->middleware('is_user')
             ->name('basic.storeDescription' );
 
-
-
         Route::get('outline', [StoryOutlineController::class, 'index'])
             ->middleware('is_user')
             ->name('outline' )
@@ -112,6 +110,10 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                     ->push(__('Story'));
             });
 
+        Route::post('outline/store', [StoryOutlineController::class, 'store'])
+            ->middleware('is_user')
+            ->name('outline.store' );
+
         Route::get('drawing', [StoryDrawingController::class, 'index'])
             ->middleware('is_user')
             ->name('drawing' )
@@ -119,6 +121,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                 $trail->parent('frontend.user.story', $storyId)
                     ->push(__('Story'));
             });
+
     });
 
 
