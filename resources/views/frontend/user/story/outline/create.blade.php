@@ -12,14 +12,14 @@
                 <div class="sel-card mb-3 w3-animate-right">
                     <div class="card-body my-4">
                         <ol>
-                        <li class="text-info"><p class="mt-4">@lang('No commentary will be given, only an attempt to state [Observations]')</p></li>
-                        <p class="card-text">@lang('I observed to...?')</p>
-                        <li class="text-info"><p>@lang('Tell us how you [Perceives] the story')</p></li>
-                        <p class="card-text">@lang('I feel...?')</p>
-                        <li class="text-info"><p>@lang('Be direct about what you really [Needs]')</p></li>
-                        <p class="card-text">@lang('I want...?')</p>
-                        <li class="text-info"><p>@lang('Remind explicit [Requests]')</p></li>
-                        <p class="card-text">@lang('What can I do?')</p>
+                            <li class="text-info"><p class="mt-4">@lang('No commentary will be given, only an attempt to state [Observations]')</p></li>
+                            <p class="card-text">@lang('I observed to...?')</p>
+                            <li class="text-info"><p>@lang('Tell us how you [Perceives] the story')</p></li>
+                            <p class="card-text">@lang('I feel...?')</p>
+                            <li class="text-info"><p>@lang('Be direct about what you really [Needs]')</p></li>
+                            <p class="card-text">@lang('I want...?')</p>
+                            <li class="text-info"><p>@lang('Remind explicit [Requests]')</p></li>
+                            <p class="card-text">@lang('What can I do?')</p>
                         </ol>
                     </div>
 

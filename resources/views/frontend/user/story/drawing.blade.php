@@ -9,7 +9,7 @@
         <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">Design A Story</span>
         <div class="row mt-lg-5 mt-md-5 mt-sm-5">
             <div class="col-md-4 mt-lg-5 mt-md-5 mt-sm-5 zoom">
-                <a href="{{ route('frontend.user.story.drawing', ['storyId' => $case->id]) }}">
+                <a href="{{ route('frontend.user.story.drawing', ['storyId' => $story->id]) }}">
                     <img src="{{ URL::asset('img/menu-design.png') }}" class="w3-animate-zoom rounded mx-auto d-block img-fluid" alt="">
                     <p class="h3 text-center" style="color: #8d002a;">@lang('Drawing')</p>
                 </a>

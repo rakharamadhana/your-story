@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\User\Story;
 
 use App\Models\Cases;
+use App\Models\Story;
 use App\Models\Task;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -19,9 +20,9 @@ class StoryDrawingController
      */
     public function index($storyId = null)
     {
-        $case = Cases::query()->where('id',$storyId)->first();
+        $story = Story::query()->where('id',$storyId)->first();
 
         return view('frontend.user.story.drawing')
-            ->with('case',$case);
+            ->with('story',$story);
     }
 }
