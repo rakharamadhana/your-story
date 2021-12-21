@@ -122,6 +122,10 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                     ->push(__('Story'));
             });
 
+        Route::get('drawing/draw', [StoryDrawingController::class, 'draw'])
+            ->middleware('is_user')
+            ->name('drawing.draw' );
+
     });
 
 

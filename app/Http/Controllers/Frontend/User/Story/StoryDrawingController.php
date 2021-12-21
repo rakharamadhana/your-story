@@ -18,11 +18,28 @@ class StoryDrawingController
      * @param null $storyId
      * @return Application|Factory|View
      */
-    public function index($storyId = null)
+    public function index($storyId = null): View|Factory|Application
     {
         $story = Story::query()->where('id',$storyId)->first();
 
+        $data = [];
+
         return view('frontend.user.story.drawing')
             ->with('story',$story);
+    }
+
+    /**
+     * @param null $storyId
+     * @return Application|Factory|View
+     */
+    public function draw($storyId = null): View|Factory|Application
+    {
+        $story = Story::query()->where('id',$storyId)->first();
+
+        $data = [];
+
+        return view('frontend.user.story.drawing.draw')
+            ->with('story',$story)
+            ->with('data', json_encode($data));
     }
 }
