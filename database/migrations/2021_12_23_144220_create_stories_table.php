@@ -1,6 +1,7 @@
 <?php
 
 use App\Domains\Auth\Models\User;
+use App\Models\Group;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,8 +21,13 @@ class CreateStoriesTable extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->foreignIdFor(Group::class)->nullable()
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->string('name_en');
             $table->string('name_zh-TW');
+            $table->boolean('is_group_story')->default(0);
             $table->string('time')->nullable();
             $table->string('place')->nullable();
             $table->string('characters')->nullable();

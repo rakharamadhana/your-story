@@ -30,7 +30,10 @@ class DatabaseSeeder extends Seeder
         $this->call(CaseSeeder::class);
         $this->call(TaskSeeder::class);
         $this->call(StudentSeeder::class);
+        $this->call(GroupSeeder::class);
+        $this->call(StudentGroupSeeder::class);
         $this->call(StorySeeder::class);
+        $this->call(StoryDrawingSeeder::class);
 
         Model::reguard();
     }

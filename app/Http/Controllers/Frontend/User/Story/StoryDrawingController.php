@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\User\Story;
 
 use App\Models\Cases;
 use App\Models\Story;
+use App\Models\StoryDrawing;
 use App\Models\Task;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -22,10 +23,13 @@ class StoryDrawingController
     {
         $story = Story::query()->where('id',$storyId)->first();
 
-        $data = [];
+        $storyDrawings = StoryDrawing::query()
+            ->where('story_id', $storyId)
+            ->get();
 
         return view('frontend.user.story.drawing')
-            ->with('story',$story);
+            ->with('story',$story)
+            ->with('storyDrawings', $storyDrawings);
     }
 
     /**

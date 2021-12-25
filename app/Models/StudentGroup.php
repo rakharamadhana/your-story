@@ -6,7 +6,7 @@ use App\Domains\Auth\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Story extends Model
+class StudentGroup extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,7 @@ class Story extends Model
      *
      * @var string
      */
-    protected $table = 'stories';
+    protected $table = 'student_groups';
 
     /**
      * Fillable fields
@@ -25,15 +25,6 @@ class Story extends Model
     protected $fillable = [
         'user_id',
         'group_id',
-        'name_en',
-        'name_zh-TW',
-        'is_group_story',
-        'time',
-        'place',
-        'characters',
-        'conflict',
-        'description',
-        'nvc_outline',
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

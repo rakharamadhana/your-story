@@ -1,11 +1,13 @@
 <?php
 
 use App\Domains\Auth\Models\User;
+use App\Models\Story;
+use App\Models\StudentGroup;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDrawingsTable extends Migration
+class CreateStoryDrawingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +16,15 @@ class CreateDrawingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('drawings', function (Blueprint $table) {
+        Schema::create('story_drawings', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->unique()
+            $table->foreignIdFor(Story::class)
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->string('title');
             $table->string('drawing');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -32,6 +36,6 @@ class CreateDrawingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('drawings');
+        Schema::dropIfExists('story_drawings');
     }
 }

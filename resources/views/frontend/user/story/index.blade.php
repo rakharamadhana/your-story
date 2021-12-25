@@ -46,7 +46,15 @@
                                     <input type="text" name="title" class="form-control" placeholder="{{ __('Enter Title') }}" value="{{ old('title') }}" maxlength="100" required />
                                 </div>
 
-                                <div class="d-grid gap-2 d-md-block float-md-right">
+                                @if($groupCount > 0)
+                                    <input name="group_id" class="form-control" type="number" placeholder="group" aria-label="Disabled input example" value="{{ $studentGroup[0]->group->id }}" hidden>
+
+                                    <label for="group_name" class="form-label">@lang('Group Name')</label>
+                                    <input name="group_name" class="form-control" type="text" placeholder="group" aria-label="Disabled input example" value="{{ $studentGroup[0]->group->name }}" disabled>
+                                @endif
+
+
+                                <div class="mt-3 d-grid gap-2 d-md-block float-md-right">
                                     <button class="btn btn-success submit" type="submit" >@lang('Finish')</button>
                                 </div>
                             </form>
