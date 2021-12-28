@@ -24,5 +24,12 @@ class StudentGroupSeeder extends Seeder
             'updated_at' => Carbon::now('Asia/Taipei')->subHours(1)
         ]);
 
+        StudentGroup::create([
+            'user_id' => User::find(4)->id,
+            'group_id' => Group::find(1)->id,
+            'created_at' => Carbon::now('Asia/Taipei')->subHours(1),
+            'updated_at' => Carbon::now('Asia/Taipei')->subHours(1)
+        ]);
+
     }
 }

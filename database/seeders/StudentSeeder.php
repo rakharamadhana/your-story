@@ -30,5 +30,13 @@ class StudentSeeder extends Seeder
             'class' => '1',
             'student_number' => 'M10911811',
         ]);
+
+        Student::create([
+            'user_id' => User::find(4)->id,
+            'academic_year' => '110-1',
+            'grade' => '7',
+            'class' => '1',
+            'student_number' => 'M10911812',
+        ]);
     }
 }

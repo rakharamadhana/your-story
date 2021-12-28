@@ -25,7 +25,12 @@ class StoryController
     {
         $userId = Auth::user()->id;
         $studentGroup = StudentGroup::query()->where('user_id',$userId)->with(['group'])->get();
-        $stories = Story::query()->where('user_id',$userId)->get();
+
+        if($studentGroup->count() > 0){
+            $stories = Story::query()->where('group_id',$studentGroup[0]->group_id)->get();
+        }else{
+            $stories = Story::query()->where('user_id',$userId)->get();
+        }
 
         $groupCount = $studentGroup->count();
 
@@ -65,6 +70,7 @@ class StoryController
                 'group_id' => $request->input('group_id'),
                 'name_en' => $request->input('title'),
                 'name_zh-TW' => $request->input('title'),
+                'is_group_story' => $request->input('group_id') ? 1 : 0,
             ]
         );
 

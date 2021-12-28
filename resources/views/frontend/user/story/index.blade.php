@@ -60,23 +60,8 @@
                             </form>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-@endsection
-
-@section('before-scripts')
-    <script type="text/javascript">
-        //triggered when modal is about to be shown
-        $('#my_modal').on('show.bs.modal', function(e) {
-
-            //get data-id attribute of the clicked element
-            let bookId = $(e.relatedTarget).data('book-id');
-
-            //populate the textbox
-            $(e.currentTarget).find('input[name="bookId"]').val(bookId);
-        });
-    </script>
 @endsection

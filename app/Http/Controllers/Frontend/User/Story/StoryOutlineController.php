@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\User\Story;
 
 use App\Models\Story;
+use App\Models\StudentGroup;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -35,20 +36,37 @@ class StoryOutlineController
     {
         //dd($request->input());
         $userId = Auth::user()->id;
+        $studentGroup = StudentGroup::query()->where('user_id',$userId)->first();
 
-        Story::updateOrCreate(
-        // Check if available
-            [
-                'id' => $id,
-                'user_id' => $userId
-            ],
+        if($studentGroup){
+            Story::updateOrCreate(
+            // Check if available
+                [
+                    'id' => $id,
+                    'group_id' => $studentGroup->group_id
+                ],
 
-            // Create or Update Value
-            [
-                'user_id' => $userId,
-                'nvc_outline' => $request->input('nvc_outline')
-            ]
-        );
+                // Create or Update Value
+                [
+                    'user_id' => $userId,
+                    'nvc_outline' => $request->input('nvc_outline')
+                ]
+            );
+        }else{
+            Story::updateOrCreate(
+            // Check if available
+                [
+                    'id' => $id,
+                    'user_id' => $userId
+                ],
+
+                // Create or Update Value
+                [
+                    'user_id' => $userId,
+                    'nvc_outline' => $request->input('nvc_outline')
+                ]
+            );
+        }
 
         return redirect()->route('frontend.user.story', ['storyId' => $id])->withFlashSuccess(__('The story was successfully created.'));
     }
