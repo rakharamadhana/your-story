@@ -8,7 +8,7 @@
     <div class="container py-4">
         <div class="col-md-12 text-right">
             <a type="button" class="btn btn-primary w3-animate-top" href="{{ route('frontend.user.story.drawing', ['storyId' => $story->id]) }}">
-                @lang('Drawing')
+                @lang('Back to Drawing')
             </a>
         </div>
         <div id="draw"></div>

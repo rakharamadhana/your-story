@@ -52,6 +52,23 @@ class StoryDrawingController
     }
 
     /**
+     * @param null $storyId
+     * @return Application|Factory|View
+     */
+    public function preview($storyId = null): View|Factory|Application
+    {
+        $story = Story::query()->where('id',$storyId)->first();
+
+        $storyDrawings = StoryDrawing::query()
+            ->where('story_id', $storyId)
+            ->get();
+
+        return view('frontend.user.story.drawing.preview')
+            ->with('story',$story)
+            ->with('storyDrawings', $storyDrawings);
+    }
+
+    /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */

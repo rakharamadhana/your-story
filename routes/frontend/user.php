@@ -126,6 +126,10 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             ->middleware('is_user')
             ->name('drawing.draw' );
 
+        Route::get('drawing/preview', [StoryDrawingController::class, 'preview'])
+            ->middleware('is_user')
+            ->name('drawing.preview' );
+
         Route::post('drawing/upload', [StoryDrawingController::class, 'uploadImage'])
             ->middleware('is_user')
             ->name('drawing.upload' );
