@@ -3,6 +3,8 @@
 use App\Http\Controllers\Frontend\User\AccountController;
 use App\Http\Controllers\Frontend\User\DashboardController;
 use App\Http\Controllers\Frontend\User\CaseController;
+use App\Http\Controllers\Frontend\User\Feedback\FeedbackController;
+use App\Http\Controllers\Frontend\User\Feedback\FeedbackStoryController;
 use App\Http\Controllers\Frontend\User\Story\StoryBasicController;
 use App\Http\Controllers\Frontend\User\Story\StoryController;
 use App\Http\Controllers\Frontend\User\Story\StoryDrawingController;
@@ -139,6 +141,23 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             ->name('drawing.delete' );
     });
 
+    /** Feedback */
+    Route::get('feedback', [FeedbackController::class, 'index'])
+        ->middleware('is_user')
+        ->name('feedback')
+        ->breadcrumbs(function (Trail $trail) {
+            $trail->parent('frontend.user.feedback')->push(__('Feedback'));
+        });
+
+    Route::group(['prefix' => 'feedback/{storyId}','as' => 'feedback.'], function () {
+        Route::get('rate/{storyType}', [FeedbackStoryController::class, 'index'])
+            ->middleware('is_user')
+            ->name('rate')
+            ->breadcrumbs(function (Trail $trail, $storyId) {
+                $trail->parent('frontend.user.feedback', $storyId)
+                    ->push(__('Feedback'));
+            });
+    });
 
     /** Account */
     Route::get('account', [AccountController::class, 'index'])
@@ -147,6 +166,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             $trail->parent('frontend.index')
                 ->push(__('My Account'), route('frontend.user.account'));
         });
+
 
     Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
 });

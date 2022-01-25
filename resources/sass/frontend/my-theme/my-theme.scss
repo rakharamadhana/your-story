@@ -325,3 +325,9 @@ a:focus,
     overflow: auto;
     display:inline-block;
 }
+
+.likert li {
+    float: left;
+    list-style-type: none;
+    padding-right: 30px;
+}
