@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\User\AccountController;
 use App\Http\Controllers\Frontend\User\DashboardController;
 use App\Http\Controllers\Frontend\User\CaseController;
 use App\Http\Controllers\Frontend\User\Feedback\FeedbackController;
+use App\Http\Controllers\Frontend\User\Feedback\FeedbackReviewController;
 use App\Http\Controllers\Frontend\User\Feedback\FeedbackStoryController;
 use App\Http\Controllers\Frontend\User\Story\StoryBasicController;
 use App\Http\Controllers\Frontend\User\Story\StoryController;
@@ -132,6 +133,14 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             ->middleware('is_user')
             ->name('drawing.preview' );
 
+        Route::get('drawing/ppt', [StoryDrawingController::class, 'downloadPpt'])
+            ->middleware('is_user')
+            ->name('drawing.ppt' );
+
+        Route::post('drawing/upload-music', [StoryDrawingController::class, 'uploadMusic'])
+            ->middleware('is_user')
+            ->name('drawing.uploadMusic' );
+
         Route::post('drawing/upload', [StoryDrawingController::class, 'uploadImage'])
             ->middleware('is_user')
             ->name('drawing.upload' );
@@ -149,10 +158,46 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             $trail->parent('frontend.user.feedback')->push(__('Feedback'));
         });
 
-    Route::group(['prefix' => 'feedback/{storyId}','as' => 'feedback.'], function () {
-        Route::get('rate/{storyType}', [FeedbackStoryController::class, 'index'])
+    Route::group(['prefix' => 'feedback','as' => 'feedback.'], function () {
+        Route::get('story', [FeedbackStoryController::class, 'index'])
             ->middleware('is_user')
-            ->name('rate')
+            ->name('story');
+
+        Route::get('story/{storyId}', [FeedbackStoryController::class, 'show'])
+            ->middleware('is_user')
+            ->name('story.rate')
+            ->breadcrumbs(function (Trail $trail, $storyId) {
+                $trail->parent('frontend.user.feedback', $storyId)
+                    ->push(__('Feedback'));
+            });
+
+        Route::get('story/{storyId}/preview', [FeedbackStoryController::class, 'preview'])
+            ->middleware('is_user')
+            ->name('story.preview')
+            ->breadcrumbs(function (Trail $trail, $storyId) {
+                $trail->parent('frontend.user.feedback', $storyId)
+                    ->push(__('Feedback'));
+            });
+
+        Route::post('story/{storyId}/store', [FeedbackStoryController::class, 'store'])
+            ->middleware('is_user')
+            ->name('story.rate.store')
+            ->breadcrumbs(function (Trail $trail, $storyId) {
+                $trail->parent('frontend.user.feedback', $storyId)
+                    ->push(__('Feedback'));
+            });
+
+        Route::get('{type}', [FeedbackReviewController::class, 'index'])
+            ->middleware('is_user')
+            ->name('review')
+            ->breadcrumbs(function (Trail $trail, $storyId) {
+                $trail->parent('frontend.user.feedback', $storyId)
+                    ->push(__('Feedback'));
+            });
+
+        Route::post('{type}/store', [FeedbackReviewController::class, 'store'])
+            ->middleware('is_user')
+            ->name('store')
             ->breadcrumbs(function (Trail $trail, $storyId) {
                 $trail->parent('frontend.user.feedback', $storyId)
                     ->push(__('Feedback'));

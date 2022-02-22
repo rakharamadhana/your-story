@@ -48,14 +48,25 @@
             </ul>
         </li>
 
-        <li class="c-sidebar-nav-item">
+        <li class="c-sidebar-nav-dropdown">
             <x-utils.link
-                class="c-sidebar-nav-link"
-                :href="route('admin.cases')"
-                :active="activeClass(Route::is('admin.cases'), 'c-active')"
-                icon="c-sidebar-nav-icon cil-book"
+                class="c-sidebar-nav-dropdown-toggle"
+                href="#"
+                :active="activeClass(Route::is('admin.stories'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-notes"
                 :text="__('Stories')" />
 
+            <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item">
+                    <x-utils.link
+                        :href="route('admin.stories')"
+                        class="c-sidebar-nav-link"
+                        :text="__('Stories Management')" />
+                </li>
+            </ul>
+        </li>
+
+        <li class="c-sidebar-nav-item">
             <x-utils.link
                 class="c-sidebar-nav-link"
                 :href="route('admin.cases')"

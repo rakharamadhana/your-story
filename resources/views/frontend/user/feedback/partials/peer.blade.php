@@ -3,39 +3,40 @@
     <div class="col-md-12">
         <div class="sel-card mb-3">
             <div class="card-body my-4">
-                <form action="{{ route('frontend.user.story.basic.store',  ['storyId' => $story->id]) }}" method="post">
+                <form action="{{ route('frontend.user.feedback.store',  ['type' => 2]) }}" method="post">
                     @csrf
                     <div class="mb-3 scrollable task" style="display: block">
+                        <h5>Group review</h5>
                         <div class="mt-3 mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">@lang('You think your group are having a good time working together')</label>
                             <ul class="likert">
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback1" value="1" />
+                                        <input type="radio" name="q1" value="1" @if($studentReview[0]->q1 == 1) checked @endif />
                                         Strongly disagree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback1" value="2" />
+                                        <input type="radio" name="q1" value="2" @if($studentReview[0]->q1 == 2) checked @endif />
                                         Disagree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback1" value="3" />
+                                        <input type="radio" name="q1" value="3" @if($studentReview[0]->q1 == 3) checked @endif />
                                         Neutral
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback1" value="4" />
+                                        <input type="radio" name="q1" value="4" @if($studentReview[0]->q1 == 4) checked @endif />
                                         Agree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback1" value="5" />
+                                        <input type="radio" name="q1" value="5" @if($studentReview[0]->q1 == 5) checked @endif />
                                         Strongly agree
                                     </label>
                                 </li>
@@ -48,31 +49,31 @@
                             <ul class="likert">
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback2" value="1" />
+                                        <input type="radio" name="q2" value="1" @if($studentReview[0]->q2 == 1) checked @endif/>
                                         Strongly disagree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback2" value="2" />
+                                        <input type="radio" name="q2" value="2" @if($studentReview[0]->q2 == 2) checked @endif/>
                                         Disagree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback2" value="3" />
+                                        <input type="radio" name="q2" value="3" @if($studentReview[0]->q2 == 3) checked @endif/>
                                         Neutral
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback2" value="4" />
+                                        <input type="radio" name="q2" value="4" @if($studentReview[0]->q2 == 4) checked @endif/>
                                         Agree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback2" value="5" />
+                                        <input type="radio" name="q2" value="5" @if($studentReview[0]->q2 == 5) checked @endif/>
                                         Strongly agree
                                     </label>
                                 </li>
@@ -85,31 +86,31 @@
                             <ul class="likert">
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback3" value="1" />
+                                        <input type="radio" name="q3" value="1" @if($studentReview[0]->q3 == 1) checked @endif/>
                                         Strongly disagree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback3" value="2" />
+                                        <input type="radio" name="q3" value="2" @if($studentReview[0]->q3 == 2) checked @endif/>
                                         Disagree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback3" value="3" />
+                                        <input type="radio" name="q3" value="3" @if($studentReview[0]->q3 == 3) checked @endif/>
                                         Neutral
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback3" value="4" />
+                                        <input type="radio" name="q3" value="4" @if($studentReview[0]->q3 == 4) checked @endif/>
                                         Agree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback3" value="5" />
+                                        <input type="radio" name="q3" value="5" @if($studentReview[0]->q3 == 5) checked @endif/>
                                         Strongly agree
                                     </label>
                                 </li>
@@ -122,31 +123,31 @@
                             <ul class="likert">
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback4" value="1" />
+                                        <input type="radio" name="q4" value="1" @if($studentReview[0]->q4 == 1) checked @endif/>
                                         Strongly disagree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback4" value="2" />
+                                        <input type="radio" name="q4" value="2" @if($studentReview[0]->q4 == 2) checked @endif/>
                                         Disagree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback4" value="3" />
+                                        <input type="radio" name="q4" value="3" @if($studentReview[0]->q4 == 3) checked @endif/>
                                         Neutral
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback4" value="4" />
+                                        <input type="radio" name="q4" value="4" @if($studentReview[0]->q4 == 4) checked @endif/>
                                         Agree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback4" value="5" />
+                                        <input type="radio" name="q4" value="5" @if($studentReview[0]->q4 == 5) checked @endif/>
                                         Strongly agree
                                     </label>
                                 </li>
@@ -159,31 +160,219 @@
                             <ul class="likert">
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback5" value="1" />
+                                        <input type="radio" name="q5" value="1" @if($studentReview[0]->q5 == 1) checked @endif/>
                                         Strongly disagree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback5" value="2" />
+                                        <input type="radio" name="q5" value="2" @if($studentReview[0]->q5 == 2) checked @endif/>
                                         Disagree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback5" value="3" />
+                                        <input type="radio" name="q5" value="3" @if($studentReview[0]->q5 == 3) checked @endif/>
                                         Neutral
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback5" value="4" />
+                                        <input type="radio" name="q5" value="4" @if($studentReview[0]->q5 == 4) checked @endif/>
                                         Agree
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="feedback5" value="5" />
+                                        <input type="radio" name="q5" value="5" @if($studentReview[0]->q5 == 5) checked @endif/>
+                                        Strongly agree
+                                    </label>
+                                </li>
+                            </ul>
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 scrollable task">
+                        <h5>Self-reflect</h5>
+                        <div class="mt-3 mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">@lang('You think you have a good time working with your team members?')</label>
+                            <ul class="likert">
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-1" value="1" @if($studentReview[1]->q1 == 1) checked @endif />
+                                        Strongly disagree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-1" value="2" @if($studentReview[1]->q1 == 2) checked @endif />
+                                        Disagree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-1" value="3" @if($studentReview[1]->q1 == 3) checked @endif />
+                                        Neutral
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-1" value="4" @if($studentReview[1]->q1 == 4) checked @endif />
+                                        Agree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-1" value="5" @if($studentReview[1]->q1 == 5) checked @endif />
+                                        Strongly agree
+                                    </label>
+                                </li>
+                            </ul>
+                            <br>
+                        </div>
+
+                        <div class="mt-3 mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">@lang('You think you have a clear division of labor with team members?')</label>
+                            <ul class="likert">
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-2" value="1" @if($studentReview[1]->q2 == 1) checked @endif/>
+                                        Strongly disagree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-2" value="2" @if($studentReview[1]->q2 == 2) checked @endif/>
+                                        Disagree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-2" value="3" @if($studentReview[1]->q2 == 3) checked @endif/>
+                                        Neutral
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-2" value="4" @if($studentReview[1]->q2 == 4) checked @endif/>
+                                        Agree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-2" value="5" @if($studentReview[1]->q2 == 5) checked @endif/>
+                                        Strongly agree
+                                    </label>
+                                </li>
+                            </ul>
+                            <br>
+                        </div>
+
+                        <div class="mt-3 mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">@lang('You think you can articulate your ideas to your team members?')</label>
+                            <ul class="likert">
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-3" value="1" @if($studentReview[1]->q3 == 1) checked @endif/>
+                                        Strongly disagree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-3" value="2" @if($studentReview[1]->q3 == 2) checked @endif/>
+                                        Disagree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-3" value="3" @if($studentReview[1]->q3 == 3) checked @endif/>
+                                        Neutral
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-3" value="4" @if($studentReview[1]->q3 == 4) checked @endif/>
+                                        Agree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-3" value="5" @if($studentReview[1]->q3 == 5) checked @endif/>
+                                        Strongly agree
+                                    </label>
+                                </li>
+                            </ul>
+                            <br>
+                        </div>
+
+                        <div class="mt-3 mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">@lang('You think you are very responsible with your team?')</label>
+                            <ul class="likert">
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-4" value="1" @if($studentReview[1]->q4 == 1) checked @endif/>
+                                        Strongly disagree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-4" value="2" @if($studentReview[1]->q4 == 2) checked @endif/>
+                                        Disagree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-4" value="3" @if($studentReview[1]->q4 == 3) checked @endif/>
+                                        Neutral
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-4" value="4" @if($studentReview[1]->q4 == 4) checked @endif/>
+                                        Agree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-4" value="5" @if($studentReview[1]->q4 == 5) checked @endif/>
+                                        Strongly agree
+                                    </label>
+                                </li>
+                            </ul>
+                            <br>
+                        </div>
+
+                        <div class="mt-3 mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">@lang('You think you put a lot of effort on making the story?')</label>
+                            <ul class="likert">
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-5" value="1" @if($studentReview[1]->q5 == 1) checked @endif/>
+                                        Strongly disagree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-5" value="2" @if($studentReview[1]->q5 == 2) checked @endif/>
+                                        Disagree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-5" value="3" @if($studentReview[1]->q5 == 3) checked @endif/>
+                                        Neutral
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-5" value="4" @if($studentReview[1]->q5 == 4) checked @endif/>
+                                        Agree
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="q2-5" value="5" @if($studentReview[1]->q5 == 5) checked @endif/>
                                         Strongly agree
                                     </label>
                                 </li>
@@ -204,13 +393,13 @@
                             <div class="col-3">
                                 <label for="class" class="col-form-label">@lang('Role')</label>
 
-                                <input type="text" name="students[{{ ($key) }}][role]" class="form-control" placeholder="{{ __('Role') }}" value="{{ old('role') }}" maxlength="100" required />
+                                <input type="text" name="students[{{ ($key) }}][role]" class="form-control" placeholder="{{ __('Role') }}" value="@if($studentFeedbacks->count() > 0) {{ $studentFeedbacks[$key]->role }} @endif" maxlength="100" required />
                             </div>
 
                             <div class="col-6">
                                 <label for="class" class="col-form-label">@lang('Reason')</label>
 
-                                <input type="text" name="students[{{ ($key) }}][reason]" class="form-control" placeholder="{{ __('Reason') }}" value="{{ old('reason') }}" maxlength="100" required />
+                                <input type="text" name="students[{{ ($key) }}][reason]" class="form-control" placeholder="{{ __('Reason') }}" value="@if($studentFeedbacks->count() > 0) {{ $studentFeedbacks[$key]->reason }} @endif" maxlength="100" required />
                             </div>
                         </div><!--form-group-->
                         @endforeach

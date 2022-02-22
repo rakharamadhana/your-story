@@ -22,8 +22,9 @@ class StoryDrawingSeeder extends Seeder
 
         StoryDrawing::create([
             'story_id' => Story::find(1)->id,
+            'category' => 1,
             'title' => 'Page 1',
-            'drawing' => $faker->image(storage_path('app/public/drawings'),400,300, null, false) ,
+            'drawing' => $faker->image(storage_path('app/public/drawings/1'),400,300, null, false) ,
             'description' => $faker->realText(150),
             'created_at' => Carbon::now('Asia/Taipei')->subHours(1),
             'updated_at' => Carbon::now('Asia/Taipei')->subHours(1)
@@ -31,8 +32,9 @@ class StoryDrawingSeeder extends Seeder
 
         StoryDrawing::create([
             'story_id' => Story::find(1)->id,
+            'category' => 1,
             'title' => 'Page 2',
-            'drawing' => $faker->image(storage_path('app/public/drawings'),400,300, null, false) ,
+            'drawing' => $faker->image(storage_path('app/public/drawings/1'),400,300, null, false) ,
             'description' => $faker->realText(150),
             'created_at' => Carbon::now('Asia/Taipei')->subHours(1),
             'updated_at' => Carbon::now('Asia/Taipei')->subHours(1)

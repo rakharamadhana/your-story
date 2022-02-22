@@ -11,6 +11,9 @@
             <a type="button" class="btn btn-primary w3-animate-top" href="{{ route('frontend.user.story.drawing.preview', ['storyId' => $story->id]) }}">
                 @lang('Preview')
             </a>
+            <a type="button" class="btn btn-primary w3-animate-top" data-toggle="modal" data-target="#uploadMusicModal">
+                @lang('Upload Music')
+            </a>
             <a type="button" class="btn btn-primary w3-animate-top" data-toggle="modal" data-target="#uploadImageModal">
                 @lang('Upload Image')
             </a>
@@ -26,6 +29,7 @@
                         <th scope="col">No.</th>
                         <th scope="col">Title</th>
                         <th scope="col">Image</th>
+                        <th scope="col">Audio</th>
                         <th scope="col">Description</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -36,6 +40,11 @@
                         <th scope="row">{{ $index + 1 }}</th>
                         <td class="">{{ $storyDrawing->title }}</td>
                         <td class="w-25"><img src="{{ URL::asset('storage/drawings/'.$story->id.'/'.$storyDrawing->drawing) }}" class="rounded img-thumbnail" alt=""></td>
+                        @if($storyDrawing->audio)
+                            <td><audio controls><source src="{{ URL::asset('storage/drawings/'.$story->id.'/audio/'.$storyDrawing->audio) }}" type="audio/mpeg"></audio></td>
+                        @else
+                            <td>-</td>
+                        @endif
                         <td>{{ $storyDrawing->description }}</td>
                         <td>
                             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
@@ -53,7 +62,7 @@
         </div>
     </div><!--container-->
 
-    <!-- Modal -->
+    <!-- Upload Image Modal -->
     <div class="modal-transparent modal fade" id="uploadImageModal" tabindex="-1" role="dialog" aria-labelledby="uploadImageModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -74,6 +83,11 @@
                                     <input type="text" name="title" class="form-control" placeholder="{{ __('Enter Title') }}" value="{{ old('title') }}" maxlength="100" required />
                                 </div>
                                 <div class="mt-3 mb-3">
+                                    <label for="category" class="form-label">@lang('Category')</label>
+
+                                    <input type="number" name="category" class="form-control" placeholder="{{ __('Enter Category') }}" value="{{ old('category') }}" maxlength="100" required />
+                                </div>
+                                <div class="mt-3 mb-3">
                                     <input type="file" name="image" placeholder="Choose image" id="image">
                                 </div>
                                 <div class="mt-3 mb-3">
@@ -84,6 +98,43 @@
                                     <label for="title" class="form-label">@lang('Description')</label>
 
                                     <textarea type="text" name="description" class="form-control" maxlength="255" required></textarea>
+                                </div>
+                                <div class="mt-3 mb-3">
+                                    <input type="file" name="audio" placeholder="Choose audio" id="audio">
+                                </div>
+                                <div class="mt-3 mb-3">
+                                    <button type="submit" class="btn btn-success">Upload</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Music Modal -->
+    <div class="modal-transparent modal fade" id="uploadMusicModal" tabindex="-1" role="dialog" aria-labelledby="uploadMusicModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadMusicModalLabel">@lang('Upload Music')</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times fa-lg"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <form action="{{ route('frontend.user.story.drawing.uploadMusic', ['storyId' => $story->id]) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mt-3 mb-3">
+                                    <label for="category" class="form-label">@lang('Category')</label>
+
+                                    <input type="number" name="category" class="form-control" placeholder="{{ __('Enter Category') }}" value="{{ old('category') }}" maxlength="100" required />
+                                </div>
+                                <div class="mt-3 mb-3">
+                                    <input type="file" name="audio" placeholder="Choose audio" id="audio">
                                 </div>
                                 <div class="mt-3 mb-3">
                                     <button type="submit" class="btn btn-success">Upload</button>

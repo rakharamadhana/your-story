@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\Backend\Case\CaseLearningController;
-use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\Case\CasesController;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\Story\StoryController;
 use App\Http\Controllers\Backend\Student\StudentController;
 use App\Models\Cases;
+use App\Models\Story;
 use App\Models\Student;
 use App\Models\StudentAnswer;
 use Tabuna\Breadcrumbs\Trail;
@@ -23,6 +25,14 @@ Route::get('cases', [CasesController::class, 'index'])
 
         $trail->parent('admin.dashboard')
             ->push(__('Cases'), route('admin.cases'));
+    });
+
+Route::get('stories', [StoryController::class, 'index'])
+    ->name('stories')
+    ->breadcrumbs(function (Trail $trail) {
+
+        $trail->parent('admin.dashboard')
+            ->push(__('Stories'), route('admin.stories'));
     });
 
 Route::get('student', [StudentController::class, 'index'])
@@ -71,6 +81,29 @@ Route::group(['prefix' => 'case','as' => 'case.'], function () {
     });
 
     Route::get('learn-export', [CaseLearningController::class, 'export'])->name('learn.export');
+});
+
+Route::group(['prefix' => 'story','as' => 'story.'], function () {
+    Route::get('create', [StoryController::class, 'create'])
+        ->name('create')
+        ->breadcrumbs(function (Trail $trail) {
+            $trail->parent('admin.stories')
+                ->push(__('Create Story'), route('admin.story.create'));
+        });
+
+    Route::group(['prefix' => '{story}'], function () {
+        Route::get('edit', [StoryController::class, 'edit'])
+            ->name('edit')
+            ->breadcrumbs(function (Trail $trail, Story $user) {
+                $trail->parent('admin.stories', $user)
+                    ->push(__('Edit'), route('admin.story.edit', $user));
+            });
+
+        Route::patch('/', [StoryController::class, 'update'])->name('update');
+        Route::delete('/', [StoryController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::post('/', [StoryController::class, 'store'])->name('store');
 });
 
 Route::group(['prefix' => 'student','as' => 'student.'], function () {

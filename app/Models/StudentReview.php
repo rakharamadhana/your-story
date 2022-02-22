@@ -6,7 +6,7 @@ use App\Domains\Auth\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Story extends Model
+class StudentReview extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,7 @@ class Story extends Model
      *
      * @var string
      */
-    protected $table = 'stories';
+    protected $table = 'student_reviews';
 
     /**
      * Fillable fields
@@ -25,15 +25,12 @@ class Story extends Model
     protected $fillable = [
         'user_id',
         'group_id',
-        'name_en',
-        'name_zh-TW',
-        'is_group_story',
-        'time',
-        'place',
-        'characters',
-        'conflict',
-        'description',
-        'nvc_outline',
+        'type',
+        'q1',
+        'q2',
+        'q3',
+        'q4',
+        'q5',
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -44,10 +41,5 @@ class Story extends Model
     public function group(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Group::class, 'group_id','id');
-    }
-
-    public function drawing(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(StoryDrawing::class, 'id','story_id');
     }
 }

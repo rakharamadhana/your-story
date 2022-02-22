@@ -1,13 +1,11 @@
 <?php
 
 use App\Domains\Auth\Models\User;
-use App\Models\Story;
-use App\Models\StudentGroup;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStoryDrawingsTable extends Migration
+class CreateStudentFeedbacksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,17 +14,18 @@ class CreateStoryDrawingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('story_drawings', function (Blueprint $table) {
+        Schema::create('student_feedbacks', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Story::class)
+            $table->foreignIdFor(User::class)
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->unsignedInteger('category');
-            $table->string('title');
-            $table->string('drawing');
-            $table->string('audio')->nullable();
-            $table->string('description');
+            $table->foreignIdFor(User::class,'targeted_user_id')
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->string('role');
+            $table->string('reason');
             $table->timestamps();
         });
     }
@@ -38,6 +37,6 @@ class CreateStoryDrawingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('story_drawings');
+        Schema::dropIfExists('student_feedbacks');
     }
 }

@@ -60,12 +60,7 @@ class StoryBasicController
      */
     public function store(Request $request, $id)
     {
-//        dump($request->input());
-//        foreach($request->input('students') as $key => $student){
-//            dump($request->input('students.'.$key.'.user_id'));
-//            dump($request->input('students.'.$key.'.role'));
-//            dump($request->input('students.'.$key.'.reason'));
-//        }
+
 
         $userId = Auth::user()->id;
         $studentGroup = StudentGroup::query()->where('user_id',$userId)->first();

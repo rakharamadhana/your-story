@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend\User\Story;
 use App\Models\Cases;
 use App\Models\Story;
 use App\Models\StoryDrawing;
+use App\Models\StoryDrawingMusic;
 use App\Models\Task;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -13,6 +14,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
+use PhpOffice\PhpPresentation\PhpPresentation;
+use PhpOffice\PhpPresentation\IOFactory;
+use PhpOffice\PhpPresentation\Shape\Media;
+use PhpOffice\PhpPresentation\Style\Color;
+use PhpOffice\PhpPresentation\Style\Alignment;
 
 /**
  * Class StoryController.
@@ -60,6 +66,7 @@ class StoryDrawingController
         $story = Story::query()->where('id',$storyId)->first();
 
         $storyDrawings = StoryDrawing::query()
+            ->with('music')
             ->where('story_id', $storyId)
             ->get();
 
@@ -74,11 +81,22 @@ class StoryDrawingController
      */
     public function uploadImage(Request $request,$storyId = null)
     {
+
         $request->validate([
             'title' => 'required',
+            'category' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'audio' => 'mimes:wav,ogg,mp3',
             'description' => 'required',
         ]);
+
+        $audioName = null;
+
+        if($request->audio){
+            $audioName = $storyId.'-'.time().'.'.$request->audio->extension();
+            $audioLocation = public_path('storage/drawings/'.$storyId.'/audio/');
+            $request->audio->move($audioLocation, $audioName);
+        }
 
         $imageName = $storyId.'-'.time().'.'.$request->image->extension();
 
@@ -90,8 +108,10 @@ class StoryDrawingController
             // Create or Update Value
             [
                 'story_id' => $storyId,
+                'category' => $request->input('category'),
                 'title' => $request->input('title'),
                 'drawing' => $imageName,
+                'audio' => $audioName,
                 'description' => $request->input('description'),
             ]
         );
@@ -99,6 +119,36 @@ class StoryDrawingController
         return back()
             ->with('success','You have successfully upload image.')
             ->with('image',$imageName);
+
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function uploadMusic(Request $request,$storyId = null)
+    {
+        $request->validate([
+            'category' => 'required',
+            'audio' => 'required|mimes:wav,ogg,mp3',
+        ]);
+
+        $audioName = $storyId.'-'.$request->input('category').'-music'.'.'.$request->audio->extension();
+        $audioLocation = public_path('storage/drawings/'.$storyId.'/audio/');
+        $request->audio->move($audioLocation, $audioName);
+
+        StoryDrawingMusic::create(
+        // Create or Update Value
+            [
+                'story_id' => $storyId,
+                'category' => $request->input('category'),
+                'audio' => $audioName,
+            ]
+        );
+
+        return back()
+            ->with('success','You have successfully upload image.')
+            ->with('audio',$audioName);
 
     }
 
@@ -118,5 +168,59 @@ class StoryDrawingController
 
         return back()
             ->with('success','You have successfully delete the image.');
+    }
+
+    public function downloadPpt($storyId){
+        $story = Story::query()->where('id',$storyId)->first();
+        $storyDrawings = StoryDrawing::query()->where('story_id', $storyId)->get();
+
+        $objPHPPowerPoint = new PhpPresentation();
+
+        $currentSlide = $objPHPPowerPoint->getActiveSlide();
+
+        // Create a shape (text)
+        $shape = $currentSlide->createRichTextShape()
+            ->setHeight(300)
+            ->setWidth(600)
+            ->setOffsetX(170)
+            ->setOffsetY(180);
+        $shape->getActiveParagraph()->getAlignment()->setHorizontal( Alignment::HORIZONTAL_CENTER );
+        $textRun = $shape->createTextRun($story->name_en);
+        $textRun->getFont()->setBold(true)
+            ->setSize(60)
+            ->setColor( new Color( 'FF000000' ) );
+
+        foreach($storyDrawings as $key=>$storyDrawing ){
+            $currentSlide = $objPHPPowerPoint->createSlide();
+
+            // Create a shape (drawing)
+            $shape = $currentSlide->createDrawingShape();
+            $shape->setName($storyDrawing->title)
+                ->setDescription($storyDrawing->title)
+                ->setPath(public_path('storage/drawings/'.$storyId.'/'.$storyDrawing->drawing))
+                ->setHeight(400)
+                ->setOffsetX(170)
+                ->setOffsetY(100);
+
+            // Create a shape (text)
+            $shape = $currentSlide->createRichTextShape()
+                ->setHeight(100)
+                ->setWidth(600)
+                ->setOffsetX(170)
+                ->setOffsetY(600);
+            $shape->getActiveParagraph()->getAlignment()->setHorizontal( Alignment::HORIZONTAL_LEFT );
+            $textRun = $shape->createTextRun($storyDrawing->description);
+            $textRun->getFont()
+                ->setSize(18)
+                ->setColor( new Color('FF000000') );
+        }
+
+        //Export PPT
+        header('Content-Type: application/vnd.openxmlformats-officedocument.presentationml.presentation');
+        header('Content-Disposition: attachment;filename="test.pptx"');
+        header('Cache-Control: max-age=0');
+
+        $oWriterPPTX = IOFactory::createWriter($objPHPPowerPoint, 'PowerPoint2007');
+        $oWriterPPTX->save('php://output');
     }
 }

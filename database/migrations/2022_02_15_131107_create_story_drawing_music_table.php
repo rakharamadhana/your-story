@@ -1,13 +1,11 @@
 <?php
 
-use App\Domains\Auth\Models\User;
 use App\Models\Story;
-use App\Models\StudentGroup;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStoryDrawingsTable extends Migration
+class CreateStoryDrawingMusicTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,17 +14,14 @@ class CreateStoryDrawingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('story_drawings', function (Blueprint $table) {
+        Schema::create('story_drawing_music', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Story::class)
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->unsignedInteger('category');
-            $table->string('title');
-            $table->string('drawing');
-            $table->string('audio')->nullable();
-            $table->string('description');
+            $table->string('audio');
             $table->timestamps();
         });
     }
@@ -38,6 +33,6 @@ class CreateStoryDrawingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('story_drawings');
+        Schema::dropIfExists('story_drawing_music');
     }
 }

@@ -7,18 +7,39 @@
 @section('content')
     <div class="container py-4 mt-lg-5">
         <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">@lang('Feedback')</span>
-
-        <div class="horizontal-slide mt-5">
-            <h3 class="mt-5">{{ $groupCount >  0 ? 'Group' : 'Individual'}}</h3>
-            @foreach($stories as $story)
-                <a href="{{ route('frontend.user.feedback.rate', ['storyId' => $story->id, 'storyType' => $groupCount > 0 ? 2 : 1 ]) }}" class="col-md-3">
-                    <div class="sel-card-story mb-3">
-                        <div class="card-body my-4">
-                            <p class="card-text scrollable mt-4">{{ $story->{'name_'.app()->getLocale()} }}</p>
-                        </div>
-                    </div>
+        <div class="row mt-lg-5 mt-md-5 mt-sm-5">
+        @if($groupCount > 0)
+            <div class="col-6 zoom">
+                <a href="{{ route('frontend.user.feedback.review', ['type' => $groupCount > 0 ? 2 : 1 ]) }}">
+                    <img src="{{ URL::asset('img/menu-design.png') }}" class="w3-animate-zoom rounded mx-auto d-block img-fluid" alt="">
+                    <p class="h3 text-center" style="color: #001d8d;">@lang('Peer Feedback')</p>
                 </a>
-            @endforeach
+            </div><!--col-md-10-->
+        @else
+            <div class="col-6 zoom">
+                <a href="{{ route('frontend.user.feedback.review', ['type' => $groupCount > 0 ? 2 : 1 ]) }}">
+                    <img src="{{ URL::asset('img/menu-design.png') }}" class="w3-animate-zoom rounded mx-auto d-block img-fluid" alt="">
+                    <p class="h3 text-center" style="color: #001d8d;">@lang('Self Reflection')</p>
+                </a>
+            </div><!--col-md-10-->
+        @endif
+            <div class="col-md-4 mt-lg-5 mt-md-5 mt-sm-5 zoom">
+                <a href="{{ route('frontend.user.feedback.story') }}">
+                    <img src="{{ URL::asset('img/menu-design.png') }}" class="w3-animate-zoom rounded mx-auto d-block img-fluid" alt="">
+                    <p class="h3 text-center" style="color: #001d8d;">@lang('Review Stories')</p>
+                </a>
+            </div><!--col-md-10-->
         </div>
+{{--        <div class="horizontal-slide mt-5">--}}
+{{--            @foreach($stories as $story)--}}
+{{--                <a href="{{ route('frontend.user.feedback.rate', ['storyId' => $story->id, 'storyType' => $groupCount > 0 ? 2 : 1 ]) }}" class="col-md-3">--}}
+{{--                    <div class="sel-card-story mb-3">--}}
+{{--                        <div class="card-body my-4">--}}
+{{--                            <p class="card-text scrollable mt-4">{{ $story->{'name_'.app()->getLocale()} }}</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </a>--}}
+{{--            @endforeach--}}
+{{--        </div>--}}
     </div><!--container-->
 @endsection

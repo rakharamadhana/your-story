@@ -2,12 +2,11 @@
 
 use App\Domains\Auth\Models\User;
 use App\Models\Story;
-use App\Models\StudentGroup;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStoryDrawingsTable extends Migration
+class CreateStudentStoryReviewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,17 +15,24 @@ class CreateStoryDrawingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('story_drawings', function (Blueprint $table) {
+        Schema::create('student_story_reviews', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Story::class)
+            $table->foreignIdFor(User::class)
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->unsignedInteger('category');
-            $table->string('title');
-            $table->string('drawing');
-            $table->string('audio')->nullable();
-            $table->string('description');
+            $table->foreignIdFor(Story::class)
+                ->unique()
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->tinyInteger('q1');
+            $table->tinyInteger('q2');
+            $table->tinyInteger('q3');
+            $table->tinyInteger('q4');
+            $table->tinyInteger('q5');
+            $table->string('q6');
+            $table->string('q7');
             $table->timestamps();
         });
     }
@@ -38,6 +44,6 @@ class CreateStoryDrawingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('story_drawings');
+        Schema::dropIfExists('student_story_reviews');
     }
 }

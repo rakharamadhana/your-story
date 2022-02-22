@@ -6,10 +6,9 @@
 
 @section('content')
     <div class="container py-4 mt-lg-5">
-        <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">@lang('Rate')</span>
+        <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">@lang('Review')</span>
 
         <div class="mt-5">
-            <h3>Name: {{ $story->name_en }}</h3>
             @if($storyType == 1)
                 @include('frontend.user.feedback.partials.individual')
             @elseif($storyType == 2)
