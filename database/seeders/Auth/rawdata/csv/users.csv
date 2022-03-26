@@ -1,0 +1,11 @@
+﻿id,type,name_en,name_zh-TW,email,email_verified_at,password,password_changed_at,active,timezone,last_login_at,last_login_ip,to_be_logged_out,provider,provider_id,remember_token,created_at,updated_at,deleted_at
+5,user,Thomas,???f??,thomas80813@gmail.com,,80813,NULL,1,NULL,,NULL,0,NULL,NULL,NULL,,,
+6,user,Sherry,?????? ,sherry70412@gmail.com,,70412,NULL,1,NULL,,NULL,0,NULL,NULL,NULL,,,
+7,user,Miki,???l?R,miki90501@gmail.com,,90501,NULL,1,NULL,,NULL,0,NULL,NULL,NULL,,,
+8,user,Ting,??????,ting90802@gmail.com,,90802,NULL,1,NULL,,NULL,0,NULL,NULL,NULL,,,
+9,user,Claire,???N?[,claire70315@gmail.com,,70305,NULL,1,NULL,,NULL,0,NULL,NULL,NULL,,,
+10,user,Apple,?i???Y,apple61102@gmail.com,,61102,NULL,1,NULL,,NULL,0,NULL,NULL,NULL,,,
+11,user,Grace,?????a,grace61103@gmail.com,,61103,NULL,1,NULL,,NULL,0,NULL,NULL,NULL,,,
+12,user,Emily,???A?p,emily61104@gmail.com,,61104,NULL,1,NULL,,NULL,0,NULL,NULL,NULL,,,
+13,user,Joey,??????,joey61105@gmail.com,,61105,NULL,1,NULL,,NULL,0,NULL,NULL,NULL,,,
+14,user,Jenny,??????,jenny61106@gmail.com,,61106,NULL,1,NULL,,NULL,0,NULL,NULL,NULL,,,

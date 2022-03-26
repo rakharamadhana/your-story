@@ -5,6 +5,9 @@ namespace Database\Seeders\Auth;
 use App\Domains\Auth\Models\User;
 use Database\Seeders\Traits\DisableForeignKeys;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
+use ParseCsv\Csv;
+use DB;
 
 /**
  * Class UserTableSeeder.
@@ -63,6 +66,46 @@ class UserSeeder extends Seeder
             ]);
         }
 
+        $users = self::getUsers();
+
+        if(!empty($users)){
+
+            foreach ($users as $user) {
+                $user['type'] = User::TYPE_USER;
+                $user['email_verified_at'] = Carbon::now();
+                $user['password'] = bcrypt($user['password']);
+                $user['password_changed_at'] = null;
+                $user['last_login_at'] = null;
+                $user['deleted_at'] = null;
+                $user['created_at'] = Carbon::now();
+                $user['updated_at'] = Carbon::now();
+
+                DB::table('users')->insert($user);
+            }
+
+        }
+
         $this->enableForeignKeys();
     }
+
+    /**
+     * Raw Data file path.
+     *
+     * @return string
+     */
+    protected static $path = __DIR__.'/rawdata/csv';
+
+
+    /**
+     * Get users data.
+     *
+     * @return array
+     */
+    public static function getUsers()
+    {
+        $csv = new Csv;
+
+        return $csv->parseFile(self::$path.'\users.csv');
+    }
+
 }

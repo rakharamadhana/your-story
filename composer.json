@@ -24,6 +24,7 @@
         "laravel/ui": "^3.0",
         "league/csv": "^9.7",
         "livewire/livewire": "^2.0",
+        "parsecsv/php-parsecsv": "^1.3",
         "phpoffice/phppresentation": "^1.0",
         "rappasoft/laravel-livewire-tables": "^1.18",
         "rappasoft/lockout": "^3.0",
