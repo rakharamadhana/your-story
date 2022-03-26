@@ -66,16 +66,37 @@
             </ul>
         </li>
 
-        <li class="c-sidebar-nav-item">
+        <li class="c-sidebar-nav-dropdown">
             <x-utils.link
-                class="c-sidebar-nav-link"
-                :href="route('admin.cases')"
-                :active="activeClass(Route::is('admin.cases'), 'c-active')"
-                icon="c-sidebar-nav-icon cil-speech"
+                class="c-sidebar-nav-dropdown-toggle"
+                href="#"
+                :active="activeClass(Route::is('admin.review'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-notes"
                 :text="__('Reviews')" />
+
+            <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item">
+                    <x-utils.link
+                        :href="route('admin.review.group')"
+                        class="c-sidebar-nav-link"
+                        :text="__('Group Reviews')" />
+                </li>
+
+                <li class="c-sidebar-nav-item">
+                    <x-utils.link
+                        :href="route('admin.review.group-self')"
+                        class="c-sidebar-nav-link"
+                        :text="__('Self Assessment (Group)')" />
+                </li>
+
+                <li class="c-sidebar-nav-item">
+                    <x-utils.link
+                        :href="route('admin.review.self')"
+                        class="c-sidebar-nav-link"
+                        :text="__('Self Assessment (Individual)')" />
+                </li>
+            </ul>
         </li>
-
-
 
         @if (
             $logged_in_user->hasAllAccess() ||

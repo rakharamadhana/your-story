@@ -1,30 +1,43 @@
 <?php
 
-namespace App\Http\Livewire\Backend;
+namespace App\Http\Livewire\Backend\Review;
 
 use App\Models\Cases;
+use App\Models\StudentReview;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Filter;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 
-class CasesTable extends DataTableComponent
+class SelfTable extends DataTableComponent
 {
 
     public function columns(): array
     {
         return [
-            Column::make(__('Case (English)'),'name_en')
+            Column::make(__('Name'))
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Case (Chinese)'),'name_zh-TW')
+            Column::make(__('q1'))
+                ->sortable()
+                ->searchable(),
+            Column::make(__('q2'))
+                ->sortable()
+                ->searchable(),
+            Column::make(__('q3'))
+                ->sortable()
+                ->searchable(),
+            Column::make(__('q4'))
+                ->sortable()
+                ->searchable(),
+            Column::make(__('q5'))
                 ->sortable()
                 ->searchable(),
             Column::make(__('Created At'), 'created_at')
                 ->sortable(function(Builder $query, $direction) {
                     return $query->orderBy('created_at',$direction);
                 }),
-            Column::make(__('Update At'), 'updated_at')
+            Column::make(__('Updated At'), 'updated_at')
                 ->sortable(function(Builder $query, $direction) {
                     return $query->orderBy('updated_at',$direction);
                 }),
@@ -46,11 +59,12 @@ class CasesTable extends DataTableComponent
 
     public function query(): Builder
     {
-        return Cases::query();
+        return StudentReview::query()->where('type',1)
+            ->with(['user','group']);;
     }
 
     public function rowView(): string
     {
-        return 'backend.cases.includes.row';
+        return 'backend.review.self.includes.row';
     }
 }

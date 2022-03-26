@@ -68,6 +68,6 @@ class StoryOutlineController
             );
         }
 
-        return redirect()->route('frontend.user.story', ['storyId' => $id])->withFlashSuccess(__('The story was successfully created.'));
+        return redirect()->route('frontend.user.story', ['storyId' => $id])->withFlashSuccess(__('The outline was successfully created.'));
     }
 }

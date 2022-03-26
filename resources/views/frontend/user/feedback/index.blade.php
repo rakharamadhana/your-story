@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container py-4 mt-lg-5">
-        <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">@lang('Feedback')</span>
+        <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">@lang('Review')</span>
         <div class="row mt-lg-5 mt-md-5 mt-sm-5">
         @if($groupCount > 0)
             <div class="col-6 zoom">

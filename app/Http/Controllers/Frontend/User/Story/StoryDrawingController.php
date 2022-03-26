@@ -70,6 +70,8 @@ class StoryDrawingController
             ->where('story_id', $storyId)
             ->get();
 
+//        dd($storyDrawings);
+
         return view('frontend.user.story.drawing.preview')
             ->with('story',$story)
             ->with('storyDrawings', $storyDrawings);

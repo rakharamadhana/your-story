@@ -18,7 +18,7 @@
                 @lang('Upload Image')
             </a>
             <a type="button" class="btn btn-primary w3-animate-top" href="{{ route('frontend.user.story.drawing.draw', ['storyId' => $story->id]) }}">
-                @lang('Draw Yourself')
+                @lang('Drawing')
             </a>
         </div>
         <div class="sel-card bg-warning mt-4">
@@ -26,12 +26,12 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th scope="col">No.</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Audio</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">@lang('No.')</th>
+                        <th scope="col">@lang('Title')</th>
+                        <th scope="col">@lang('Image')</th>
+                        <th scope="col">@lang('Audio')</th>
+                        <th scope="col">@lang('Description')</th>
+                        <th scope="col">@lang('Actions')</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,8 +49,8 @@
                         <td>
                             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                 <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
-                                    <a href="{{ route('frontend.user.story.drawing.delete', ['drawingId'=> $storyDrawing->id, 'storyId' => $story->id, ]) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')" data-toggle="tooltip" data-placement="top" data-method="delete" title="Delete"><i class="fa fa-trash"></i></a>
+                                    <button class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="@lang('Edit')"><i class="fa fa-edit"></i></button>
+                                    <a href="{{ route('frontend.user.story.drawing.delete', ['drawingId'=> $storyDrawing->id, 'storyId' => $story->id, ]) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')" data-toggle="tooltip" data-placement="top" data-method="delete" title="@lang('Delete')"><i class="fa fa-trash"></i></a>
                                 </div>
                             </div>
                         </td>
@@ -67,7 +67,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="uploadImageModalLabel">@lang('Upload an Image')</h5>
+                    <h5 class="modal-title" id="uploadImageModalLabel">@lang('Upload Image')</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <i class="fas fa-times fa-lg"></i>
                     </button>
@@ -85,14 +85,16 @@
                                 <div class="mt-3 mb-3">
                                     <label for="category" class="form-label">@lang('Category')</label>
 
-                                    <input type="number" name="category" class="form-control" placeholder="{{ __('Enter Category') }}" value="{{ old('category') }}" maxlength="100" required />
+                                    <input type="number" name="category" class="form-control" placeholder="@lang('Enter Category')" value="{{ old('category') }}" maxlength="100" required />
                                 </div>
                                 <div class="mt-3 mb-3">
-                                    <input type="file" name="image" placeholder="Choose image" id="image">
+                                    <label for="image" class="form-label">@lang('Upload Image')</label>
+
+                                    <input type="file" name="image" placeholder="@lang('Choose image')" id="image">
                                 </div>
                                 <div class="mt-3 mb-3">
-                                    <img id="preview-image" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
-                                         alt="preview image" style="max-height: 250px;"/>
+                                    <img id="preview-image" src="https://cutewallpaper.org/24/image-placeholder-png/index-of-assetsimg.png"
+                                          style="max-height: 150px;"/>
                                 </div>
                                 <div class="mt-3 mb-3">
                                     <label for="title" class="form-label">@lang('Description')</label>
@@ -100,10 +102,12 @@
                                     <textarea type="text" name="description" class="form-control" maxlength="255" required></textarea>
                                 </div>
                                 <div class="mt-3 mb-3">
-                                    <input type="file" name="audio" placeholder="Choose audio" id="audio">
+                                    <label for="audio" class="form-label">@lang('Upload Audio')</label>
+
+                                    <input type="file" name="audio" placeholder="@lang('Choose audio')" id="audio">
                                 </div>
                                 <div class="mt-3 mb-3">
-                                    <button type="submit" class="btn btn-success">Upload</button>
+                                    <button type="submit" class="btn btn-success">@lang('Upload')</button>
                                 </div>
                             </form>
                         </div>
@@ -131,13 +135,15 @@
                                 <div class="mt-3 mb-3">
                                     <label for="category" class="form-label">@lang('Category')</label>
 
-                                    <input type="number" name="category" class="form-control" placeholder="{{ __('Enter Category') }}" value="{{ old('category') }}" maxlength="100" required />
+                                    <input type="number" name="category" class="form-control" placeholder="@lang('Enter Category')" value="{{ old('category') }}" maxlength="100" required />
                                 </div>
                                 <div class="mt-3 mb-3">
+                                    <label for="audio" class="form-label">@lang('Upload Music')</label>
+
                                     <input type="file" name="audio" placeholder="Choose audio" id="audio">
                                 </div>
                                 <div class="mt-3 mb-3">
-                                    <button type="submit" class="btn btn-success">Upload</button>
+                                    <button type="submit" class="btn btn-success">@lang('Upload')</button>
                                 </div>
                             </form>
                         </div>

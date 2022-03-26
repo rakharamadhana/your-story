@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend\Story;
 
 use App\Models\Story;
 use App\Models\StoryDrawing;
+use App\Models\StudentFeedback;
+use App\Models\StudentStoryReview;
 use Illuminate\Http\Request;
 
 /**
@@ -52,7 +54,7 @@ class StoryController
 
         Story::create($input);
 
-        return redirect()->route('admin.stories')->withFlashSuccess(__('The case was successfully created.'));
+        return redirect()->route('admin.stories')->withFlashSuccess(__('The story was successfully created.'));
     }
 
     public function show(Story $story)
@@ -64,10 +66,14 @@ class StoryController
     public function edit(Request $request, Story $story)
     {
         $storyDrawings = StoryDrawing::query()->where('story_id', $story->id)->paginate(5);
+        $storyReviews = StudentStoryReview::query()->where('story_id', $story->id)
+            ->with('user')
+            ->paginate();
 
         return view('backend.stories.edit')
             ->with('story',$story)
-            ->with('storyDrawings',$storyDrawings);
+            ->with('storyDrawings',$storyDrawings)
+            ->with('storyReviews',$storyReviews);
     }
 
     public function update(Request $request, Story $story)

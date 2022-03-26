@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container py-4 mt-lg-5">
-        <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">@lang('Review Story')</span>
+        <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">@lang('Review Stories')</span>
 
         <div class="mt-5">
             <div class="row justify-content-center">
@@ -27,31 +27,31 @@
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q1" value="1" @if($storyReview->q1 == 1) checked @endif />
-                                                    Strongly disagree
+                                                    @lang('Strongly disagree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q1" value="2" @if($storyReview->q1 == 2) checked @endif />
-                                                    Disagree
+                                                    @lang('Disagree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q1" value="3" @if($storyReview->q1 == 3) checked @endif />
-                                                    Neutral
+                                                    @lang('Neutral')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q1" value="4" @if($storyReview->q1 == 4) checked @endif />
-                                                    Agree
+                                                    @lang('Agree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q1" value="5" @if($storyReview->q1 == 5) checked @endif />
-                                                    Strongly agree
+                                                    @lang('Strongly agree')
                                                 </label>
                                             </li>
                                         </ul>
@@ -64,31 +64,31 @@
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q2" value="1" @if($storyReview->q2 == 1) checked @endif/>
-                                                    Strongly disagree
+                                                    @lang('Strongly disagree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q2" value="2" @if($storyReview->q2 == 2) checked @endif/>
-                                                    Disagree
+                                                    @lang('Disagree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q2" value="3" @if($storyReview->q2 == 3) checked @endif/>
-                                                    Neutral
+                                                    @lang('Neutral')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q2" value="4" @if($storyReview->q2 == 4) checked @endif/>
-                                                    Agree
+                                                    @lang('Agree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q2" value="5" @if($storyReview->q2 == 5) checked @endif/>
-                                                    Strongly agree
+                                                    @lang('Strongly agree')
                                                 </label>
                                             </li>
                                         </ul>
@@ -101,31 +101,31 @@
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q3" value="1" @if($storyReview->q3 == 1) checked @endif/>
-                                                    Strongly disagree
+                                                    @lang('Strongly disagree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q3" value="2" @if($storyReview->q3 == 2) checked @endif/>
-                                                    Disagree
+                                                    @lang('Disagree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q3" value="3" @if($storyReview->q3 == 3) checked @endif/>
-                                                    Neutral
+                                                    @lang('Neutral')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q3" value="4" @if($storyReview->q3 == 4) checked @endif/>
-                                                    Agree
+                                                    @lang('Agree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q3" value="5" @if($storyReview->q3 == 5) checked @endif/>
-                                                    Strongly agree
+                                                    @lang('Strongly agree')
                                                 </label>
                                             </li>
                                         </ul>
@@ -138,31 +138,31 @@
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q4" value="1" @if($storyReview->q4 == 1) checked @endif/>
-                                                    Strongly disagree
+                                                    @lang('Strongly disagree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q4" value="2" @if($storyReview->q4 == 2) checked @endif/>
-                                                    Disagree
+                                                    @lang('Disagree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q4" value="3" @if($storyReview->q4 == 3) checked @endif/>
-                                                    Neutral
+                                                    @lang('Neutral')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q4" value="4" @if($storyReview->q4 == 4) checked @endif/>
-                                                    Agree
+                                                    @lang('Agree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q4" value="5" @if($storyReview->q4 == 5) checked @endif/>
-                                                    Strongly agree
+                                                    @lang('Strongly agree')
                                                 </label>
                                             </li>
                                         </ul>
@@ -175,31 +175,31 @@
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q5" value="1" @if($storyReview->q5 == 1) checked @endif/>
-                                                    Strongly disagree
+                                                    @lang('Strongly disagree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q5" value="2" @if($storyReview->q5 == 2) checked @endif/>
-                                                    Disagree
+                                                    @lang('Disagree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q5" value="3" @if($storyReview->q5 == 3) checked @endif/>
-                                                    Neutral
+                                                    @lang('Neutral')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q5" value="4" @if($storyReview->q5 == 4) checked @endif/>
-                                                    Agree
+                                                    @lang('Agree')
                                                 </label>
                                             </li>
                                             <li>
                                                 <label>
                                                     <input type="radio" name="q5" value="5" @if($storyReview->q5 == 5) checked @endif/>
-                                                    Strongly agree
+                                                    @lang('Strongly agree')
                                                 </label>
                                             </li>
                                         </ul>

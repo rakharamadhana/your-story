@@ -43,7 +43,7 @@
                                 <div class="mt-3 mb-3">
                                     <label for="title" class="form-label">@lang('Title')</label>
 
-                                    <input type="text" name="title" class="form-control" placeholder="{{ __('Enter Title') }}" value="{{ old('title') }}" maxlength="100" required />
+                                    <input type="text" name="title" class="form-control" placeholder="@lang('Enter Title')" value="{{ old('title') }}" maxlength="100" required />
                                 </div>
 
                                 @if($groupCount > 0)

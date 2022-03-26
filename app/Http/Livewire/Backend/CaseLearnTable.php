@@ -17,53 +17,53 @@ class CaseLearnTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make('Academic Year','user_id')
+            Column::make(__('Academic Year'),'user_id')
                 ->sortable()
                 ->searchable(),
-            Column::make('Grade','user_id')
+            Column::make(__('Grade'),'user_id')
                 ->sortable()
                 ->searchable(),
-            Column::make('Class','user_id')
+            Column::make(__('Class'),'user_id')
                 ->sortable()
                 ->searchable(),
-            Column::make('Name','user_id')
+            Column::make(__('Name'),'user_id')
                 ->sortable()
                 ->searchable(),
-            Column::make('Number','user_id')
+            Column::make(__('Number'),'user_id')
                 ->sortable()
                 ->searchable(),
-            Column::make('Case','cases_id')
+            Column::make(__('Case'),'cases_id')
                 ->sortable()
                 ->searchable(),
-            Column::make('Task','task_id')
+            Column::make(__('Task'),'task_id')
                 ->sortable()
                 ->searchable(),
-            Column::make('1-1','emo_1')
+            Column::make(__('1-1'),'emo_1')
                 ->sortable()
                 ->searchable(),
-            Column::make('1-2','emo_2')
+            Column::make(__('1-2'),'emo_2')
                 ->sortable()
                 ->searchable(),
-            Column::make('2-1','nvc_1')
+            Column::make(__('2-1'),'nvc_1')
                 ->sortable()
                 ->searchable(),
-            Column::make('2-2','nvc_2')
+            Column::make(__('2-2'),'nvc_2')
                 ->sortable()
                 ->searchable(),
-            Column::make('2-3','nvc_3')
+            Column::make(__('2-3'),'nvc_3')
                 ->sortable()
                 ->searchable(),
-            Column::make('2-4','nvc_4')
+            Column::make(__('2-4'),'nvc_4')
                 ->sortable()
                 ->searchable(),
-            Column::make('2-5','nvc_end')
+            Column::make(__('2-5'),'nvc_end')
                 ->sortable()
                 ->searchable(),
-            Column::make('Created At', 'created_at')
+            Column::make(__('Created At'), 'created_at')
                 ->sortable(function(Builder $query, $direction) {
                     return $query->orderBy('created_at',$direction);
                 }),
-            Column::make('Update At', 'updated_at')
+            Column::make(__('Updated At'), 'updated_at')
                 ->sortable(function(Builder $query, $direction) {
                     return $query->orderBy('updated_at',$direction);
                 }),
@@ -98,17 +98,17 @@ class CaseLearnTable extends DataTableComponent
         array_unshift($cases, 'Any');
 
         return [
-            'academic_year' => Filter::make('Academic Year')
+            'academic_year' => Filter::make(__('Academic Year'))
                 ->select([
-                    '' => 'Any',
+                    '' => __('Any'),
                     '110-1' => '110-1',
                     '110-2' => '110-2',
                     '111-1' => '111-1',
                     '111-2' => '111-2',
                 ]),
-            'grade' => Filter::make('Grade')
+            'grade' => Filter::make(__('Grade'))
                 ->select([
-                    '' => 'Any',
+                    '' => __('Any'),
                     '1' => '1',
                     '2' => '2',
                     '3' => '3',
@@ -120,9 +120,9 @@ class CaseLearnTable extends DataTableComponent
                     '9' => '9',
                     '10' => '10',
                 ]),
-            'class' => Filter::make('Class')
+            'class' => Filter::make(__('Class'))
                 ->select([
-                    '' => 'Any',
+                    '' => __('Any'),
                     '1' => '1',
                     '2' => '2',
                     '3' => '3',
@@ -134,15 +134,15 @@ class CaseLearnTable extends DataTableComponent
                     '9' => '9',
                     '10' => '10',
                 ]),
-            'student' => Filter::make('Student')
+            'student' => Filter::make(__('Student'))
                 ->select(
                     $students
                 ),
-            'task' => Filter::make('Task')
+            'task' => Filter::make(__('Task'))
                 ->select(
                     $tasks
                 ),
-            'case' => Filter::make('Case')
+            'case' => Filter::make(__('Case'))
                 ->select(
                     $cases
                 ),

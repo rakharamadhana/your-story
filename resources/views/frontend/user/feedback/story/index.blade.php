@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container py-4 mt-lg-5">
-        <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">@lang('Review A Story')</span>
+        <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">@lang('Review Stories')</span>
         <div class="horizontal-slide mt-5">
             @foreach($stories as $story)
                 <a href="{{ route('frontend.user.feedback.story.rate', ['storyId' => $story->id]) }}" class="col-md-3">

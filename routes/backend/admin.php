@@ -3,12 +3,16 @@
 use App\Http\Controllers\Backend\Case\CaseLearningController;
 use App\Http\Controllers\Backend\Case\CasesController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\Review\ReviewGroupController;
+use App\Http\Controllers\Backend\Review\ReviewGroupSelfController;
+use App\Http\Controllers\Backend\Review\ReviewSelfController;
 use App\Http\Controllers\Backend\Story\StoryController;
 use App\Http\Controllers\Backend\Student\StudentController;
 use App\Models\Cases;
 use App\Models\Story;
 use App\Models\Student;
 use App\Models\StudentAnswer;
+use App\Models\StudentReview;
 use Tabuna\Breadcrumbs\Trail;
 
 // All route names are prefixed with 'admin.'.
@@ -104,6 +108,41 @@ Route::group(['prefix' => 'story','as' => 'story.'], function () {
     });
 
     Route::post('/', [StoryController::class, 'store'])->name('store');
+});
+
+Route::group(['prefix' => 'review','as' => 'review.'], function () {
+    Route::get('group', [ReviewGroupController::class, 'index'])
+        ->name('group');
+
+    Route::group(['prefix' => 'group/{studentReview}','as' => 'group.'], function () {
+        Route::get('edit', [ReviewGroupController::class, 'edit'])
+            ->name('edit');
+
+        Route::patch('/', [ReviewGroupController::class, 'update'])->name('update');
+        Route::delete('/', [ReviewGroupController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::get('group-self', [ReviewGroupSelfController::class, 'index'])
+        ->name('group-self');
+
+    Route::group(['prefix' => 'group-self/{studentReview}','as' => 'group-self.'], function () {
+        Route::get('edit', [ReviewGroupSelfController::class, 'edit'])
+            ->name('edit');
+
+        Route::patch('/', [ReviewGroupSelfController::class, 'update'])->name('update');
+        Route::delete('/', [ReviewGroupSelfController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::get('self', [ReviewSelfController::class, 'index'])
+        ->name('self');
+
+    Route::group(['prefix' => 'self/{studentReview}','as' => 'self.'], function () {
+        Route::get('edit', [ReviewSelfController::class, 'edit'])
+            ->name('edit');
+
+        Route::patch('/', [ReviewSelfController::class, 'update'])->name('update');
+        Route::delete('/', [ReviewSelfController::class, 'destroy'])->name('destroy');
+    });
 });
 
 Route::group(['prefix' => 'student','as' => 'student.'], function () {

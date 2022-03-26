@@ -7,7 +7,7 @@
         @if (Auth::user()->isAdministrator())
             <div class="card-header">
                 <h5 class="float-left">@lang('Stories Management')</h5>
-                <a class="btn-sm btn-primary float-right" href="{{ route('admin.story.create') }}" role="button"><i class="cil-plus"></i> Create Story</a>
+                <a class="btn-sm btn-primary float-right" href="{{ route('admin.story.create') }}" role="button"><i class="cil-plus"></i> @lang('Create Story')</a>
             </div>
         @endif
 

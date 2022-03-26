@@ -7,36 +7,39 @@ use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Filter;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use Illuminate\Support\Facades\Lang;
 
 class StudentsTable extends DataTableComponent
 {
 
     public function columns(): array
     {
+        $var = Lang::get('directory/index.str1');
+
         return [
-            Column::make('Academic Year','academic_year')
+            Column::make(__('Academic Year'),'academic_year')
                 ->sortable()
                 ->searchable(),
-            Column::make('Grade','grade')
+            Column::make(__('Grade'),'grade')
                 ->sortable()
                 ->searchable(),
-            Column::make('Class','class')
+            Column::make(__('Class'),'class')
                 ->sortable()
                 ->searchable(),
-            Column::make('Name','user.name_en')
+            Column::make(__('Name'),'user.name_en')
                 ->sortable()
                 ->searchable(),
-            Column::make('Number','student_number')
+            Column::make(__('Number'),'student_number')
                 ->sortable()
                 ->searchable(),
-            Column::make('Email','user.email')
+            Column::make(__('Email'),'user.email')
                 ->sortable()
                 ->searchable(),
-            Column::make('Created At', 'created_at')
+            Column::make(__('Created At'), 'created_at')
                 ->sortable(function(Builder $query, $direction) {
                     return $query->orderBy('created_at',$direction);
                 }),
-            Column::make('Update At', 'updated_at')
+            Column::make(__('Updated At'), 'updated_at')
                 ->sortable(function(Builder $query, $direction) {
                     return $query->orderBy('updated_at',$direction);
                 }),
@@ -47,17 +50,17 @@ class StudentsTable extends DataTableComponent
     public function filters(): array
     {
         return [
-            'academic_year' => Filter::make('Academic Year')
+            'academic_year' => Filter::make(__('Academic Year'))
                 ->select([
-                    '' => 'Any',
+                    '' => __('Any'),
                     '110-1' => '110-1',
                     '110-2' => '110-2',
                     '111-1' => '111-1',
                     '111-2' => '111-2',
                 ]),
-            'grade' => Filter::make('Grade')
+            'grade' => Filter::make(__('Grade'))
                 ->select([
-                    '' => 'Any',
+                    '' => __('Any'),
                     '1' => '1',
                     '2' => '2',
                     '3' => '3',
@@ -69,9 +72,9 @@ class StudentsTable extends DataTableComponent
                     '9' => '9',
                     '10' => '10',
                 ]),
-            'class' => Filter::make('Class')
+            'class' => Filter::make(__('Class'))
                 ->select([
-                    '' => 'Any',
+                    '' => __('Any'),
                     '1' => '1',
                     '2' => '2',
                     '3' => '3',

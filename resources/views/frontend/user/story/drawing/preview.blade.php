@@ -18,16 +18,20 @@
             <p>{{ $storyDrawing->description }}</p>
             <div class="row">
                 <div class="col-6">
-                    <p>Voice</p>
+                    <p>@lang('Audio')</p>
                     @if($storyDrawing->audio)
                         <audio controls onplay="playVoice(this)" id="voice"><source src="{{ URL::asset('storage/drawings/'.$story->id.'/audio/'.$storyDrawing->audio) }}" type="audio/mpeg"></audio>
                     @else
-                        <p>No Audio</p>
+                        <p>@lang('No Audio')</p>
                     @endif
                 </div>
                 <div class="col-6">
-                    <p>BGM</p>
-                    <audio controls onplay="playMusic(this)" id="bgm"><source src="{{ URL::asset('storage/drawings/'.$story->id.'/audio/'.$storyDrawing->music->audio) }}" type="audio/mpeg"></audio>
+                    <p>@lang('BGM')</p>
+                    @if($storyDrawing->music)
+                        <audio controls onplay="playMusic(this)" id="bgm"><source src="{{ URL::asset('storage/drawings/'.$story->id.'/audio/'.$storyDrawing->music->audio) }}" type="audio/mpeg"></audio>
+                    @else
+                        <p>@lang('No BGM')</p>
+                    @endif
                 </div>
             </div>
 

@@ -88,12 +88,12 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Audio</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">@lang('No.')</th>
+                    <th scope="col">@lang('Title')</th>
+                    <th scope="col">@lang('Image')</th>
+                    <th scope="col">@lang('Audio')</th>
+                    <th scope="col">@lang('Description')</th>
+                    <th scope="col">@lang('Actions')</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -111,8 +111,8 @@
                         <td>
                             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                 <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
-                                    <a href="{{ route('frontend.user.story.drawing.delete', ['drawingId'=> $storyDrawing->id, 'storyId' => $story->id, ]) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')" data-toggle="tooltip" data-placement="top" data-method="delete" title="Delete"><i class="fa fa-trash"></i></a>
+                                    <button class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="@lang('Edit')"><i class="fa fa-edit"></i></button>
+                                    <a href="{{ route('frontend.user.story.drawing.delete', ['drawingId'=> $storyDrawing->id, 'storyId' => $story->id, ]) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')" data-toggle="tooltip" data-placement="top" data-method="delete" title="@lang('Delete')"><i class="fa fa-trash"></i></a>
                                 </div>
                             </div>
                         </td>
@@ -127,6 +127,51 @@
         </x-slot>
         <x-slot name="footer">
             <button class="btn btn-sm btn-primary float-right" type="submit">@lang('Export Story (PDF)')</button>
+        </x-slot>
+    </x-backend.card>
+
+    <x-backend.card>
+        <x-slot name="header">
+            @lang('Story Feedback')
+        </x-slot>
+
+        <x-slot name="body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">@lang('No.')</th>
+                    <th scope="col">@lang('Student')</th>
+                    <th scope="col">@lang('q1')</th>
+                    <th scope="col">@lang('q2')</th>
+                    <th scope="col">@lang('q3')</th>
+                    <th scope="col">@lang('q4')</th>
+                    <th scope="col">@lang('q5')</th>
+                    <th scope="col">@lang('Favourite')</th>
+                    <th scope="col">@lang('Improvement')</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($storyReviews as $index => $storyReview)
+                    <tr>
+                        <th scope="row">{{ $index + 1 }}</th>
+                        <td class="">{{ $storyReview->user->name_en }}</td>
+                        <td>{{ $storyReview->q1 }}</td>
+                        <td>{{ $storyReview->q2 }}</td>
+                        <td>{{ $storyReview->q3 }}</td>
+                        <td>{{ $storyReview->q4 }}</td>
+                        <td>{{ $storyReview->q5 }}</td>
+                        <td>{{ $storyReview->q6 }}</td>
+                        <td>{{ $storyReview->q7 }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </x-slot>
+
+        <x-slot name="footer">
+            <div class="row justify-content-center">
+                {{ $storyReviews->links() }}
+            </div>
         </x-slot>
     </x-backend.card>
 @endsection
