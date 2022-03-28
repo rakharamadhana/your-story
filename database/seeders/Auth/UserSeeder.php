@@ -82,6 +82,7 @@ class UserSeeder extends Seeder
 
                 DB::table('users')->insert($user);
             }
+            dump('success');
 
         }
 
