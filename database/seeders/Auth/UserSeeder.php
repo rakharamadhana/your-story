@@ -81,8 +81,9 @@ class UserSeeder extends Seeder
                 $user['updated_at'] = Carbon::now();
 
                 DB::table('users')->insert($user);
+                dump('Inserting '.$user['email']);
             }
-            dump('success');
+
 
         }
 
