@@ -73,7 +73,7 @@ class UserSeeder extends Seeder
         dump($users);
 
         if(!empty($users)){
-            dump('check-2');
+            dump('users found');
             foreach ($users as $user) {
                 $user['type'] = User::TYPE_USER;
                 $user['email_verified_at'] = Carbon::now();
@@ -111,8 +111,10 @@ class UserSeeder extends Seeder
     {
         $csv = new Csv;
 
-        dump('path '.self::$path);
-        return $csv->parseFile(self::$path.'\users.csv');
+        dump('path: '.self::$path);
+        $data = $csv->parseFile(self::$path.'\users.csv');
+        dump('csv found: '.$data);
+        return $data;
     }
 
 }
