@@ -113,7 +113,8 @@ class UserSeeder extends Seeder
 
         dump('path: '.self::$path);
         $data = $csv->parseFile(self::$path.'\users.csv');
-        dump('csv found: '.$data);
+        dump('csv');
+        dump($data);
         return $data;
     }
 
