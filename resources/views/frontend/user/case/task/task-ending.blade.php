@@ -32,7 +32,7 @@
                             <form action="{{ route('frontend.user.case.task.storeEnding',  ['caseId' => $case->id, 'id' => $task->id]) }}" method="post">
                                 @csrf
                                 <div class="mt-3 mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label">@lang('Predict how the scenario should evolve to reach a happy ending')</label>
+                                    <label for="exampleFormControlTextarea1" class="form-label">@lang('Please try to use the non-violent communication skills you have just learned to think about how you would express yourself if you were the main character?')</label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" name="nvc_end" rows="5">@isset($student_answer){{ $student_answer->nvc_end }}@endisset</textarea>
                                 </div>
 
