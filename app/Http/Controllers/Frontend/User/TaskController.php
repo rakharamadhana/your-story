@@ -131,7 +131,7 @@ class TaskController
             ]
         );
 
-        return redirect()->route('frontend.user.case', ['id' => $caseId])->withFlashSuccess(__('The case was successfully created.'));
+        return redirect()->route('frontend.user.dashboard')->withFlashSuccess(__('The case was successfully created.'));
     }
 
 }

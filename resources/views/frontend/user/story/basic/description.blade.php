@@ -15,7 +15,7 @@
                             <form action="{{ route('frontend.user.story.basic.storeDescription',  ['storyId' => $story->id]) }}" method="post">
                                 @csrf
                                 <div class="mt-3 mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label">@lang('Please write the story you set into a paragraph')</label>
+                                    <label for="exampleFormControlTextarea1" class="form-label">@lang('Please integrate time, place, character, and conflict into a complete story')</label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="5">@isset($story){{ $story->description }}@endisset</textarea>
                                 </div>
 

@@ -33,7 +33,7 @@
                             <form action="{{ route('frontend.user.story.outline.store',  ['storyId' => $story->id]) }}" method="post">
                                 @csrf
                                 <div class="mt-3 mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label">@lang('Please write down the outline of your story')</label>
+                                    <label for="exampleFormControlTextarea1" class="form-label">@lang('Based on the story you have created, please present your observations, feelings, needs, and requests in a series of columns')</label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" name="nvc_outline" rows="5">@isset($story){{ $story->nvc_outline }}@endisset</textarea>
                                 </div>
 

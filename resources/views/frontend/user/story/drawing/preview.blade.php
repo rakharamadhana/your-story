@@ -13,6 +13,7 @@
         </div>
         @foreach($storyDrawings as $key => $storyDrawing)
         <div name="drawing" class="mb-3 task" style="{{ $key == 0 ? "display: block" : "" }}">
+            <h3>{{ $key+1 }}</h3>
             <h4>{{ $storyDrawing->title }}</h4>
             <img src="{{ URL::asset('storage/drawings/'.$story->id.'/'.$storyDrawing->drawing) }}" class="rounded img-thumbnail" alt="">
             <p>{{ $storyDrawing->description }}</p>
