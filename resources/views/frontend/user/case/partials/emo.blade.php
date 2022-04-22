@@ -4,31 +4,31 @@
     <div class="form-check">
         <input class="form-check-input" type="radio" name="emo_1" id="angry" value="1" @isset($student_answer) {{ $student_answer->emo_1 == '1' ? 'checked' : '' }} @endisset>
         <label class="form-check-label" for="angry">
-            <i class="fas fa-angry"></i> @lang('Angry')
+            <img src="{{ URL::asset('img/emoticon/Angry.png') }}" class="rounded mx-auto d-block img-fluid" style="width: 50px;" alt="" title="@lang('Angry')">
         </label>
     </div>
     <div class="form-check">
         <input class="form-check-input" type="radio" name="emo_1" id="wronged" value="2" @isset($student_answer) {{ $student_answer->emo_1 == '2' ? 'checked' : '' }} @endisset>
         <label class="form-check-label" for="wronged">
-            <i class="fas fa-surprise"></i> @lang('Wronged')
+            <img src="{{ URL::asset('img/emoticon/Wronged.png') }}" class="rounded mx-auto d-block img-fluid" style="width: 50px;" alt="" title="@lang('Wronged')">
         </label>
     </div>
     <div class="form-check">
         <input class="form-check-input" type="radio" name="emo_1" id="anxious" value="3" @isset($student_answer) {{ $student_answer->emo_1 == '3' ? 'checked' : '' }} @endisset>
         <label class="form-check-label" for="anxious">
-            <i class="fas fa-tired"></i> @lang('Anxious')
+            <img src="{{ URL::asset('img/emoticon/Anxious.png') }}" class="rounded mx-auto d-block img-fluid" style="width: 50px;" alt="" title="@lang('Anxious')">
         </label>
     </div>
     <div class="form-check">
         <input class="form-check-input" type="radio" name="emo_1" id="helpless" value="4" @isset($student_answer) {{ $student_answer->emo_1 == '4' ? 'checked' : '' }} @endisset>
         <label class="form-check-label" for="helpless">
-            <i class="fas fa-sad-tear"></i> @lang('Helpless')
+            <img src="{{ URL::asset('img/emoticon/Helpless.png') }}" class="rounded mx-auto d-block img-fluid" style="width: 50px;" alt="" title="@lang('Helpless')">
         </label>
     </div>
     <div class="form-check">
         <input class="form-check-input" type="radio" name="emo_1" id="other" value="5" @isset($student_answer) {{ $student_answer->emo_1 == '5' ? 'checked' : '' }} @endisset>
         <label class="form-check-label" for="other">
-            <i class="fas fa-meh-blank"></i> @lang('Other')
+            <img src="{{ URL::asset('img/emoticon/Other.png') }}" class="rounded mx-auto d-block img-fluid" style="width: 50px;" alt="" title="@lang('Other')">
         </label>
     </div>
 
