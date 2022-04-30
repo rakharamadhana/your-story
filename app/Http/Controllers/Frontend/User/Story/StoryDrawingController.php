@@ -154,6 +154,106 @@ class StoryDrawingController
 
     }
 
+    /**
+     * @param $storyId
+     * @param $id
+     * @return View|Factory|Application
+     */
+    public function editImage($storyId,$id): View|Factory|Application
+    {
+        $story = Story::query()->where('id',$storyId)->first();
+
+        $storyDrawing = StoryDrawing::find($id);
+
+        return view('frontend.user.story.drawing.edit')
+            ->with('story',$story)
+            ->with('storyDrawing', $storyDrawing);
+    }
+
+    /**
+     * @param Request $request
+     * @param $storyId
+     * @param $id
+     * @return View|Factory|Application
+     */
+    public function updateImage(Request $request, $storyId, $id): View|Factory|Application
+    {
+        // Validating
+        $request->validate([
+            'title' => 'required',
+            'category' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'audio' => 'mimes:wav,ogg,mp3',
+            'description' => 'required',
+        ]);
+
+        // Get Story Information
+        $story = Story::query()->where('id',$storyId)->first();
+
+        // Initialize Audio Variable
+        $audioName = null;
+        $imageName = null;
+
+        // If Audio were changed, then replace the previous one
+        if($request->audio){
+            $storyDrawing = StoryDrawing::find($id);
+
+            $audioLocation = public_path('storage/drawings/'.$storyId.'/audio/');
+            $audioName = $storyDrawing->audio;
+
+            if (File::exists($audioLocation.$audioName)) {
+                File::delete($audioLocation.$audioName);
+            }else{
+                dd('Audio does not exists.');
+            }
+
+            $audioName = $storyId.'-'.time().'.'.$request->audio->extension();
+            $audioLocation = public_path('storage/drawings/'.$storyId.'/audio/');
+            $request->audio->move($audioLocation, $audioName);
+        }
+
+        // If Image were changed, then replace the previous one
+        if($request->image){
+            $storyDrawing = StoryDrawing::find($id);
+
+            $imageLocation = public_path('storage/drawings/'.$storyId.'/');
+            $imageName = $storyDrawing->drawing;
+
+            if (File::exists($imageLocation.$imageName)) {
+                File::delete($imageLocation.$imageName);
+            }else{
+                dd('Image does not exists.');
+            }
+
+            $imageName = $storyId.'-'.time().'.'.$request->image->extension();
+
+            $imageLocation = public_path('storage/drawings/'.$storyId.'/');
+
+            $request->image->move($imageLocation, $imageName);
+        }
+
+        // Updating Record
+        $storyDrawing = StoryDrawing::query()
+            ->where('id', $id)
+            ->update([
+                'title' => $request->input('title'),
+                'category' => $request->input('category'),
+                'description' => $request->input('description'),
+                'drawing' => $imageName,
+                'audio' => $audioName,
+            ]);
+
+        // Fetch Drawings for viewing page
+        $storyDrawings = StoryDrawing::query()
+            ->where('story_id', $storyId)
+            ->get();
+
+        // Redirect to drawing page
+        return view('frontend.user.story.drawing')
+            ->with('story',$story)
+            ->with('storyDrawings', $storyDrawings);;
+    }
+
     public function deleteImage($storyId,$id)
     {
         $storyDrawing = StoryDrawing::find($id);

@@ -63,6 +63,10 @@ class StoryController
         //dd($request->input());
         $userId = Auth::user()->id;
 
+        $request->validate([
+            'title' => 'required|string|min:3|max:32',
+        ]);
+
         Story::create(
             // Create or Update Value
             [

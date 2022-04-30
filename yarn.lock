@@ -962,10 +962,12 @@
   dependencies:
     dotenv "10.0.0"
 
-"@excalidraw/excalidraw@^0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@excalidraw/excalidraw/-/excalidraw-0.10.0.tgz#5329d6fb1b0cca068e2cd34da6d648dd6d0d3fec"
-  integrity sha512-0fHc/oX394dHAT7LEacwZ0vh8aeI179plYnfaeLeRHBtHARgmtlmvxcnxd2pxJ0Z1Uj/Cy76oK9MVw/y8P1HhQ==
+"@excalidraw/excalidraw@^0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@excalidraw/excalidraw/-/excalidraw-0.11.0.tgz#bc246de2a64d7037a21a85664b6f0dd14894cf93"
+  integrity sha512-wY0UdnN9JAcBKLzkGlVXiPSKgTO06YeeBhoIy/ezIiMJtfFtWBPjRjJROkdIGqnUmBz5L16MkuXE7b8j1b1ouw==
+  dependencies:
+    dotenv "10.0.0"
 
 "@fortawesome/fontawesome-free@^5.12.1":
   version "5.15.4"

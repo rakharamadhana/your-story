@@ -93,6 +93,16 @@ class FeedbackStoryController
     {
         $userId = Auth::user()->id;
 
+        $request->validate([
+            'q1' => 'required',
+            'q2' => 'required',
+            'q3' => 'required',
+            'q4' => 'required',
+            'q5' => 'required',
+            'q6' => 'required',
+            'q7' => 'required',
+        ]);
+
         StudentStoryReview::updateOrCreate(
         // Check if available
             [

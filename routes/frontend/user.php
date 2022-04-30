@@ -133,6 +133,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
             ->middleware('is_user')
             ->name('drawing.preview' );
 
+
         Route::get('drawing/ppt', [StoryDrawingController::class, 'downloadPpt'])
             ->middleware('is_user')
             ->name('drawing.ppt' );
@@ -144,6 +145,14 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
         Route::post('drawing/upload', [StoryDrawingController::class, 'uploadImage'])
             ->middleware('is_user')
             ->name('drawing.upload' );
+
+        Route::get('drawing/edit/{drawingId}', [StoryDrawingController::class, 'editImage'])
+            ->middleware('is_user')
+            ->name('drawing.edit' );
+
+        Route::post('drawing/edit/{drawingId}/update', [StoryDrawingController::class, 'updateImage'])
+            ->middleware('is_user')
+            ->name('drawing.update' );
 
         Route::get('drawing/delete/{drawingId}', [StoryDrawingController::class, 'deleteImage'])
             ->middleware('is_user')

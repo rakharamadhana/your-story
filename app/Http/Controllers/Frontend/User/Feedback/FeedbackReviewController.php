@@ -71,6 +71,15 @@ class FeedbackReviewController
     {
 
         $userId = Auth::user()->id;
+
+        $request->validate([
+            'q1' => 'required',
+            'q2' => 'required',
+            'q3' => 'required',
+            'q4' => 'required',
+            'q5' => 'required',
+        ]);
+
         $studentGroup = StudentGroup::query()->where('user_id',$userId)->first();
 
         $type = 1;

@@ -34,7 +34,7 @@
         "vue-loader": "^15.9.5"
     },
     "dependencies": {
-        "@excalidraw/excalidraw": "^0.10.0",
+        "@excalidraw/excalidraw": "^0.11.0",
         "@excalidraw/excalidraw-next": "^0.10.0-8b5657e"
     }
 }

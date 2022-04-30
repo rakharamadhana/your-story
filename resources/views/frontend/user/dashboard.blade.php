@@ -7,7 +7,7 @@
 @section('content')
     <div class="container py-4 mt-lg-5 mt-md-5 mt-sm-5">
         <span class="sel-header h3 w3-animate-top">@lang('Home')</span>
-        <div class="row mt-lg-5 mt-md-5 mt-sm-5">
+        <div class="row mt-lg-3 mt-md-3 mt-sm-3">
             <div class="col-md-4 mt-lg-5 mt-md-5 mt-sm-5 zoom">
                 <a type="button" data-toggle="modal" data-target="#casesModal">
                     <img src="{{ URL::asset('img/menu-cases.png') }}" class="w3-animate-zoom rounded mx-auto d-block img-fluid" alt="">

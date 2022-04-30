@@ -7,7 +7,7 @@
 @section('content')
     <div class="container py-4">
         <div class="col-md-12 text-right">
-            <a type="button" class="btn btn-primary w3-animate-top" href="{{ route('frontend.user.story.drawing', ['storyId' => $story->id]) }}">
+            <a type="button" class="btn btn-primary w3-animate-top" onclick="return confirm('Your work will be deleted, are you sure to go back?')" href="{{ route('frontend.user.story.drawing', ['storyId' => $story->id]) }}">
                 @lang('Back to Drawing')
             </a>
         </div>

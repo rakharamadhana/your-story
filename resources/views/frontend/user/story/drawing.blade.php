@@ -7,7 +7,7 @@
 @section('content')
     <div class="container py-4 mt-lg-5">
         <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">@lang('Design A Story')</span>
-        <div class="col-md-12 mt-5 text-right">
+        <div class="col-md-12 mt-3 text-right">
             <a type="button" class="btn btn-primary w3-animate-top" href="{{ route('frontend.user.story.drawing.preview', ['storyId' => $story->id]) }}">
                 @lang('Preview')
             </a>
@@ -49,7 +49,7 @@
                         <td>
                             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                 <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="@lang('Edit')"><i class="fa fa-edit"></i></button>
+                                    <a href="{{ route('frontend.user.story.drawing.edit', ['drawingId'=> $storyDrawing->id, 'storyId' => $story->id, ]) }}" class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="@lang('Edit')"><i class="fa fa-edit"></i></a>
                                     <a href="{{ route('frontend.user.story.drawing.delete', ['drawingId'=> $storyDrawing->id, 'storyId' => $story->id, ]) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete?')" data-toggle="tooltip" data-placement="top" data-method="delete" title="@lang('Delete')"><i class="fa fa-trash"></i></a>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
+                    <div class="row scrollable">
                         <div class="col">
                             <form action="{{ route('frontend.user.story.drawing.upload', ['storyId' => $story->id]) }}" method="POST" enctype="multipart/form-data">
                                 @csrf

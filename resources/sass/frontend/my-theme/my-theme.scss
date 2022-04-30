@@ -159,9 +159,8 @@ a:focus,
 }
 
 .container .sel-header {
-    position: absolute;
+    position: static;
     z-index:500;
-    transform: rotate(-20deg);
     display:inline-block;
     padding: 0.5em 1.5em 0.5em 1.5em;
     text-align: center;
@@ -173,7 +172,6 @@ a:focus,
 
     // Small devices (landscape phones, 576px and up)
     @media (min-width: 350px) {
-        transform: rotate(0deg);
         position: static;
         margin-bottom: 10px;
         width: 100%;
@@ -188,22 +186,19 @@ a:focus,
     // Medium devices (tablets, 768px and up)
     @media (min-width: 768px) {
         position: static;
-        transform: rotate(0deg);
     }
 
     // Large devices (desktops, 992px and up)
     @media (min-width: 992px) {
         left: 30px;
         top: 90px;
-        position: absolute;
-        transform: rotate(-20deg);
+        position: static;
         width: auto;
     }
 
     // Extra Large devices (desktops, 992px and up)
     @media (min-width: 1440px) {
-        position: absolute;
-        transform: rotate(-20deg);
+        position: static;
         width: auto;
         left: 350px;
         top: 100px;

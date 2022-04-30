@@ -4,7 +4,7 @@ import Excalidraw, {
     exportToCanvas,
     exportToSvg,
     exportToBlob
-} from "@excalidraw/excalidraw-next";
+} from "@excalidraw/excalidraw";
 import InitialData from "./initialData";
 import "./styles.scss";
 
