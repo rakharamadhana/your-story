@@ -97,12 +97,14 @@ class StoryDrawingController
         if($request->audio){
             $audioName = $storyId.'-'.time().'.'.$request->audio->extension();
             $audioLocation = public_path('storage/drawings/'.$storyId.'/audio/');
+            File::ensureDirectoryExists($audioLocation);
             $request->audio->move($audioLocation, $audioName);
         }
 
         $imageName = $storyId.'-'.time().'.'.$request->image->extension();
 
         $imageLocation = public_path('storage/drawings/'.$storyId.'/');
+        File::ensureDirectoryExists($imageLocation);
 
         $request->image->move($imageLocation, $imageName);
 
@@ -137,6 +139,7 @@ class StoryDrawingController
 
         $audioName = $storyId.'-'.$request->input('category').'-music'.'.'.$request->audio->extension();
         $audioLocation = public_path('storage/drawings/'.$storyId.'/audio/');
+        File::ensureDirectoryExists($audioLocation);
         $request->audio->move($audioLocation, $audioName);
 
         StoryDrawingMusic::create(
@@ -207,6 +210,7 @@ class StoryDrawingController
 
             $audioName = $storyId.'-'.time().'.'.$request->audio->extension();
             $audioLocation = public_path('storage/drawings/'.$storyId.'/audio/');
+            File::ensureDirectoryExists($audioLocation);
             $request->audio->move($audioLocation, $audioName);
         }
 
@@ -224,6 +228,7 @@ class StoryDrawingController
             $imageName = $storyId.'-'.time().'.'.$request->image->extension();
 
             $imageLocation = public_path('storage/drawings/'.$storyId.'/');
+            File::ensureDirectoryExists($imageLocation);
 
             $request->image->move($imageLocation, $imageName);
         }
@@ -247,7 +252,7 @@ class StoryDrawingController
         // Redirect to drawing page
         return view('frontend.user.story.drawing')
             ->with('story',$story)
-            ->with('storyDrawings', $storyDrawings);;
+            ->with('storyDrawings', $storyDrawings);
     }
 
     public function deleteImage($storyId,$id)
