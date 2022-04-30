@@ -203,8 +203,6 @@ class StoryDrawingController
 
             if (File::exists($audioLocation.$audioName)) {
                 File::delete($audioLocation.$audioName);
-            }else{
-                dd('Audio does not exists.');
             }
 
             $audioName = $storyId.'-'.time().'.'.$request->audio->extension();
@@ -221,8 +219,6 @@ class StoryDrawingController
 
             if (File::exists($imageLocation.$imageName)) {
                 File::delete($imageLocation.$imageName);
-            }else{
-                dd('Image does not exists.');
             }
 
             $imageName = $storyId.'-'.time().'.'.$request->image->extension();
