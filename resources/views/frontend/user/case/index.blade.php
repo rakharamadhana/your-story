@@ -20,7 +20,6 @@
 
     <div class="container">
         <div class="row justify-content-center">
-
             @foreach($tasks as $task)
             <div class="col-md-3 mb-3">
                 <a class="btn btn-lg btn-block shadow w3-animate-zoom" style="color: #113d21; background-color: #50eae1;" href="{{ route('frontend.user.case.task', ['caseId' => $case->id, 'id' => $task->id]) }}">{{ $task->{'name_'.app()->getLocale()} }}</a>

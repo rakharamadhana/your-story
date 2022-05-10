@@ -5,12 +5,12 @@
 @section('background', 'bg-case-1')
 
 @section('content')
-    <div class="container py-4 mt-lg-5">
-        <span class="sel-header h3" style="background-color: #88df6c;">{{ $case->{'name_'.app()->getLocale()} }}</span>
+    <div class="container py-4 mt-lg-2">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="sel-card mb-3">
-                    <div class="card-body my-4">
+                <span class="sel-header h3" style="background-color: #88df6c;">{{ $case->{'name_'.app()->getLocale()} }}</span>
+                <div class="sel-card">
+                    <div class="card-body my-2">
                         @if($task->type == 'EMO')
                             <p class="card-text scrollable mt-4" id="inputText">{{ $case->{'description_'.app()->getLocale()} }}</p>
                         @elseif($task->type == 'NVC')
@@ -26,10 +26,10 @@
                 </div>
             </div><!--col-md-10-->
 
-            <span class="sel-sub-header h5" style="background-color: #88df6c;">{{ $task->{'name_'.app()->getLocale()} }}</span>
             <div class="col-md-4">
-                <div class="sel-card mb-3 w3-animate-right">
-                    <div class="card-body my-4">
+                <span class="sel-sub-header h5" style="background-color: #88df6c;">{{ $task->{'name_'.app()->getLocale()} }}</span>
+                <div class="sel-card w3-animate-right">
+                    <div class="card-body my-2">
                         @if($task->type == 'EMO')
                             @include('frontend.user.case.partials.emo')
                         @elseif($task->type == 'NVC')

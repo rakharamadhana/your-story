@@ -11,22 +11,22 @@
         @if($groupCount > 0)
             <div class="col-6 zoom">
                 <a href="{{ route('frontend.user.feedback.review', ['type' => $groupCount > 0 ? 2 : 1 ]) }}">
-                    <img src="{{ URL::asset('img/menu-design.png') }}" class="w3-animate-zoom rounded mx-auto d-block img-fluid" alt="">
-                    <p class="h3 text-center" style="color: #001d8d;">@lang('Peer Feedback')</p>
+                    <img src="{{ URL::asset('img/feedback-group.png') }}" class="w3-animate-zoom rounded mx-auto d-block img-fluid" alt="" style="max-height: 300px">
+                    <p class="h3 text-center" style="color: #24423E;">@lang('Peer Feedback')</p>
                 </a>
             </div><!--col-md-10-->
         @else
             <div class="col-6 zoom">
                 <a href="{{ route('frontend.user.feedback.review', ['type' => $groupCount > 0 ? 2 : 1 ]) }}">
-                    <img src="{{ URL::asset('img/menu-design.png') }}" class="w3-animate-zoom rounded mx-auto d-block img-fluid" alt="">
-                    <p class="h3 text-center" style="color: #001d8d;">@lang('Self Reflection')</p>
+                    <img src="{{ URL::asset('img/feedback-individual.png') }}" class="w3-animate-zoom rounded mx-auto d-block img-fluid" alt="" style="max-height: 300px">
+                    <p class="h3 text-center" style="color: #BC7B00;">@lang('Self Reflection')</p>
                 </a>
             </div><!--col-md-10-->
         @endif
-            <div class="col-md-4 mt-lg-5 mt-md-5 mt-sm-5 zoom">
+            <div class="col-6 zoom">
                 <a href="{{ route('frontend.user.feedback.story') }}">
-                    <img src="{{ URL::asset('img/menu-design.png') }}" class="w3-animate-zoom rounded mx-auto d-block img-fluid" alt="">
-                    <p class="h3 text-center" style="color: #001d8d;">@lang('Review Stories')</p>
+                    <img src="{{ URL::asset('img/feedback-story.png') }}" class="w3-animate-zoom rounded mx-auto d-block img-fluid" alt="" style="max-height: 300px">
+                    <p class="h3 text-center" style="color: #00BC4D;">@lang('Review Stories')</p>
                 </a>
             </div><!--col-md-10-->
         </div>

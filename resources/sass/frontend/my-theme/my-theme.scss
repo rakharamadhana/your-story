@@ -206,7 +206,7 @@ a:focus,
 }
 
 .container .sel-sub-header {
-    position: absolute;
+    position: static;
     z-index:500;
     display:inline-block;
     padding: 0.5em 1.5em 0.5em 1.5em;
@@ -231,14 +231,14 @@ a:focus,
     @media (min-width: 992px) {
         left: 865px;
         top: 110px;
-        position: absolute;
+        position: static;
     }
 
     // Large devices (desktops, 992px and up)
     @media (min-width: 1440px) {
         left: 1180px;
         top: 110px;
-        position: absolute;
+        position: static;
 
     }
 }
@@ -264,7 +264,9 @@ a:focus,
     min-height: 500px;
     min-width: 0;
     margin-bottom: 1.5rem;
-    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+    text-align: center;
     background-clip: border-box;
     border-radius: 25px;
     background-color: #fff;
