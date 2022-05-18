@@ -6,9 +6,9 @@
 
 @section('content')
     <div class="container py-4 mt-lg-5">
-        <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">{{ $story->{'name_'.app()->getLocale()} }}</span>
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <span class="sel-header h3 w3-animate-top" style="background-color: #88df6c;">{{ $story->{'name_'.app()->getLocale()} }}</span>
                 <div class="sel-card mb-3">
                     <div class="card-body my-4">
                         <div class="mb-3">
@@ -28,8 +28,8 @@
                 </div>
             </div><!--col-md-10-->
 
-            <span class="sel-sub-header h5" style="background-color: #2e5bbf;">@lang('Basic Information')</span>
             <div class="col-md-4">
+                <span class="sel-sub-header h5" style="background-color: #2e5bbf;">@lang('Basic Information')</span>
                 <div class="sel-card mb-3 w3-animate-right">
                     <div class="card-body my-4">
                         <a href="{{ route('frontend.user.story.basic', ['storyId' => $story->id]) }}" class="btn btn-info float-right"><i class="fas fa-edit"></i>@lang('Edit')</a>
