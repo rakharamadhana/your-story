@@ -74,6 +74,22 @@ class TaskController
         //dd($request->input());
         $userId = Auth::user()->id;
 
+        if($id == 1){
+            $request->validate([
+                'emo_1' => 'required',
+                'emo_2' => 'required',
+            ]);
+        }
+
+        if($id == 2){
+            $request->validate([
+                'nvc_1' => 'required',
+                'nvc_2' => 'required',
+                'nvc_3' => 'required',
+                'nvc_4' => 'required',
+            ]);
+        }
+
         StudentAnswer::updateOrCreate(
             // Check if available
             [
