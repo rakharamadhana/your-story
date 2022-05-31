@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Case;
 
 use App\Models\StudentAnswer;
 use Illuminate\Http\Request;
+use League\Csv\CharsetConverter;
 use League\Csv\Writer;
 
 /**
@@ -119,6 +120,10 @@ class CaseLearningController
 
     public function export()
     {
+        $encoder = (new CharsetConverter())
+            ->inputEncoding('utf-8')
+        ;
+
         $studentAnswers = StudentAnswer::query()->with(['user','cases','task'])->get();
 
         $csv = Writer::createFromFileObject(new \SplTempFileObject);
@@ -141,6 +146,9 @@ class CaseLearningController
             'Created At',
             'Updated At'
         ];
+
+        //add formatter
+        $csv->addFormatter($encoder);
 
         //insert the header
         $csv->insertOne($header);
@@ -174,8 +182,8 @@ class CaseLearningController
                 $studentAnswer->nvc_3,
                 $studentAnswer->nvc_4,
                 $studentAnswer->nvc_end,
-                $studentAnswer->created_at,
-                $studentAnswer->updated_at
+                $studentAnswer->created_at->format('m/d/Y'),
+                $studentAnswer->updated_at->format('m/d/Y')
             ]);
         }
 
