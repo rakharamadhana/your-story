@@ -78,7 +78,11 @@ class TaskController
             $request->validate([
                 'emo_1' => 'required',
                 'emo_2' => 'required',
-            ]);
+            ],
+                [
+                    'emo_1.required' => 'Please choose the emotion',
+                    'emo_2.required' => 'Please fill the form field',
+                ]);
         }
 
         if($id == 2){
@@ -87,7 +91,14 @@ class TaskController
                 'nvc_2' => 'required',
                 'nvc_3' => 'required',
                 'nvc_4' => 'required',
-            ]);
+            ],
+                [
+                    'nvc_1.required' => 'Please fill the observation field',
+                    'nvc_2.required' => 'Please fill the perceives field',
+                    'nvc_3.required' => 'Please fill the needs field',
+                    'nvc_4.required' => 'Please fill the request field'
+                ]
+            );
         }
 
         StudentAnswer::updateOrCreate(
@@ -105,10 +116,10 @@ class TaskController
                 'task_id' => $id,
                 'emo_1' => $request->input('emo_1'),
                 'emo_2' => $request->input('emo_2'),
-                'nvc_1' => $request->input('nvc_1'),
-                'nvc_2' => $request->input('nvc_2'),
-                'nvc_3' => $request->input('nvc_3'),
-                'nvc_4' => $request->input('nvc_4'),
+                'nvc_1' => $request->input('observation'),
+                'nvc_2' => $request->input('perceives'),
+                'nvc_3' => $request->input('needs'),
+                'nvc_4' => $request->input('request'),
             ]
         );
 

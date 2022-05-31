@@ -35,7 +35,7 @@
     </div>
     <div class="mt-3 mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">@lang('May I ask where you can see it?')</label>
-        <textarea name="emo_2" class="form-control" id="exampleFormControlTextarea1" rows="3">@isset($student_answer){{ $student_answer->emo_2 }}@endisset</textarea>
+        <textarea name="emo_2" class="form-control" id="exampleFormControlTextarea1" rows="3" required>@isset($student_answer){{ $student_answer->emo_2 }}@endisset</textarea>
     </div>
 
     <div class="d-grid gap-2 d-md-block float-md-right">
