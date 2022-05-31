@@ -130,6 +130,12 @@ class TaskController
         //dd($request->input());
         $userId = Auth::user()->id;
 
+        if($id == 2){
+            $request->validate([
+                'nvc_end' => 'required',
+            ]);
+        }
+
         StudentAnswer::updateOrCreate(
         // Check if available
             [
