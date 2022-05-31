@@ -93,10 +93,10 @@ class TaskController
                 'nvc_4' => 'required',
             ],
                 [
-                    'nvc_1.required' => 'Please fill the observation field',
-                    'nvc_2.required' => 'Please fill the perceives field',
-                    'nvc_3.required' => 'Please fill the needs field',
-                    'nvc_4.required' => 'Please fill the request field'
+                    'nvc_1.required' => 'Please fill the observation field | 請填寫觀察表格',
+                    'nvc_2.required' => 'Please fill the perceives field | 請填寫感受表格',
+                    'nvc_3.required' => 'Please fill the needs field | 請填寫需要表格',
+                    'nvc_4.required' => 'Please fill the request field | 請填寫請求表格'
                 ]
             );
         }
