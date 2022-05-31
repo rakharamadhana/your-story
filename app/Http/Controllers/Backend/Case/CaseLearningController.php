@@ -146,12 +146,25 @@ class CaseLearningController
         $csv->insertOne($header);
 
         foreach ($studentAnswers as $studentAnswer) {
+
+            if($studentAnswer->user->student){
+                $academic_year = $studentAnswer->user->student->academic_year;
+                $grade = $studentAnswer->user->student->grade;
+                $class = $studentAnswer->user->student->class;
+                $student_number = $studentAnswer->user->student->student_number;
+            } else {
+                $academic_year = '';
+                $grade = '';
+                $class = '';
+                $student_number = '';
+            }
+
             $csv->insertOne([
-                $studentAnswer->user->student->academic_year,
-                $studentAnswer->user->student->grade,
-                $studentAnswer->user->student->class,
+                $academic_year,
+                $grade,
+                $class,
                 $studentAnswer->user->name_en,
-                $studentAnswer->user->student->student_number,
+                $student_number,
                 $studentAnswer->cases->name_en,
                 $studentAnswer->task->name_en,
                 $studentAnswer->emo_1,
