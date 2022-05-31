@@ -17,21 +17,21 @@ class CaseLearnTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make(__('Academic Year'),'user_id')
-                ->sortable()
-                ->searchable(),
-            Column::make(__('Grade'),'user_id')
-                ->sortable()
-                ->searchable(),
-            Column::make(__('Class'),'user_id')
-                ->sortable()
-                ->searchable(),
+//            Column::make(__('Academic Year'),'user_id')
+//                ->sortable()
+//                ->searchable(),
+//            Column::make(__('Grade'),'user_id')
+//                ->sortable()
+//                ->searchable(),
+//            Column::make(__('Class'),'user_id')
+//                ->sortable()
+//                ->searchable(),
             Column::make(__('Name'),'user_id')
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Number'),'user_id')
-                ->sortable()
-                ->searchable(),
+//            Column::make(__('Number'),'user_id')
+//                ->sortable()
+//                ->searchable(),
             Column::make(__('Case'),'cases_id')
                 ->sortable()
                 ->searchable(),
