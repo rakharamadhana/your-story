@@ -116,10 +116,10 @@ class TaskController
                 'task_id' => $id,
                 'emo_1' => $request->input('emo_1'),
                 'emo_2' => $request->input('emo_2'),
-                'nvc_1' => $request->input('observation'),
-                'nvc_2' => $request->input('perceives'),
-                'nvc_3' => $request->input('needs'),
-                'nvc_4' => $request->input('request'),
+                'nvc_1' => $request->input('nvc_1'),
+                'nvc_2' => $request->input('nvc_2'),
+                'nvc_3' => $request->input('nvc_3'),
+                'nvc_4' => $request->input('nvc_4'),
             ]
         );
 
