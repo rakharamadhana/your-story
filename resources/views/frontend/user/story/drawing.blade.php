@@ -39,9 +39,9 @@
                     <tr>
                         <th scope="row">{{ $index + 1 }}</th>
                         <td class="">{{ $storyDrawing->title }}</td>
-                        <td class="w-25"><img src="{{ URL::asset('storage/drawings/'.$story->id.'/'.$storyDrawing->drawing) }}" class="rounded img-thumbnail" alt=""></td>
+                        <td class="w-25"><img src="{{ URL::asset('storage/drawings/'.$userId.'/'.$story->id.'/'.$storyDrawing->drawing) }}" class="rounded img-thumbnail" alt=""></td>
                         @if($storyDrawing->audio)
-                            <td><audio controls><source src="{{ URL::asset('storage/drawings/'.$story->id.'/audio/'.$storyDrawing->audio) }}" type="audio/mpeg"></audio></td>
+                            <td><audio controls><source src="{{ URL::asset('storage/drawings/'.$userId.'/'.$story->id.'/audio/'.$storyDrawing->audio) }}" type="audio/mpeg"></audio></td>
                         @else
                             <td>-</td>
                         @endif

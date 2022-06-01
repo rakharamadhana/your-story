@@ -32,7 +32,7 @@
                                             <input type="file" name="image" placeholder="@lang('Choose image')" id="image">
                                         </div>
                                         <div class="mt-3 mb-3">
-                                            <img id="preview-image" src="{{ URL::asset('storage/drawings/'.$story->id.'/'.$storyDrawing->drawing) }}"
+                                            <img id="preview-image" src="{{ URL::asset('storage/drawings/'.$userId.'/'.$story->id.'/'.$storyDrawing->drawing) }}"
                                                  style="max-height: 150px;"/>
                                         </div>
                                         <div class="mt-3 mb-3">
@@ -42,7 +42,7 @@
                                         </div>
                                         <div class="mt-3 mb-3">
                                             @if($storyDrawing->audio)
-                                                <audio controls onplay="playVoice(this)" id="voice"><source src="{{ URL::asset('storage/drawings/'.$story->id.'/audio/'.$storyDrawing->audio) }}" type="audio/mpeg"></audio>
+                                                <audio controls onplay="playVoice(this)" id="voice"><source src="{{ URL::asset('storage/drawings/'.$userId.'/'.$story->id.'/audio/'.$storyDrawing->audio) }}" type="audio/mpeg"></audio>
                                             @else
                                                 <p>@lang('No Audio')</p>
                                             @endif

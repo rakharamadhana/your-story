@@ -15,13 +15,13 @@
         <div name="drawing" class="mb-3 task" style="{{ $key == 0 ? "display: block" : "" }}">
             <h3>{{ $key+1 }}</h3>
             <h4>{{ $storyDrawing->title }}</h4>
-            <img src="{{ URL::asset('storage/drawings/'.$story->id.'/'.$storyDrawing->drawing) }}" class="rounded img-thumbnail" style="max-height: 500px" alt="">
+            <img src="{{ URL::asset('storage/drawings/'.$userId.'/'.$story->id.'/'.$storyDrawing->drawing) }}" class="rounded img-thumbnail" style="max-height: 400px" alt="">
             <p>{{ $storyDrawing->description }}</p>
             <div class="row">
                 <div class="col-6">
                     <p>@lang('Audio')</p>
                     @if($storyDrawing->audio)
-                        <audio controls onplay="playVoice(this)" id="voice"><source src="{{ URL::asset('storage/drawings/'.$story->id.'/audio/'.$storyDrawing->audio) }}" type="audio/mpeg"></audio>
+                        <audio controls onplay="playVoice(this)" id="voice"><source src="{{ URL::asset('storage/drawings/'.$userId.'/'.$story->id.'/audio/'.$storyDrawing->audio) }}" type="audio/mpeg"></audio>
                     @else
                         <p>@lang('No Audio')</p>
                     @endif
@@ -29,7 +29,7 @@
                 <div class="col-6">
                     <p>@lang('BGM')</p>
                     @if($storyDrawing->music)
-                        <audio controls onplay="playMusic(this)" id="bgm"><source src="{{ URL::asset('storage/drawings/'.$story->id.'/audio/'.$storyDrawing->music->audio) }}" type="audio/mpeg"></audio>
+                        <audio controls onplay="playMusic(this)" id="bgm"><source src="{{ URL::asset('storage/drawings/'.$userId.'/'.$story->id.'/audio/'.$storyDrawing->music->audio) }}" type="audio/mpeg"></audio>
                     @else
                         <p>@lang('No BGM')</p>
                     @endif

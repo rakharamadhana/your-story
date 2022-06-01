@@ -6,7 +6,9 @@ use App\Models\Cases;
 use App\Models\Story;
 use App\Models\StoryDrawing;
 use App\Models\StoryDrawingMusic;
+use App\Models\StudentGroup;
 use App\Models\Task;
+use Auth;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -31,6 +33,13 @@ class StoryDrawingController
      */
     public function index($storyId = null): View|Factory|Application
     {
+        $user_id = Auth::id();
+        $studentGroup = StudentGroup::query()->where('user_id',$user_id)->with(['group'])->get();
+
+        if($studentGroup->count() > 0){
+            $user_id = 'G'.$studentGroup[0]->group_id;
+        }
+
         $story = Story::query()->where('id',$storyId)->first();
 
         $storyDrawings = StoryDrawing::query()
@@ -39,7 +48,8 @@ class StoryDrawingController
 
         return view('frontend.user.story.drawing')
             ->with('story',$story)
-            ->with('storyDrawings', $storyDrawings);
+            ->with('storyDrawings', $storyDrawings)
+            ->with('userId', $user_id);
     }
 
     /**
@@ -63,6 +73,13 @@ class StoryDrawingController
      */
     public function preview($storyId = null): View|Factory|Application
     {
+        $user_id = Auth::id();
+        $studentGroup = StudentGroup::query()->where('user_id',$user_id)->with(['group'])->get();
+
+        if($studentGroup->count() > 0){
+            $user_id = 'G'.$studentGroup[0]->group_id;
+        }
+
         $story = Story::query()->where('id',$storyId)->first();
 
         $storyDrawings = StoryDrawing::query()
@@ -74,7 +91,8 @@ class StoryDrawingController
 
         return view('frontend.user.story.drawing.preview')
             ->with('story',$story)
-            ->with('storyDrawings', $storyDrawings);
+            ->with('storyDrawings', $storyDrawings)
+            ->with('userId', $user_id);
     }
 
     /**
@@ -83,6 +101,12 @@ class StoryDrawingController
      */
     public function uploadImage(Request $request,$storyId = null)
     {
+        $user_id = Auth::id();
+        $studentGroup = StudentGroup::query()->where('user_id',$user_id)->with(['group'])->get();
+
+        if($studentGroup->count() > 0){
+            $user_id = 'G'.$studentGroup[0]->group_id;
+        }
 
         $request->validate([
             'title' => 'required',
@@ -95,15 +119,15 @@ class StoryDrawingController
         $audioName = null;
 
         if($request->audio){
-            $audioName = $storyId.'-'.time().'.'.$request->audio->extension();
-            $audioLocation = public_path('storage/drawings/'.$storyId.'/audio/');
+            $audioName = $user_id.'-'.$storyId.'-'.time().'.'.$request->audio->extension();
+            $audioLocation = public_path('storage/drawings/'.$user_id.'/'.$storyId.'/audio/');
             File::ensureDirectoryExists($audioLocation);
             $request->audio->move($audioLocation, $audioName);
         }
 
-        $imageName = $storyId.'-'.time().'.'.$request->image->extension();
+        $imageName = $user_id.'-'.$storyId.'-'.time().'.'.$request->image->extension();
 
-        $imageLocation = public_path('storage/drawings/'.$storyId.'/');
+        $imageLocation = public_path('storage/drawings/'.$user_id.'/'.$storyId.'/');
         File::ensureDirectoryExists($imageLocation);
 
         $request->image->move($imageLocation, $imageName);
@@ -132,13 +156,20 @@ class StoryDrawingController
      */
     public function uploadMusic(Request $request,$storyId = null)
     {
+        $user_id = Auth::id();
+        $studentGroup = StudentGroup::query()->where('user_id',$user_id)->with(['group'])->get();
+
+        if($studentGroup->count() > 0){
+            $user_id = 'G'.$studentGroup[0]->group_id;
+        }
+
         $request->validate([
             'category' => 'required',
             'audio' => 'required|mimes:wav,ogg,mp3',
         ]);
 
-        $audioName = $storyId.'-'.$request->input('category').'-music'.'.'.$request->audio->extension();
-        $audioLocation = public_path('storage/drawings/'.$storyId.'/audio/');
+        $audioName = $user_id.'-'.$storyId.'-'.$request->input('category').'-music'.'.'.$request->audio->extension();
+        $audioLocation = public_path('storage/drawings/'.$user_id.'/'.$storyId.'/audio/');
         File::ensureDirectoryExists($audioLocation);
         $request->audio->move($audioLocation, $audioName);
 
@@ -164,13 +195,21 @@ class StoryDrawingController
      */
     public function editImage($storyId,$id): View|Factory|Application
     {
+        $user_id = Auth::id();
+        $studentGroup = StudentGroup::query()->where('user_id',$user_id)->with(['group'])->get();
+
+        if($studentGroup->count() > 0){
+            $user_id = 'G'.$studentGroup[0]->group_id;
+        }
+
         $story = Story::query()->where('id',$storyId)->first();
 
         $storyDrawing = StoryDrawing::find($id);
 
         return view('frontend.user.story.drawing.edit')
             ->with('story',$story)
-            ->with('storyDrawing', $storyDrawing);
+            ->with('storyDrawing', $storyDrawing)
+            ->with('userId', $user_id);
     }
 
     /**
@@ -181,6 +220,13 @@ class StoryDrawingController
      */
     public function updateImage(Request $request, $storyId, $id): View|Factory|Application
     {
+        $user_id = Auth::id();
+        $studentGroup = StudentGroup::query()->where('user_id',$user_id)->with(['group'])->get();
+
+        if($studentGroup->count() > 0){
+            $user_id = 'G'.$studentGroup[0]->group_id;
+        }
+
         // Validating
         $request->validate([
             'title' => 'required',
@@ -201,15 +247,15 @@ class StoryDrawingController
         if($request->audio){
             $storyDrawing = StoryDrawing::find($id);
 
-            $audioLocation = public_path('storage/drawings/'.$storyId.'/audio/');
+            $audioLocation = public_path('storage/drawings/'.$user_id.'/'.$storyId.'/audio/');
             $audioName = $storyDrawing->audio;
 
             if (File::exists($audioLocation.$audioName)) {
                 File::delete($audioLocation.$audioName);
             }
 
-            $audioName = $storyId.'-'.time().'.'.$request->audio->extension();
-            $audioLocation = public_path('storage/drawings/'.$storyId.'/audio/');
+            $audioName = $user_id.'-'.$storyId.'-'.time().'.'.$request->audio->extension();
+            $audioLocation = public_path('storage/drawings/'.$user_id.'/'.$storyId.'/audio/');
             File::ensureDirectoryExists($audioLocation);
             $request->audio->move($audioLocation, $audioName);
         }
@@ -218,16 +264,16 @@ class StoryDrawingController
         if($request->image){
             $storyDrawing = StoryDrawing::find($id);
 
-            $imageLocation = public_path('storage/drawings/'.$storyId.'/');
+            $imageLocation = public_path('storage/drawings/'.$user_id.'/'.$storyId.'/');
             $imageName = $storyDrawing->drawing;
 
             if (File::exists($imageLocation.$imageName)) {
                 File::delete($imageLocation.$imageName);
             }
 
-            $imageName = $storyId.'-'.time().'.'.$request->image->extension();
+            $imageName = $user_id.'-'.$storyId.'-'.time().'.'.$request->image->extension();
 
-            $imageLocation = public_path('storage/drawings/'.$storyId.'/');
+            $imageLocation = public_path('storage/drawings/'.$user_id.'/'.$storyId.'/');
             File::ensureDirectoryExists($imageLocation);
 
             $request->image->move($imageLocation, $imageName);
@@ -257,9 +303,16 @@ class StoryDrawingController
 
     public function deleteImage($storyId,$id)
     {
+        $user_id = Auth::id();
+        $studentGroup = StudentGroup::query()->where('user_id',$user_id)->with(['group'])->get();
+
+        if($studentGroup->count() > 0){
+            $user_id = 'G'.$studentGroup[0]->group_id;
+        }
+
         $storyDrawing = StoryDrawing::find($id);
 
-        $imageLocation = public_path('storage/drawings/'.$storyId.'/');
+        $imageLocation = public_path('storage/drawings/'.$user_id.'/'.$storyId.'/');
         $imageName = $storyDrawing->drawing;
 
         if (File::exists($imageLocation.$imageName)) {
@@ -274,6 +327,13 @@ class StoryDrawingController
     }
 
     public function downloadPpt($storyId){
+        $user_id = Auth::id();
+        $studentGroup = StudentGroup::query()->where('user_id',$user_id)->with(['group'])->get();
+
+        if($studentGroup->count() > 0){
+            $user_id = 'G'.$studentGroup[0]->group_id;
+        }
+
         $story = Story::query()->where('id',$storyId)->first();
         $storyDrawings = StoryDrawing::query()->where('story_id', $storyId)->get();
 
@@ -300,7 +360,7 @@ class StoryDrawingController
             $shape = $currentSlide->createDrawingShape();
             $shape->setName($storyDrawing->title)
                 ->setDescription($storyDrawing->title)
-                ->setPath(public_path('storage/drawings/'.$storyId.'/'.$storyDrawing->drawing))
+                ->setPath(public_path('storage/drawings/'.$user_id.'/'.$storyId.'/'.$storyDrawing->drawing))
                 ->setHeight(400)
                 ->setOffsetX(170)
                 ->setOffsetY(100);
