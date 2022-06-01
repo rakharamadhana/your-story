@@ -33,32 +33,23 @@ class CaseLearnTable extends DataTableComponent
 //                ->sortable()
 //                ->searchable(),
             Column::make(__('Case'),'cases_id')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
             Column::make(__('Task'),'task_id')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
             Column::make(__('1-1'),'emo_1')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
             Column::make(__('1-2'),'emo_2')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
             Column::make(__('2-1'),'nvc_1')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
             Column::make(__('2-2'),'nvc_2')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
             Column::make(__('2-3'),'nvc_3')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
             Column::make(__('2-4'),'nvc_4')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
             Column::make(__('2-5'),'nvc_end')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
             Column::make(__('Created At'), 'created_at')
                 ->sortable(function(Builder $query, $direction) {
                     return $query->orderBy('created_at',$direction);
