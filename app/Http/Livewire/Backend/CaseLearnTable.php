@@ -17,21 +17,21 @@ class CaseLearnTable extends DataTableComponent
     public function columns(): array
     {
         return [
-//            Column::make(__('Academic Year'),'user_id')
-//                ->sortable()
-//                ->searchable(),
-//            Column::make(__('Grade'),'user_id')
-//                ->sortable()
-//                ->searchable(),
-//            Column::make(__('Class'),'user_id')
-//                ->sortable()
-//                ->searchable(),
+            Column::make(__('Academic Year'),'user_id')
+                ->sortable()
+                ->searchable(),
+            Column::make(__('Grade'),'user_id')
+                ->sortable()
+                ->searchable(),
+            Column::make(__('Class'),'user_id')
+                ->sortable()
+                ->searchable(),
             Column::make(__('Name'),'user_id')
                 ->sortable()
                 ->searchable(),
-//            Column::make(__('Number'),'user_id')
-//                ->sortable()
-//                ->searchable(),
+            Column::make(__('Number'),'user_id')
+                ->sortable()
+                ->searchable(),
             Column::make(__('Case'),'cases_id')
                 ->sortable(),
             Column::make(__('Task'),'task_id')
@@ -89,46 +89,41 @@ class CaseLearnTable extends DataTableComponent
         array_unshift($cases, 'Any');
 
         return [
-//            'academic_year' => Filter::make(__('Academic Year'))
-//                ->select([
-//                    '' => __('Any'),
-//                    '110-1' => '110-1',
-//                    '110-2' => '110-2',
-//                    '111-1' => '111-1',
-//                    '111-2' => '111-2',
-//                ]),
-//            'grade' => Filter::make(__('Grade'))
-//                ->select([
-//                    '' => __('Any'),
-//                    '1' => '1',
-//                    '2' => '2',
-//                    '3' => '3',
-//                    '4' => '4',
-//                    '5' => '5',
-//                    '6' => '6',
-//                    '7' => '7',
-//                    '8' => '8',
-//                    '9' => '9',
-//                    '10' => '10',
-//                ]),
-//            'class' => Filter::make(__('Class'))
-//                ->select([
-//                    '' => __('Any'),
-//                    '1' => '1',
-//                    '2' => '2',
-//                    '3' => '3',
-//                    '4' => '4',
-//                    '5' => '5',
-//                    '6' => '6',
-//                    '7' => '7',
-//                    '8' => '8',
-//                    '9' => '9',
-//                    '10' => '10',
-//                ]),
-//            'student' => Filter::make(__('Student'))
-//                ->select(
-//                    $students
-//                ),
+            'academic_year' => Filter::make(__('Academic Year'))
+                ->select([
+                    '' => __('Any'),
+                    '110-1' => '110-1',
+                    '110' => '110',
+                    '111' => '111',
+                ]),
+            'grade' => Filter::make(__('Grade'))
+                ->select([
+                    '' => __('Any'),
+                    '7' => '7',
+                    '8' => '8',
+                    '9' => '9',
+                ]),
+            'class' => Filter::make(__('Class'))
+                ->select([
+                    '' => __('Any'),
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5',
+                    '6' => '6',
+                    '7' => '7',
+                    '8' => '8',
+                    '9' => '9',
+                    '10' => '10',
+                    '11' => '11',
+                    '12' => '12',
+                    '13' => '13',
+                ]),
+            'student' => Filter::make(__('Student'))
+                ->select(
+                    $students
+                ),
             'task' => Filter::make(__('Task'))
                 ->select(
                     $tasks

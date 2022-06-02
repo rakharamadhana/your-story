@@ -1,22 +1,22 @@
-{{--<x-livewire-tables::bs4.table.cell>--}}
-{{--    {{ $row->user->student->academic_year }}--}}
-{{--</x-livewire-tables::bs4.table.cell>--}}
+<x-livewire-tables::bs4.table.cell>
+    {{ $row->user->student->academic_year }}
+</x-livewire-tables::bs4.table.cell>
 
-{{--<x-livewire-tables::bs4.table.cell>--}}
-{{--    {{ $row->user->student->grade }}--}}
-{{--</x-livewire-tables::bs4.table.cell>--}}
+<x-livewire-tables::bs4.table.cell>
+    {{ $row->user->student->grade }}
+</x-livewire-tables::bs4.table.cell>
 
-{{--<x-livewire-tables::bs4.table.cell>--}}
-{{--    {{ $row->user->student->class }}--}}
-{{--</x-livewire-tables::bs4.table.cell>--}}
+<x-livewire-tables::bs4.table.cell>
+    {{ $row->user->student->class }}
+</x-livewire-tables::bs4.table.cell>
 
 <x-livewire-tables::bs4.table.cell>
     {{ $row->user->name_en }}
 </x-livewire-tables::bs4.table.cell>
 
-{{--<x-livewire-tables::bs4.table.cell>--}}
-{{--    {{ $row->user->student->student_number }}--}}
-{{--</x-livewire-tables::bs4.table.cell>--}}
+<x-livewire-tables::bs4.table.cell>
+    {{ $row->user->student->student_number }}
+</x-livewire-tables::bs4.table.cell>
 
 <x-livewire-tables::bs4.table.cell>
     {{ $row->cases->name_en }}
