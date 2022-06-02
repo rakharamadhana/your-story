@@ -124,13 +124,13 @@ class CaseLearnTable extends DataTableComponent
                 ->select(
                     $students
                 ),
-            'task' => Filter::make(__('Task'))
-                ->select(
-                    $tasks
-                ),
             'case' => Filter::make(__('Case'))
                 ->select(
                     $cases
+                ),
+            'task' => Filter::make(__('Task'))
+                ->select(
+                    $tasks
                 ),
         ];
     }
