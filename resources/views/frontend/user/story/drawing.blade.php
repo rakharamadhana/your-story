@@ -91,6 +91,7 @@
                                     <label for="image" class="form-label">@lang('Upload Image')</label>
 
                                     <input type="file" name="image" placeholder="@lang('Choose image')" id="image">
+                                    <p><small>*@lang('Maximum upload file size 1G')</small></p>
                                 </div>
                                 <div class="mt-3 mb-3">
                                     <img id="preview-image" src="https://cutewallpaper.org/24/image-placeholder-png/index-of-assetsimg.png"
@@ -105,6 +106,7 @@
                                     <label for="audio" class="form-label">@lang('Upload Audio')</label>
 
                                     <input type="file" name="audio" placeholder="@lang('Choose audio')" id="audio">
+                                    <p><small>*@lang('Maximum upload file size 1G')</small></p>
                                 </div>
                                 <div class="mt-3 mb-3">
                                     <button type="submit" class="btn btn-success">@lang('Upload')</button>
@@ -141,6 +143,7 @@
                                     <label for="audio" class="form-label">@lang('Upload Music')</label>
 
                                     <input type="file" name="audio" placeholder="Choose audio" id="audio">
+                                    <p><small>*@lang('Maximum upload file size 1G')</small></p>
                                 </div>
                                 <div class="mt-3 mb-3">
                                     <button type="submit" class="btn btn-success">@lang('Upload')</button>
