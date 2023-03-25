@@ -33,6 +33,13 @@ class FeedbackReviewController
             $studentReview[0]->q3 = 0;
             $studentReview[0]->q4 = 0;
             $studentReview[0]->q5 = 0;
+
+            $studentReview[1] = new StudentReview();
+            $studentReview[1]->q1 = 0;
+            $studentReview[1]->q2 = 0;
+            $studentReview[1]->q3 = 0;
+            $studentReview[1]->q4 = 0;
+            $studentReview[1]->q5 = 0;
         }
 
         if($storyType == 2){
