@@ -231,7 +231,7 @@ class StoryDrawingController
         $request->validate([
             'title' => 'required',
             'category' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'audio' => 'mimes:wav,ogg,mp3',
             'description' => 'required',
         ]);
@@ -239,16 +239,16 @@ class StoryDrawingController
         // Get Story Information
         $story = Story::query()->where('id',$storyId)->first();
 
-        // Initialize Audio Variable
-        $audioName = null;
-        $imageName = null;
+        $storyDrawing = StoryDrawing::find($id);
+
+        // Initialize the image name with the existing image name from the database
+        $imageName = $storyDrawing->drawing;
+        $audioName = $storyDrawing->audio;
 
         // If Audio were changed, then replace the previous one
         if($request->audio){
-            $storyDrawing = StoryDrawing::find($id);
 
             $audioLocation = public_path('storage/drawings/'.$user_id.'/'.$storyId.'/audio/');
-            $audioName = $storyDrawing->audio;
 
             if (File::exists($audioLocation.$audioName)) {
                 File::delete($audioLocation.$audioName);
@@ -262,10 +262,8 @@ class StoryDrawingController
 
         // If Image were changed, then replace the previous one
         if($request->image){
-            $storyDrawing = StoryDrawing::find($id);
 
             $imageLocation = public_path('storage/drawings/'.$user_id.'/'.$storyId.'/');
-            $imageName = $storyDrawing->drawing;
 
             if (File::exists($imageLocation.$imageName)) {
                 File::delete($imageLocation.$imageName);
@@ -286,8 +284,8 @@ class StoryDrawingController
                 'title' => $request->input('title'),
                 'category' => $request->input('category'),
                 'description' => $request->input('description'),
-                'drawing' => $imageName,
-                'audio' => $audioName,
+                'drawing' => $imageName ?? $storyDrawing->image,
+                'audio' => $audioName ?? $storyDrawing->audio,
             ]);
 
         // Fetch Drawings for viewing page
@@ -298,7 +296,8 @@ class StoryDrawingController
         // Redirect to drawing page
         return view('frontend.user.story.drawing')
             ->with('story',$story)
-            ->with('storyDrawings', $storyDrawings);
+            ->with('storyDrawings', $storyDrawings)
+            ->with('userId', $user_id);
     }
 
     public function deleteImage($storyId,$id)
