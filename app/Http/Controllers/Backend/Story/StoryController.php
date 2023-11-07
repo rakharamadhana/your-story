@@ -65,6 +65,7 @@ class StoryController
 
     public function edit(Request $request, Story $story)
     {
+        $userId = Story::where('id', $story->id)->value('user_id');
         $storyDrawings = StoryDrawing::query()->where('story_id', $story->id)->paginate(5);
         $storyReviews = StudentStoryReview::query()->where('story_id', $story->id)
             ->with('user')
@@ -73,7 +74,8 @@ class StoryController
         return view('backend.stories.edit')
             ->with('story',$story)
             ->with('storyDrawings',$storyDrawings)
-            ->with('storyReviews',$storyReviews);
+            ->with('storyReviews',$storyReviews)
+            ->with('userId',$userId);
     }
 
     public function update(Request $request, Story $story)
