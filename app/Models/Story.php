@@ -46,8 +46,8 @@ class Story extends Model
         return $this->belongsTo(Group::class, 'group_id','id');
     }
 
-    public function drawing(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function drawings(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->belongsTo(StoryDrawing::class, 'id','story_id');
+        return $this->hasMany(StoryDrawing::class, 'story_id', 'id');
     }
 }

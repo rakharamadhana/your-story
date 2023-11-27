@@ -115,7 +115,7 @@ class StoryController
             ->inputEncoding('utf-8')
         ;
 
-        $stories = Story::query()->with(['user'])->get();
+        $stories = Story::query()->with(['user','group','drawings'])->get();
 
         $csv = Writer::createFromFileObject(new \SplTempFileObject);
 
@@ -126,14 +126,22 @@ class StoryController
             'Name (English)',
             'Name (Chinese)',
             'Student Number',
+            'Group',
             'Time 時間',
             'Place 地點',
             'Characters 角色',
             'Conflict 衝突',
             'Description 描述',
             'Sypnopsis 故事大綱',
-            'Created At',
-            'Updated At'
+            'Story Created At',
+            'Story Updated At',
+            'Drawing ID',
+            'Drawing Title',
+            'Drawing Image',
+            'Drawing Audio',
+            'Drawing Description',
+            'Drawing Created At',
+            'Drawing Updated At'
         ];
 
         //add formatter
@@ -156,22 +164,69 @@ class StoryController
                 $student_number = '';
             }
 
-            $csv->insertOne([
-                $academic_year,
-                $grade,
-                $class,
-                $story->user->name_en,
-                $story->user->{'name_zh-TW'},
-                $student_number,
-                $story->time,
-                $story->place,
-                $story->characters,
-                $story->conflict,
-                $story->description,
-                $story->nvc_outline,
-                $story->created_at->format('m/d/Y'),
-                $story->updated_at->format('m/d/Y')
-            ]);
+            $groupName = "Individual"; // Default value if $story->group is null
+
+            if ($story->group !== null && $story->group->name !== null && $story->group->name !== 0) {
+                $groupName = $story->group->name;
+            }
+
+            $drawings = $story->drawings; // Using the correct relationship name
+
+            // Check if there are any drawings related to the story
+            if ($drawings !== null && $drawings->count() > 0) {
+                foreach ($drawings as $drawing) {
+                    $csv->insertOne([
+                        $academic_year,
+                        $grade,
+                        $class,
+                        $story->user->name_en,
+                        $story->user->{'name_zh-TW'},
+                        $student_number,
+                        $groupName,
+                        $story->time,
+                        $story->place,
+                        $story->characters,
+                        $story->conflict,
+                        $story->description,
+                        $story->nvc_outline,
+                        $story->created_at->format('m/d/Y'),
+                        $story->updated_at->format('m/d/Y'),
+                        $drawing->story_id,
+                        $drawing->category,
+                        $drawing->title,
+                        $drawing->drawing,
+                        $drawing->audio,
+                        $drawing->description,
+                        $drawing->created_at->format('m/d/Y'),
+                        $drawing->updated_at->format('m/d/Y')
+                    ]);
+                }
+            } else {
+                // If there are no drawings, you might want to insert default values or handle this scenario accordingly
+                $csv->insertOne([
+                    $academic_year,
+                    $grade,
+                    $class,
+                    $story->user->name_en,
+                    $story->user->{'name_zh-TW'},
+                    $student_number,
+                    $groupName,
+                    $story->time,
+                    $story->place,
+                    $story->characters,
+                    $story->conflict,
+                    $story->description,
+                    $story->nvc_outline,
+                    null, // Placeholder for drawing-related fields, or you can add default values
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                ]);
+            }
         }
 
         $csv->output('students_stories.csv');
