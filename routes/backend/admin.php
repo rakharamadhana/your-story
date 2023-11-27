@@ -107,6 +107,8 @@ Route::group(['prefix' => 'story','as' => 'story.'], function () {
         Route::delete('/', [StoryController::class, 'destroy'])->name('destroy');
     });
 
+    Route::get('story-export', [StoryController::class, 'export'])->name('export');
+
     Route::post('/', [StoryController::class, 'store'])->name('store');
 });
 

@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Backend\Story;
 
 use App\Models\Story;
 use App\Models\StoryDrawing;
+use App\Models\StudentAnswer;
 use App\Models\StudentFeedback;
 use App\Models\StudentStoryReview;
 use Illuminate\Http\Request;
+use League\Csv\CharsetConverter;
+use League\Csv\Writer;
 
 /**
  * Class StoryController.
@@ -104,5 +107,72 @@ class StoryController
         $story->delete();
 
         return redirect()->route('admin.stories')->withFlashSuccess(__('The story was successfully deleted.'));
+    }
+
+    public function export(): void
+    {
+        $encoder = (new CharsetConverter())
+            ->inputEncoding('utf-8')
+        ;
+
+        $stories = Story::query()->with(['user'])->get();
+
+        $csv = Writer::createFromFileObject(new \SplTempFileObject);
+
+        $header = [
+            'Academic Year',
+            'Grade',
+            'Class',
+            'Name (English)',
+            'Name (Chinese)',
+            'Student Number',
+            'Time',
+            'Place',
+            'Characters',
+            'Conflict',
+            'NVC Outline',
+            'Created At',
+            'Updated At'
+        ];
+
+        //add formatter
+        $csv->addFormatter($encoder);
+
+        //insert the header
+        $csv->insertOne($header);
+
+        foreach ($stories as $story) {
+
+            if($story->user->student){
+                $academic_year = $story->user->student->academic_year;
+                $grade = $story->user->student->grade;
+                $class = $story->user->student->class;
+                $student_number = $story->user->student->student_number;
+            } else {
+                $academic_year = '';
+                $grade = '';
+                $class = '';
+                $student_number = '';
+            }
+
+            $csv->insertOne([
+                $academic_year,
+                $grade,
+                $class,
+                $story->user->name_en,
+                $story->user->{'name_zh-TW'},
+                $student_number,
+                $story->time,
+                $story->place,
+                $story->characters,
+                $story->conflict,
+                $story->description,
+                $story->nvc_outline,
+                $story->created_at->format('m/d/Y'),
+                $story->updated_at->format('m/d/Y')
+            ]);
+        }
+
+        $csv->output('students_stories.csv');
     }
 }
