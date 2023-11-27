@@ -198,7 +198,7 @@ class StoryController
                         $drawing->category,
                         $drawing->title,
                         $baseURL . '/storage/drawings/' . $story->user_id . '/' . $story->id . '/' . $drawing->drawing,
-                        $baseURL . '/storage/drawings/' . $story->user_id . '/' . $story->id . '/' . $drawing->audio,
+                        $baseURL . '/storage/drawings/' . $story->user_id . '/' . $story->id . '/audio/' . $drawing->audio,
                         $drawing->description,
                         $drawing->created_at->format('m/d/Y'),
                         $drawing->updated_at->format('m/d/Y')
