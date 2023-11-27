@@ -196,8 +196,8 @@ class StoryController
                         $drawing->story_id,
                         $drawing->category,
                         $drawing->title,
-                        $baseURL . '/storage/drawings/' . $drawing->story_id . '/' . $drawing->id . '/' . $drawing->drawing,
-                        $baseURL . '/storage/drawings/' . $drawing->story_id . '/' . $drawing->id . '/' . $drawing->audio,
+                        $baseURL . '/storage/drawings/' . $story->user_id . '/' . $story->id . '/' . $drawing->drawing,
+                        $baseURL . '/storage/drawings/' . $story->user_id . '/' . $story->id . '/' . $drawing->audio,
                         $drawing->description,
                         $drawing->created_at->format('m/d/Y'),
                         $drawing->updated_at->format('m/d/Y')
