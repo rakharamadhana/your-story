@@ -136,6 +136,7 @@ class StoryController
             'Story Created At',
             'Story Updated At',
             'Drawing ID',
+            'Drawing Category',
             'Drawing Title',
             'Drawing Image',
             'Drawing Audio',
