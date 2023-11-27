@@ -150,6 +150,8 @@ class StoryController
         //insert the header
         $csv->insertOne($header);
 
+        $baseURL = config('app.url');
+
         foreach ($stories as $story) {
 
             if($story->user->student){
@@ -194,8 +196,8 @@ class StoryController
                         $drawing->story_id,
                         $drawing->category,
                         $drawing->title,
-                        $drawing->drawing,
-                        $drawing->audio,
+                        $baseURL . '/storage/drawings/' . $drawing->story_id . '/' . $drawing->id . '/' . $drawing->drawing,
+                        $baseURL . '/storage/drawings/' . $drawing->story_id . '/' . $drawing->id . '/' . $drawing->audio,
                         $drawing->description,
                         $drawing->created_at->format('m/d/Y'),
                         $drawing->updated_at->format('m/d/Y')
