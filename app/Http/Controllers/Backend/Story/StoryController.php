@@ -178,6 +178,9 @@ class StoryController
             // Check if there are any drawings related to the story
             if ($drawings !== null && $drawings->count() > 0) {
                 foreach ($drawings as $drawing) {
+                    $audioURL = $drawing->audio !== null ?
+                        $baseURL . '/storage/drawings/' . $story->user_id . '/' . $story->id . '/audio/' . $drawing->audio : null;
+
                     $csv->insertOne([
                         $academic_year,
                         $grade,
@@ -198,7 +201,7 @@ class StoryController
                         $drawing->category,
                         $drawing->title,
                         $baseURL . '/storage/drawings/' . $story->user_id . '/' . $story->id . '/' . $drawing->drawing,
-                        $baseURL . '/storage/drawings/' . $story->user_id . '/' . $story->id . '/audio/' . $drawing->audio,
+                        $audioURL,
                         $drawing->description,
                         $drawing->created_at->format('m/d/Y'),
                         $drawing->updated_at->format('m/d/Y')
