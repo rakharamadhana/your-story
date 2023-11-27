@@ -126,11 +126,12 @@ class StoryController
             'Name (English)',
             'Name (Chinese)',
             'Student Number',
-            'Time',
-            'Place',
-            'Characters',
-            'Conflict',
-            'NVC Outline',
+            'Time 時間',
+            'Place 地點',
+            'Characters 角色',
+            'Conflict 衝突',
+            'Description 描述',
+            'Sypnopsis 故事大綱',
             'Created At',
             'Updated At'
         ];
