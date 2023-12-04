@@ -216,9 +216,9 @@ class StoryDrawingController
      * @param Request $request
      * @param $storyId
      * @param $id
-     * @return View|Factory|Application
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function updateImage(Request $request, $storyId, $id): View|Factory|Application
+    public function updateImage(Request $request, $storyId, $id): \Illuminate\Http\RedirectResponse
     {
         $user_id = Auth::id();
         $studentGroup = StudentGroup::query()->where('user_id',$user_id)->with(['group'])->get();
@@ -278,15 +278,15 @@ class StoryDrawingController
         }
 
         // Updating Record
-        $storyDrawing = StoryDrawing::query()
-            ->where('id', $id)
-            ->update([
-                'title' => $request->input('title'),
-                'category' => $request->input('category'),
-                'description' => $request->input('description'),
-                'drawing' => $imageName ?? $storyDrawing->image,
-                'audio' => $audioName ?? $storyDrawing->audio,
-            ]);
+        $storyDrawing = StoryDrawing::find($id);
+        $storyDrawing->update([
+            'title' => $request->input('title'),
+            'category' => $request->input('category'),
+            'description' => $request->input('description'),
+            'drawing' => $imageName ?? $storyDrawing->image,
+            'audio' => $audioName ?? $storyDrawing->audio,
+        ]);
+
 
         // Fetch Drawings for viewing page
         $storyDrawings = StoryDrawing::query()
@@ -294,10 +294,7 @@ class StoryDrawingController
             ->get();
 
         // Redirect to drawing page
-        return view('frontend.user.story.drawing')
-            ->with('story',$story)
-            ->with('storyDrawings', $storyDrawings)
-            ->with('userId', $user_id);
+        return redirect()->route('frontend.user.story.drawing', ['storyId' => $storyId]);
     }
 
     public function deleteImage($storyId,$id)
